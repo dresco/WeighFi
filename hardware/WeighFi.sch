@@ -1,46 +1,359 @@
-EESchema Schematic File Version 2  date Sat 28 Apr 2012 17:15:22 BST
+EESchema Schematic File Version 2  date Sat 28 Apr 2012 18:56:34 BST
+LIBS:dresco
 LIBS:power
-LIBS:device
-LIBS:transistors
 LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:special
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-EELAYER 43  0
+LIBS:WeighFi-cache
+EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
-Title ""
+Title "WeighFi"
 Date "28 apr 2012"
-Rev ""
+Rev "1.0"
 Comp ""
-Comment1 ""
+Comment1 "Released under Creative Commons Attribution-Sharealike (CC BY-SA 3.0) license"
 Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+$Comp
+L MCP1700 U2
+U 1 1 4F9C1A72
+P 5400 1200
+F 0 "U2" H 5550 1004 60  0000 C CNN
+F 1 "MCP1700" H 5400 1400 60  0000 C CNN
+	1    5400 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L USB J1
+U 1 1 4F9C2E7E
+P 1000 1300
+F 0 "J1" H 925 1550 60  0000 C CNN
+F 1 "USB" H 1050 1000 60  0001 C CNN
+F 4 "VCC" H 1325 1450 50  0001 C CNN "VCC"
+F 5 "D+" H 1300 1350 50  0001 C CNN "Data+"
+F 6 "D-" H 1300 1250 50  0001 C CNN "Data-"
+F 7 "GND" H 1325 1150 50  0001 C CNN "Ground"
+	1    1000 1300
+	1    0    0    -1  
+$EndComp
+Connection ~ 4100 1150
+Wire Wire Line
+	3050 1150 5000 1150
+Wire Notes Line
+	7100 600  7100 2200
+Wire Wire Line
+	1350 1450 1350 1750
+Wire Wire Line
+	1350 1450 1200 1450
+Wire Wire Line
+	1200 1350 1350 1350
+Wire Wire Line
+	1750 1050 1750 1150
+Wire Wire Line
+	2150 1750 2150 1250
+Wire Wire Line
+	2150 1250 2250 1250
+Connection ~ 1900 1750
+Connection ~ 3300 1750
+Wire Wire Line
+	3300 1750 3300 1700
+Connection ~ 3600 1150
+Wire Wire Line
+	3600 1150 3600 1300
+Wire Wire Line
+	1900 1150 1900 1300
+Connection ~ 4550 1750
+Connection ~ 4550 1150
+Connection ~ 6050 1150
+Wire Wire Line
+	8550 1650 8550 1350
+Wire Wire Line
+	8550 1350 8400 1350
+Wire Wire Line
+	7800 1350 7650 1350
+Wire Wire Line
+	7800 1150 7650 1150
+Connection ~ 4750 1150
+Connection ~ 5950 1150
+Wire Wire Line
+	5950 1150 5950 1300
+Connection ~ 4750 1750
+Wire Wire Line
+	4750 1750 4750 1700
+Connection ~ 4350 1750
+Wire Wire Line
+	4350 1750 4350 1950
+Wire Wire Line
+	6250 1000 6250 1150
+Wire Wire Line
+	5400 1450 5400 1750
+Connection ~ 5400 1750
+Wire Wire Line
+	4350 1150 4350 1000
+Connection ~ 4350 1150
+Wire Wire Line
+	5950 1700 5950 1750
+Wire Wire Line
+	6250 1150 5800 1150
+Wire Wire Line
+	7800 1250 7650 1250
+Wire Wire Line
+	8400 1250 8550 1250
+Wire Wire Line
+	8400 1150 8550 1150
+Wire Wire Line
+	8550 1150 8550 900 
+Wire Wire Line
+	4750 1300 4750 1150
+Connection ~ 2150 1750
+Wire Wire Line
+	3300 1250 3050 1250
+Wire Wire Line
+	3300 1250 3300 1300
+Wire Wire Line
+	3600 1750 3600 1700
+Wire Wire Line
+	1900 1750 1900 1700
+Connection ~ 1900 1150
+Wire Wire Line
+	2250 1350 2200 1350
+Wire Wire Line
+	2200 1350 2200 1600
+Wire Wire Line
+	2200 1600 2500 1600
+Wire Wire Line
+	1200 1250 1350 1250
+Wire Wire Line
+	1200 1150 2250 1150
+Connection ~ 1750 1150
+Wire Notes Line
+	9100 600  9100 2200
+Wire Wire Line
+	5950 1750 1350 1750
+Connection ~ 3600 1750
+Connection ~ 4100 1750
+Wire Wire Line
+	3050 1250 3050 1400
+$Comp
+L PWR_FLAG #FLG01
+U 1 1 4F9C2D4F
+P 3050 1400
+F 0 "#FLG01" H 3050 1670 30  0001 C CNN
+F 1 "PWR_FLAG" H 3050 1630 30  0000 C CNN
+	1    3050 1400
+	1    0    0    1   
+$EndComp
+$Comp
+L MAX1555 U1
+U 1 1 4F9C2CDB
+P 2650 1250
+F 0 "U1" H 2750 1000 50  0000 L BNN
+F 1 "MAX1555" H 2500 1420 50  0000 L BNN
+	1    2650 1250
+	1    0    0    -1  
+$EndComp
+Text GLabel 1350 1350 2    60   Input ~ 0
+D-
+Text GLabel 1350 1250 2    60   Input ~ 0
+D+
+$Comp
+L +VUSB #PWR02
+U 1 1 4F9C233A
+P 1750 1050
+F 0 "#PWR02" H 1750 1000 20  0001 C CNN
+F 1 "+VUSB" H 1750 1150 30  0000 C CNN
+	1    1750 1050
+	1    0    0    -1  
+$EndComp
+Text GLabel 2500 1600 2    60   Input ~ 0
+CHG
+$Comp
+L C C1
+U 1 1 4F9C1CF4
+P 1900 1500
+F 0 "C1" H 1950 1600 50  0000 L CNN
+F 1 "1uF" H 1950 1400 50  0000 L CNN
+	1    1900 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C3
+U 1 1 4F9C1C02
+P 3600 1500
+F 0 "C3" H 3650 1600 50  0000 L CNN
+F 1 "1uF" H 3650 1400 50  0000 L CNN
+	1    3600 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C2
+U 1 1 4F9C1BDF
+P 3300 1500
+F 0 "C2" H 3350 1600 50  0000 L CNN
+F 1 "1uF" H 3350 1400 50  0000 L CNN
+	1    3300 1500
+	1    0    0    -1  
+$EndComp
+Text Notes 3250 700  0    60   ~ 0
+USB, LiPo charging, and power supply
+$Comp
+L C C4
+U 1 1 4F9C1A7A
+P 4750 1500
+F 0 "C4" H 4800 1600 50  0000 L CNN
+F 1 "1uF" H 4800 1400 50  0000 L CNN
+	1    4750 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C5
+U 1 1 4F9C1A79
+P 5950 1500
+F 0 "C5" H 6000 1600 50  0000 L CNN
+F 1 "1uF" H 6000 1400 50  0000 L CNN
+	1    5950 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3V #PWR03
+U 1 1 4F9C1A78
+P 6250 1000
+F 0 "#PWR03" H 6250 910 30  0001 C CNN
+F 1 "+3V" H 6250 1110 30  0000 C CNN
+	1    6250 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L +BATT #PWR04
+U 1 1 4F9C1A77
+P 4350 1000
+F 0 "#PWR04" H 4350 950 20  0001 C CNN
+F 1 "+BATT" H 4350 1100 30  0000 C CNN
+	1    4350 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR05
+U 1 1 4F9C1A76
+P 4350 1950
+F 0 "#PWR05" H 4350 1950 30  0001 C CNN
+F 1 "GND" H 4350 1880 30  0001 C CNN
+	1    4350 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L BATTERY BT1
+U 1 1 4F9C1A75
+P 4100 1450
+F 0 "BT1" H 4100 1650 50  0000 C CNN
+F 1 "BATTERY" H 4100 1260 50  0000 C CNN
+	1    4100 1450
+	0    1    1    0   
+$EndComp
+Text GLabel 7650 1150 0    60   Input ~ 0
+MISO
+Text GLabel 7650 1250 0    60   Input ~ 0
+SCK
+Text GLabel 7650 1350 0    60   Input ~ 0
+RST
+Text GLabel 8550 1250 2    60   Input ~ 0
+MOSI
+$Comp
+L +3V #PWR06
+U 1 1 4F9C1A71
+P 8550 900
+F 0 "#PWR06" H 8550 810 30  0001 C CNN
+F 1 "+3V" H 8550 1010 30  0000 C CNN
+	1    8550 900 
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR07
+U 1 1 4F9C1A70
+P 8550 1650
+F 0 "#PWR07" H 8550 1650 30  0001 C CNN
+F 1 "GND" H 8550 1580 30  0001 C CNN
+	1    8550 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L HOLE H1
+U 1 1 4F9C1A6E
+P 9600 1150
+F 0 "H1" H 9560 975 40  0000 L CNN
+F 1 "HOLE" H 9600 1320 30  0001 C CNN
+	1    9600 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L HOLE H2
+U 1 1 4F9C1A6D
+P 9950 1150
+F 0 "H2" H 9910 975 40  0000 L CNN
+F 1 "HOLE" H 9950 1320 30  0001 C CNN
+	1    9950 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L HOLE H3
+U 1 1 4F9C1A6C
+P 10300 1150
+F 0 "H3" H 10260 975 40  0000 L CNN
+F 1 "HOLE" H 10300 1320 30  0001 C CNN
+	1    10300 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L HOLE H4
+U 1 1 4F9C1A6B
+P 10650 1150
+F 0 "H4" H 10610 975 40  0000 L CNN
+F 1 "HOLE" H 10650 1320 30  0001 C CNN
+	1    10650 1150
+	1    0    0    -1  
+$EndComp
+Text Notes 9800 700  0    60   ~ 0
+Mounting holes
+Text Notes 7600 700  0    60   ~ 0
+In System Programming
+$Comp
+L CONN_1 P1
+U 1 1 4F9C1A6A
+P 4550 1000
+F 0 "P1" H 4630 1000 40  0000 L CNN
+F 1 "CONN_1" H 4550 1055 30  0001 C CNN
+	1    4550 1000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_1 P3
+U 1 1 4F9C1A69
+P 6050 1000
+F 0 "P3" H 6130 1000 40  0000 L CNN
+F 1 "CONN_1" H 6050 1055 30  0001 C CNN
+	1    6050 1000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_1 P2
+U 1 1 4F9C1A68
+P 4550 1900
+F 0 "P2" H 4630 1900 40  0000 L CNN
+F 1 "CONN_1" H 4550 1955 30  0001 C CNN
+	1    4550 1900
+	0    -1   1    0   
+$EndComp
+$Comp
+L AVR-ISP-6 ISP1
+U 1 1 4F9C1A67
+P 8100 1250
+F 0 "ISP1" H 8275 995 50  0000 C CNN
+F 1 "AVR-ISP-6" H 7890 1465 50  0000 L BNN
+F 2 "AVR-ISP-6" V 7600 1250 50  0001 C CNN
+	1    8100 1250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
