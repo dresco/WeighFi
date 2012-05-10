@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Sat 28 Apr 2012 18:56:34 BST
+EESchema Schematic File Version 2  date Thu 10 May 2012 13:00:41 BST
 LIBS:dresco
 LIBS:power
 LIBS:conn
@@ -9,7 +9,7 @@ $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
 Title "WeighFi"
-Date "28 apr 2012"
+Date "10 may 2012"
 Rev "1.0"
 Comp ""
 Comment1 "Released under Creative Commons Attribution-Sharealike (CC BY-SA 3.0) license"
@@ -17,31 +17,47 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L MCP1700 U2
-U 1 1 4F9C1A72
-P 5400 1200
-F 0 "U2" H 5550 1004 60  0000 C CNN
-F 1 "MCP1700" H 5400 1400 60  0000 C CNN
-	1    5400 1200
-	1    0    0    -1  
-$EndComp
-$Comp
-L USB J1
-U 1 1 4F9C2E7E
-P 1000 1300
-F 0 "J1" H 925 1550 60  0000 C CNN
-F 1 "USB" H 1050 1000 60  0001 C CNN
-F 4 "VCC" H 1325 1450 50  0001 C CNN "VCC"
-F 5 "D+" H 1300 1350 50  0001 C CNN "Data+"
-F 6 "D-" H 1300 1250 50  0001 C CNN "Data-"
-F 7 "GND" H 1325 1150 50  0001 C CNN "Ground"
-	1    1000 1300
-	1    0    0    -1  
-$EndComp
+Connection ~ 7100 6450
+Wire Wire Line
+	7350 6450 7100 6450
+Connection ~ 7100 5650
+Wire Wire Line
+	7350 5650 7100 5650
+Wire Wire Line
+	7100 6650 7100 5450
+Wire Wire Line
+	7100 5450 7350 5450
+Wire Wire Line
+	9550 4850 10100 4850
+Wire Wire Line
+	10100 4850 10100 4750
+Wire Wire Line
+	10100 4750 10300 4750
+Wire Wire Line
+	9550 4650 10000 4650
+Wire Wire Line
+	10000 4650 10000 4550
+Wire Wire Line
+	10000 4550 10300 4550
+Wire Wire Line
+	9550 4450 9900 4450
+Wire Wire Line
+	9900 4450 9900 4350
+Wire Wire Line
+	9900 4350 10300 4350
+Wire Wire Line
+	9550 4250 9800 4250
+Wire Wire Line
+	9800 4250 9800 4150
+Wire Wire Line
+	9800 4150 10300 4150
+Wire Wire Line
+	10300 3950 9550 3950
+Wire Wire Line
+	9550 3750 10300 3750
 Connection ~ 4100 1150
 Wire Wire Line
-	3050 1150 5000 1150
+	5000 1150 3050 1150
 Wire Notes Line
 	7100 600  7100 2200
 Wire Wire Line
@@ -51,7 +67,7 @@ Wire Wire Line
 Wire Wire Line
 	1200 1350 1350 1350
 Wire Wire Line
-	1750 1050 1750 1150
+	1750 1150 1750 1050
 Wire Wire Line
 	2150 1750 2150 1250
 Wire Wire Line
@@ -64,7 +80,7 @@ Connection ~ 3600 1150
 Wire Wire Line
 	3600 1150 3600 1300
 Wire Wire Line
-	1900 1150 1900 1300
+	1900 1300 1900 1150
 Connection ~ 4550 1750
 Connection ~ 4550 1150
 Connection ~ 6050 1150
@@ -89,7 +105,7 @@ Wire Wire Line
 Wire Wire Line
 	6250 1000 6250 1150
 Wire Wire Line
-	5400 1450 5400 1750
+	5400 1750 5400 1450
 Connection ~ 5400 1750
 Wire Wire Line
 	4350 1150 4350 1000
@@ -116,7 +132,7 @@ Wire Wire Line
 Wire Wire Line
 	3600 1750 3600 1700
 Wire Wire Line
-	1900 1750 1900 1700
+	1900 1700 1900 1750
 Connection ~ 1900 1150
 Wire Wire Line
 	2250 1350 2200 1350
@@ -127,7 +143,7 @@ Wire Wire Line
 Wire Wire Line
 	1200 1250 1350 1250
 Wire Wire Line
-	1200 1150 2250 1150
+	2250 1150 1200 1150
 Connection ~ 1750 1150
 Wire Notes Line
 	9100 600  9100 2200
@@ -137,6 +153,110 @@ Connection ~ 3600 1750
 Connection ~ 4100 1750
 Wire Wire Line
 	3050 1250 3050 1400
+Wire Wire Line
+	10300 3650 9550 3650
+Wire Wire Line
+	10300 3850 9550 3850
+Wire Wire Line
+	10300 4050 9750 4050
+Wire Wire Line
+	9750 4050 9750 4150
+Wire Wire Line
+	9750 4150 9550 4150
+Wire Wire Line
+	10300 4250 9850 4250
+Wire Wire Line
+	9850 4250 9850 4350
+Wire Wire Line
+	9850 4350 9550 4350
+Wire Wire Line
+	10300 4450 9950 4450
+Wire Wire Line
+	9950 4450 9950 4550
+Wire Wire Line
+	9950 4550 9550 4550
+Wire Wire Line
+	10300 4650 10050 4650
+Wire Wire Line
+	10050 4650 10050 4750
+Wire Wire Line
+	10050 4750 9550 4750
+Wire Wire Line
+	10300 4850 10150 4850
+Wire Wire Line
+	10150 4850 10150 4950
+Wire Wire Line
+	10150 4950 9550 4950
+Wire Wire Line
+	7350 5550 7100 5550
+Connection ~ 7100 5550
+Wire Wire Line
+	7350 6050 7100 6050
+Connection ~ 7100 6050
+$Comp
+L GND #PWR?
+U 1 1 4FABACF9
+P 7100 6650
+F 0 "#PWR?" H 7100 6650 30  0001 C CNN
+F 1 "GND" H 7100 6580 30  0001 C CNN
+	1    7100 6650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 9550 6450
+NoConn ~ 9550 6350
+NoConn ~ 9550 6250
+NoConn ~ 9550 6150
+NoConn ~ 9550 6050
+NoConn ~ 9550 5950
+NoConn ~ 9550 5850
+NoConn ~ 9550 5750
+NoConn ~ 9550 5650
+NoConn ~ 9550 5550
+NoConn ~ 9550 5450
+NoConn ~ 9550 5350
+NoConn ~ 9550 5250
+NoConn ~ 9550 5150
+NoConn ~ 9550 5050
+$Comp
+L PCF8566 U?
+U 1 1 4F9EC09D
+P 8450 5050
+F 0 "U?" H 8400 5150 50  0000 L BNN
+F 1 "PCF8566" H 8250 5270 50  0000 L BNN
+	1    8450 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_13 P?
+U 1 1 4F9EC08F
+P 10650 4250
+F 0 "P?" V 10610 4250 60  0000 C CNN
+F 1 "CONN_13" V 10720 4250 60  0000 C CNN
+	1    10650 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCP1700 U2
+U 1 1 4F9C1A72
+P 5400 1200
+F 0 "U2" H 5550 1004 60  0000 C CNN
+F 1 "MCP1700" H 5400 1400 60  0000 C CNN
+	1    5400 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L USB J1
+U 1 1 4F9C2E7E
+P 1000 1300
+F 0 "J1" H 925 1550 60  0000 C CNN
+F 1 "USB" H 1050 1000 60  0001 C CNN
+F 4 "VCC" H 1325 1450 50  0001 C CNN "VCC"
+F 5 "D+" H 1300 1350 50  0001 C CNN "Data+"
+F 6 "D-" H 1300 1250 50  0001 C CNN "Data-"
+F 7 "GND" H 1325 1150 50  0001 C CNN "Ground"
+	1    1000 1300
+	1    0    0    -1  
+$EndComp
 $Comp
 L PWR_FLAG #FLG01
 U 1 1 4F9C2D4F
