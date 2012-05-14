@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Thu 10 May 2012 13:00:41 BST
+EESchema Schematic File Version 2  date Mon 14 May 2012 07:56:18 BST
 LIBS:dresco
 LIBS:power
 LIBS:conn
@@ -9,7 +9,7 @@ $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
 Title "WeighFi"
-Date "10 may 2012"
+Date "14 may 2012"
 Rev "1.0"
 Comp ""
 Comment1 "Released under Creative Commons Attribution-Sharealike (CC BY-SA 3.0) license"
@@ -17,14 +17,61 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Wire Wire Line
+	900  5550 900  5850
+Wire Wire Line
+	900  5850 900  6500
+Wire Wire Line
+	1400 6050 1700 6050
+Wire Wire Line
+	1700 6050 1700 6150
+Wire Wire Line
+	1700 6150 1750 6150
+Connection ~ 1600 6950
+Wire Wire Line
+	1600 6950 1200 6950
+Wire Wire Line
+	1200 6950 1200 6900
+Connection ~ 900  5850
+Connection ~ 4050 6050
+Connection ~ 1200 5700
+Wire Wire Line
+	1200 5700 4050 5700
+Wire Wire Line
+	4050 5700 4050 6050
+Wire Wire Line
+	3950 6050 4050 6050
+Wire Wire Line
+	4050 6050 4400 6050
+Wire Wire Line
+	4400 5850 3950 5850
+Wire Wire Line
+	1200 5550 1200 5700
+Wire Wire Line
+	1200 5700 1200 5950
+Wire Wire Line
+	1200 5950 1200 6500
+Wire Wire Line
+	1200 5950 1750 5950
+Connection ~ 1600 6750
+Wire Wire Line
+	1750 6750 1600 6750
 Connection ~ 7100 6450
 Wire Wire Line
 	7350 6450 7100 6450
 Connection ~ 7100 5650
 Wire Wire Line
-	7350 5650 7100 5650
+	7100 5650 7350 5650
 Wire Wire Line
-	7100 6650 7100 5450
+	7100 6650 7100 6450
+Wire Wire Line
+	7100 6450 7100 6050
+Wire Wire Line
+	7100 6050 7100 5650
+Wire Wire Line
+	7100 5650 7100 5550
+Wire Wire Line
+	7100 5550 7100 5450
 Wire Wire Line
 	7100 5450 7350 5450
 Wire Wire Line
@@ -57,7 +104,17 @@ Wire Wire Line
 	9550 3750 10300 3750
 Connection ~ 4100 1150
 Wire Wire Line
-	5000 1150 3050 1150
+	5000 1150 4750 1150
+Wire Wire Line
+	4750 1150 4550 1150
+Wire Wire Line
+	4550 1150 4350 1150
+Wire Wire Line
+	4350 1150 4100 1150
+Wire Wire Line
+	4100 1150 3600 1150
+Wire Wire Line
+	3600 1150 3050 1150
 Wire Notes Line
 	7100 600  7100 2200
 Wire Wire Line
@@ -78,7 +135,7 @@ Wire Wire Line
 	3300 1750 3300 1700
 Connection ~ 3600 1150
 Wire Wire Line
-	3600 1150 3600 1300
+	3600 1300 3600 1150
 Wire Wire Line
 	1900 1300 1900 1150
 Connection ~ 4550 1750
@@ -113,7 +170,11 @@ Connection ~ 4350 1150
 Wire Wire Line
 	5950 1700 5950 1750
 Wire Wire Line
-	6250 1150 5800 1150
+	6250 1150 6050 1150
+Wire Wire Line
+	6050 1150 5950 1150
+Wire Wire Line
+	5950 1150 5800 1150
 Wire Wire Line
 	7800 1250 7650 1250
 Wire Wire Line
@@ -123,7 +184,7 @@ Wire Wire Line
 Wire Wire Line
 	8550 1150 8550 900 
 Wire Wire Line
-	4750 1300 4750 1150
+	4750 1150 4750 1300
 Connection ~ 2150 1750
 Wire Wire Line
 	3300 1250 3050 1250
@@ -143,12 +204,34 @@ Wire Wire Line
 Wire Wire Line
 	1200 1250 1350 1250
 Wire Wire Line
-	2250 1150 1200 1150
+	2250 1150 1900 1150
+Wire Wire Line
+	1900 1150 1750 1150
+Wire Wire Line
+	1750 1150 1200 1150
 Connection ~ 1750 1150
 Wire Notes Line
 	9100 600  9100 2200
 Wire Wire Line
-	5950 1750 1350 1750
+	5950 1750 5400 1750
+Wire Wire Line
+	5400 1750 4750 1750
+Wire Wire Line
+	4750 1750 4550 1750
+Wire Wire Line
+	4550 1750 4350 1750
+Wire Wire Line
+	4350 1750 4100 1750
+Wire Wire Line
+	4100 1750 3600 1750
+Wire Wire Line
+	3600 1750 3300 1750
+Wire Wire Line
+	3300 1750 2150 1750
+Wire Wire Line
+	2150 1750 1900 1750
+Wire Wire Line
+	1900 1750 1350 1750
 Connection ~ 3600 1750
 Connection ~ 4100 1750
 Wire Wire Line
@@ -191,8 +274,123 @@ Wire Wire Line
 	7350 5550 7100 5550
 Connection ~ 7100 5550
 Wire Wire Line
-	7350 6050 7100 6050
+	7100 6050 7350 6050
 Connection ~ 7100 6050
+Wire Wire Line
+	1750 6650 1600 6650
+Wire Wire Line
+	1600 6650 1600 6750
+Wire Wire Line
+	1600 6750 1600 6850
+Wire Wire Line
+	1600 6850 1600 6950
+Wire Wire Line
+	1600 6950 1600 7050
+Wire Wire Line
+	1600 7050 1600 6950
+Wire Wire Line
+	1600 6950 1600 7050
+Wire Wire Line
+	1600 7050 1600 7150
+Wire Wire Line
+	1600 6850 1750 6850
+Connection ~ 1600 6850
+Wire Wire Line
+	900  5850 1750 5850
+Wire Wire Line
+	4400 5950 3950 5950
+Wire Wire Line
+	3950 6150 4050 6150
+Wire Wire Line
+	4050 6150 4400 6150
+Wire Wire Line
+	4050 6150 4050 6350
+Wire Wire Line
+	4050 6350 3950 6350
+Connection ~ 4050 6150
+Connection ~ 1200 5950
+Wire Wire Line
+	900  6900 900  7050
+Wire Wire Line
+	900  7050 1600 7050
+Connection ~ 1600 7050
+Wire Wire Line
+	1750 6250 1700 6250
+Wire Wire Line
+	1700 6250 1700 6450
+Wire Wire Line
+	1700 6450 1400 6450
+$Comp
+L +3V #PWR?
+U 1 1 4FB0AACD
+P 900 5550
+F 0 "#PWR?" H 900 5460 30  0001 C CNN
+F 1 "+3V" H 900 5660 30  0000 C CNN
+	1    900  5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 4FB0A71F
+P 1400 6250
+F 0 "C?" H 1450 6350 50  0000 L CNN
+F 1 "0.1uF" H 1450 6150 50  0000 L CNN
+	1    1400 6250
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 4FB0A71B
+P 1200 6700
+F 0 "C?" H 1250 6800 50  0000 L CNN
+F 1 "1uF" H 1250 6600 50  0000 L CNN
+	1    1200 6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L ADS1131 U?
+U 1 1 4FB0A641
+P 2850 6350
+F 0 "U?" H 2800 6300 50  0000 L BNN
+F 1 "ADS1131" H 2700 6420 50  0000 L BNN
+	1    2850 6350
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 4FB0A5B8
+P 900 6700
+F 0 "C?" H 950 6800 50  0000 L CNN
+F 1 "1uF" H 950 6600 50  0000 L CNN
+	1    900  6700
+	1    0    0    -1  
+$EndComp
+$Comp
+L +BATT #PWR?
+U 1 1 4FB0A598
+P 1200 5550
+F 0 "#PWR?" H 1200 5500 20  0001 C CNN
+F 1 "+BATT" H 1200 5650 30  0000 C CNN
+	1    1200 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 4FB0A559
+P 1600 7150
+F 0 "#PWR?" H 1600 7150 30  0001 C CNN
+F 1 "GND" H 1600 7080 30  0001 C CNN
+	1    1600 7150
+	1    0    0    -1  
+$EndComp
+Text GLabel 4400 5850 2    60   Input ~ 0
+S+
+Text GLabel 4400 5950 2    60   Input ~ 0
+S-
+Text GLabel 4400 6050 2    60   Input ~ 0
+E+
+Text GLabel 4400 6150 2    60   Input ~ 0
+E-
 $Comp
 L GND #PWR?
 U 1 1 4FABACF9
