@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Mon 14 May 2012 09:05:37 BST
+EESchema Schematic File Version 2  date Thu 17 May 2012 14:21:02 BST
 LIBS:dresco
 LIBS:power
 LIBS:conn
@@ -9,7 +9,7 @@ $Descr A3 16535 11700
 encoding utf-8
 Sheet 1 1
 Title "WeighFi"
-Date "14 may 2012"
+Date "17 may 2012"
 Rev "1.0"
 Comp ""
 Comment1 "Released under Creative Commons Attribution-Sharealike (CC BY-SA 3.0) license"
@@ -17,24 +17,48 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Connection ~ 2600 9100
 Wire Wire Line
-	3150 9100 2600 9100
-Connection ~ 2600 8900
+	6200 7900 5350 7900
 Wire Wire Line
-	3150 8900 2600 8900
-Connection ~ 2600 8700
+	5350 7500 6200 7500
+Connection ~ 5550 6700
 Wire Wire Line
-	3150 8700 2600 8700
-Connection ~ 2600 8500
+	5550 8500 5550 6700
 Wire Wire Line
-	3150 8500 2600 8500
-Connection ~ 2600 8300
+	5850 9300 5850 9100
 Wire Wire Line
-	3150 8300 2600 8300
-Connection ~ 2600 8100
+	5850 9100 5850 9000
 Wire Wire Line
-	3150 8100 2600 8100
+	5700 9950 5700 9800
+Connection ~ 2600 6700
+Wire Wire Line
+	3150 6700 2600 6700
+Wire Wire Line
+	5350 6900 5850 6900
+Wire Wire Line
+	5850 6900 6200 6900
+Wire Wire Line
+	5350 6700 5550 6700
+Wire Wire Line
+	5550 6700 6200 6700
+Connection ~ 2600 9200
+Wire Wire Line
+	2600 9200 3150 9200
+Connection ~ 2600 9000
+Wire Wire Line
+	2600 9000 3150 9000
+Connection ~ 2600 8800
+Wire Wire Line
+	2600 8800 3150 8800
+Connection ~ 2600 8600
+Wire Wire Line
+	2600 8600 3150 8600
+Connection ~ 2600 8400
+Wire Wire Line
+	2600 8400 3150 8400
+Connection ~ 2600 8200
+Wire Wire Line
+	3150 8200 2600 8200
 Wire Notes Line
 	11350 600  11350 2200
 Wire Wire Line
@@ -72,7 +96,7 @@ Wire Wire Line
 Wire Wire Line
 	12250 1000 12250 850 
 Wire Wire Line
-	12800 1250 12250 1250
+	12250 1250 12800 1250
 Connection ~ 12650 2050
 Wire Wire Line
 	12800 2050 12650 2050
@@ -144,7 +168,7 @@ Wire Wire Line
 Wire Wire Line
 	1200 1350 1350 1350
 Wire Wire Line
-	1750 1150 1750 1050
+	1750 1050 1750 1150
 Wire Wire Line
 	2150 1750 2150 1250
 Wire Wire Line
@@ -155,9 +179,9 @@ Wire Wire Line
 	3300 1750 3300 1700
 Connection ~ 3600 1150
 Wire Wire Line
-	3600 1300 3600 1150
+	3600 1150 3600 1300
 Wire Wire Line
-	1900 1300 1900 1150
+	1900 1150 1900 1300
 Connection ~ 4550 1750
 Connection ~ 4550 1150
 Connection ~ 6050 1150
@@ -204,7 +228,7 @@ Wire Wire Line
 Wire Wire Line
 	8550 1150 8550 900 
 Wire Wire Line
-	4750 1150 4750 1300
+	4750 1300 4750 1150
 Connection ~ 2150 1750
 Wire Wire Line
 	3300 1250 3050 1250
@@ -337,9 +361,7 @@ Wire Wire Line
 Wire Wire Line
 	12750 1750 12450 1750
 Wire Wire Line
-	3150 8000 2600 8000
-Wire Wire Line
-	2600 8000 2600 8100
+	3150 8100 2600 8100
 Wire Wire Line
 	2600 8100 2600 8200
 Wire Wire Line
@@ -361,22 +383,124 @@ Wire Wire Line
 Wire Wire Line
 	2600 9000 2600 9100
 Wire Wire Line
-	2600 9100 2600 9600
+	2600 9100 2600 9200
 Wire Wire Line
-	3150 8200 2600 8200
-Connection ~ 2600 8200
+	2600 9200 2600 9600
 Wire Wire Line
-	3150 8400 2600 8400
-Connection ~ 2600 8400
+	2600 8300 3150 8300
+Connection ~ 2600 8300
 Wire Wire Line
-	3150 8600 2600 8600
-Connection ~ 2600 8600
+	2600 8500 3150 8500
+Connection ~ 2600 8500
 Wire Wire Line
-	3150 8800 2600 8800
-Connection ~ 2600 8800
+	2600 8700 3150 8700
+Connection ~ 2600 8700
 Wire Wire Line
-	3150 9000 2600 9000
-Connection ~ 2600 9000
+	2600 8900 3150 8900
+Connection ~ 2600 8900
+Wire Wire Line
+	2600 9100 3150 9100
+Connection ~ 2600 9100
+Wire Wire Line
+	5350 6600 6200 6600
+Wire Wire Line
+	5350 6800 6200 6800
+Wire Wire Line
+	3150 6800 2600 6800
+Wire Wire Line
+	2600 6800 2600 6700
+Wire Wire Line
+	2600 6700 2600 6600
+Wire Wire Line
+	2600 6600 2600 6050
+Wire Wire Line
+	3150 6600 2600 6600
+Connection ~ 2600 6600
+Wire Wire Line
+	5550 9800 5700 9800
+Wire Wire Line
+	5700 9800 5850 9800
+Connection ~ 5700 9800
+Wire Wire Line
+	5550 9300 5550 9200
+Wire Wire Line
+	5550 9200 5550 9000
+Wire Wire Line
+	5850 8500 5850 6900
+Connection ~ 5850 6900
+Wire Wire Line
+	5350 9100 5850 9100
+Connection ~ 5850 9100
+Wire Wire Line
+	5350 9200 5550 9200
+Connection ~ 5550 9200
+Text GLabel 6200 7900 2    60   Input ~ 0
+WIFI_ASSOC
+Text GLabel 6200 7500 2    60   Input ~ 0
+WIFI_SLEEP
+$Comp
+L GND #PWR?
+U 1 1 4FB1371E
+P 5700 9950
+F 0 "#PWR?" H 5700 9950 30  0001 C CNN
+F 1 "GND" H 5700 9880 30  0001 C CNN
+	1    5700 9950
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 4FB136EA
+P 5550 8750
+F 0 "R?" V 5630 8750 50  0000 C CNN
+F 1 "R" V 5550 8750 50  0000 C CNN
+	1    5550 8750
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 4FB136E9
+P 5550 9550
+F 0 "R?" V 5630 9550 50  0000 C CNN
+F 1 "R" V 5550 9550 50  0000 C CNN
+	1    5550 9550
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 4FB136DD
+P 5850 9550
+F 0 "R?" V 5930 9550 50  0000 C CNN
+F 1 "R" V 5850 9550 50  0000 C CNN
+	1    5850 9550
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 4FB136DA
+P 5850 8750
+F 0 "R?" V 5930 8750 50  0000 C CNN
+F 1 "R" V 5850 8750 50  0000 C CNN
+	1    5850 8750
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3V #PWR?
+U 1 1 4FB1357C
+P 2600 6050
+F 0 "#PWR?" H 2600 5960 30  0001 C CNN
+F 1 "+3V" H 2600 6160 30  0000 C CNN
+	1    2600 6050
+	1    0    0    -1  
+$EndComp
+NoConn ~ 3150 7200
+Text GLabel 6200 6900 2    60   Input ~ 0
+WIFI_RTS
+Text GLabel 6200 6800 2    60   Input ~ 0
+WIFI_CTS
+Text GLabel 6200 6700 2    60   Input ~ 0
+WIFI_RX
+Text GLabel 6200 6600 2    60   Input ~ 0
+WIFI_TX
 $Comp
 L GND #PWR?
 U 1 1 4FB0BC87
@@ -391,10 +515,10 @@ ADC
 $Comp
 L RN-171 MOD?
 U 1 1 4FB0BBD2
-P 4250 7800
-F 0 "MOD?" H 4250 7700 50  0000 C CNN
-F 1 "RN-171" H 4250 7900 50  0000 C CNN
-	1    4250 7800
+P 4250 7900
+F 0 "MOD?" H 4250 7800 50  0000 C CNN
+F 1 "RN-171" H 4250 8000 50  0000 C CNN
+	1    4250 7900
 	1    0    0    -1  
 $EndComp
 $Comp
