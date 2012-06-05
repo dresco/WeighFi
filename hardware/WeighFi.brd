@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 1 date Mon 04 Jun 2012 23:41:37 BST
+PCBNEW-BOARD Version 1 date Tue 05 Jun 2012 17:57:50 BST
 
 # Created by Pcbnew(2012-01-19 BZR 3256)-stable
 
@@ -9,8 +9,8 @@ Ly 1FFF8001
 EnabledLayers 1FFF8001
 Links 0
 NoConn 0
-Di 0 0 117000 82670
-Ndraw 0
+Di 52998 31345 69442 48576
+Ndraw 8
 Ntrack 0
 Nzone 0
 BoardThickness 630
@@ -20,11 +20,11 @@ $EndGENERAL
 
 $SHEETDESCR
 Sheet A4 11700 8267
-Title ""
-Date "4 jun 2012"
-Rev ""
+Title "WeighFi"
+Date "5 jun 2012"
+Rev "1.0"
 Comp ""
-Comment1 ""
+Comment1 "Released under Creative Commons Attribution-Sharealike (CC BY-SA 3.0) license"
 Comment2 ""
 Comment3 ""
 Comment4 ""
@@ -59,7 +59,7 @@ PadSize 600 600
 PadDrill 320
 Pad2MaskClearance 100
 AuxiliaryAxisOrg 0 0
-PcbPlotParams (pcbplotparams (layerselection 3178497) (usegerberextensions true) (excludeedgelayer true) (linewidth 60) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 2) (pscolor true) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk false) (outputformat 1) (mirror false) (drillshape 1) (scaleselection 1) (outputdirectory ""))
+PcbPlotParams (pcbplotparams (layerselection 3178497) (usegerberextensions true) (excludeedgelayer true) (linewidth 60) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 0) (pscolor true) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk false) (outputformat 1) (mirror false) (drillshape 1) (scaleselection 1) (outputdirectory ""))
 $EndSETUP
 
 $EQUIPOT
@@ -77,6 +77,38 @@ uViaDia 200
 uViaDrill 50
 AddNet ""
 $EndNCLASS
+$DRAWSEGMENT
+Po 0 53937 47637 68503 47637 150
+De 21 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 53937 32283 60236 32283 150
+De 21 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 53149 48425 53149 31496 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 69291 48425 53149 48425 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 69291 33858 69291 48425 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 61023 33858 69291 33858 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 61023 31496 61023 33858 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
+$DRAWSEGMENT
+Po 0 53149 31496 61023 31496 150
+De 28 0 900 0 0
+$EndDRAWSEGMENT
 $TRACK
 $EndTRACK
 $ZONE
