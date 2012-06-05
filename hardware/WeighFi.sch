@@ -1,7 +1,5 @@
-EESchema Schematic File Version 2  date Tue 05 Jun 2012 18:20:50 BST
+EESchema Schematic File Version 2  date Tue 05 Jun 2012 18:24:29 BST
 LIBS:dresco
-LIBS:power
-LIBS:conn
 LIBS:WeighFi-cache
 EELAYER 25  0
 EELAYER END
