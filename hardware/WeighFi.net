@@ -1,4 +1,4 @@
-# EESchema Netlist Version 1.1 created  Tue 05 Jun 2012 19:00:04 BST
+# EESchema Netlist Version 1.1 created  Fri 08 Jun 2012 12:13:14 BST
 (
  ( /4FBF865E $noname$ ANT1 ANTENNA
   ( ~ N-000002 )
@@ -27,7 +27,7 @@
   ( 1 N-000017 )
   ( 2 GND )
  )
- ( /4FBE97BB $noname$ C6 10uF
+ ( /4FBE97BB SMD0805 C6 10uF
   ( 1 GND )
   ( 2 +VUSB )
  )
@@ -83,21 +83,21 @@
   ( 1 N-000060 )
   ( 2 GND )
  )
- ( /4F9C1A6E $noname$ H1 HOLE
+ ( /4F9C1A6E HOLE_2.1MM H1 HOLE
  )
- ( /4F9C1A6D $noname$ H2 HOLE
+ ( /4F9C1A6D HOLE_2.1MM H2 HOLE
  )
- ( /4F9C1A6C $noname$ H3 HOLE
+ ( /4F9C1A6C HOLE_2.1MM H3 HOLE
  )
- ( /4F9C1A6B $noname$ H4 HOLE
+ ( /4F9C1A6B HOLE_2.1MM H4 HOLE
  )
- ( /4FCE3F9E $noname$ H5 HOLE
+ ( /4FCE3F9E HOLE_2.1MM H5 HOLE
  )
- ( /4FCE3FAD $noname$ H6 HOLE
+ ( /4FCE3FAD HOLE_2.1MM H6 HOLE
  )
- ( /4FCE3FB0 $noname$ H7 HOLE
+ ( /4FCE3FB0 HOLE_2.1MM H7 HOLE
  )
- ( /4F9C1A67 AVR-ISP-6 ISP1 AVR-ISP-6
+ ( /4F9C1A67 PIN_ARRAY_3X2 ISP1 AVR-ISP-6
   ( 1 MISO )
   ( 2 +3V )
   ( 3 SCLK )
@@ -105,11 +105,11 @@
   ( 5 RST )
   ( 6 GND )
  )
- ( /4FB6D42C $noname$ L1 INDUCTOR
+ ( /4FB6D42C SMD0805 L1 INDUCTOR
   ( 1 +3V )
   ( 2 N-000081 )
  )
- ( /4FB0BBD2 $noname$ MOD1 RN-171
+ ( /4FB0BBD2 RN-171 MOD1 RN-171
   ( 1 GND )
   ( 2 ? )
   ( 3 ? )
@@ -160,139 +160,139 @@
   ( 48 ? )
   ( 49 +3V )
  )
- ( /4FCCF940 $noname$ P1 CONN_1
+ ( /4FCCF940 PIN_X1 P1 CONN_1
   ( 1 WIFI_RESET )
  )
- ( /4FCCF965 $noname$ P2 CONN_1
+ ( /4FCCF965 PIN_X1 P2 CONN_1
   ( 1 WIFI_WAKE )
  )
- ( /4FC7A3FD $noname$ P3 CONN_1
+ ( /4FC7A3FD PIN_X1 P3 CONN_1
   ( 1 SW_KG )
  )
- ( /4FC7A40A $noname$ P4 CONN_1
+ ( /4FC7A40A PIN_X1 P4 CONN_1
   ( 1 SW_LB )
  )
- ( /4FC7A40D $noname$ P5 CONN_1
+ ( /4FC7A40D PIN_X1 P5 CONN_1
   ( 1 SW_ST )
  )
- ( /4FCCF98F $noname$ P6 CONN_1
+ ( /4FCCF98F PIN_X1 P6 CONN_1
   ( 1 WIFI_RTS )
  )
- ( /4FCCF98B $noname$ P7 CONN_1
+ ( /4FCCF98B PIN_X1 P7 CONN_1
   ( 1 WIFI_CTS )
  )
- ( /4FCCF987 $noname$ P8 CONN_1
+ ( /4FCCF987 PIN_X1 P8 CONN_1
   ( 1 WIFI_RX )
  )
- ( /4FCCF97C $noname$ P9 CONN_1
+ ( /4FCCF97C PIN_X1 P9 CONN_1
   ( 1 WIFI_TX )
  )
- ( /4FCCF9B5 $noname$ P10 CONN_1
+ ( /4FCCF9B5 PIN_X1 P10 CONN_1
   ( 1 WIFI_SLEEP )
  )
- ( /4FCCF9BB $noname$ P11 CONN_1
+ ( /4FCCF9BB PIN_X1 P11 CONN_1
   ( 1 WIFI_ASSOC )
  )
- ( /4FC7A426 $noname$ P12 CONN_1
+ ( /4FC7A426 PIN_X1 P12 CONN_1
   ( 1 BAT_ADC )
  )
- ( /4F9C1A6A $noname$ P13 CONN_1
+ ( /4F9C1A6A PIN_X1 P13 CONN_1
   ( 1 E+ )
  )
- ( /4F9C1A68 $noname$ P14 CONN_1
+ ( /4F9C1A68 PIN_X1 P14 CONN_1
   ( 1 GND )
  )
- ( /4FC7A464 $noname$ P15 CONN_1
+ ( /4FC7A464 PIN_X1 P15 CONN_1
   ( 1 LCD_ENABLE )
  )
- ( /4F9C1A69 $noname$ P16 CONN_1
+ ( /4F9C1A69 PIN_X1 P16 CONN_1
   ( 1 +3V )
  )
- ( /4FC7A442 $noname$ P17 CONN_1
+ ( /4FC7A442 PIN_X1 P17 CONN_1
   ( 1 LCD_SUPPLY )
  )
- ( /4FCCF8DB $noname$ P18 CONN_1
+ ( /4FCCF8DB PIN_X1 P18 CONN_1
   ( 1 CHG )
  )
- ( /4FCCFA3A $noname$ P19 CONN_1
+ ( /4FCCFA3A PIN_X1 P19 CONN_1
   ( 1 I2C_DATA )
  )
- ( /4FCCF9F7 $noname$ P20 CONN_1
+ ( /4FCCF9F7 PIN_X1 P20 CONN_1
   ( 1 LCD_CLOCK )
  )
- ( /4FCCFA3E $noname$ P21 CONN_1
+ ( /4FCCFA3E PIN_X1 P21 CONN_1
   ( 1 I2C_CLOCK )
  )
- ( /4FC50040 $noname$ P22 CONN_4
+ ( /4FC50040 PIN_X1 P22 CONN_4
   ( 1 S+ )
   ( 2 S- )
   ( 3 E+ )
   ( 4 E- )
  )
- ( /4FCCFA92 $noname$ P23 CONN_1
+ ( /4FCCFA92 PIN_X1 P23 CONN_1
   ( 1 N-000106 )
  )
- ( /4FCCFA97 $noname$ P24 CONN_1
+ ( /4FCCFA97 PIN_X1 P24 CONN_1
   ( 1 N-000108 )
  )
- ( /4FCCFA99 $noname$ P25 CONN_1
+ ( /4FCCFA99 PIN_X1 P25 CONN_1
   ( 1 N-000100 )
  )
- ( /4FCCFA9A $noname$ P26 CONN_1
+ ( /4FCCFA9A PIN_X1 P26 CONN_1
   ( 1 N-000109 )
  )
- ( /4FC7A39E $noname$ P27 CONN_1
+ ( /4FC7A39E PIN_X1 P27 CONN_1
   ( 1 S+ )
  )
- ( /4FC7A35B $noname$ P28 CONN_1
+ ( /4FC7A35B PIN_X1 P28 CONN_1
   ( 1 ADC_SPEED )
  )
- ( /4FCCFA9B $noname$ P29 CONN_1
+ ( /4FCCFA9B PIN_X1 P29 CONN_1
   ( 1 N-000095 )
  )
- ( /4FC7A39D $noname$ P30 CONN_1
+ ( /4FC7A39D PIN_X1 P30 CONN_1
   ( 1 S- )
  )
- ( /4FC7A369 $noname$ P31 CONN_1
+ ( /4FC7A369 PIN_X1 P31 CONN_1
   ( 1 ADC_PWRDN )
  )
- ( /4FCCFA9C $noname$ P32 CONN_1
+ ( /4FCCFA9C PIN_X1 P32 CONN_1
   ( 1 N-000094 )
  )
- ( /4FC7A39C $noname$ P33 CONN_1
+ ( /4FC7A39C PIN_X1 P33 CONN_1
   ( 1 E+ )
  )
- ( /4FC7A36A $noname$ P34 CONN_1
+ ( /4FC7A36A PIN_X1 P34 CONN_1
   ( 1 ADC_CLOCK )
  )
- ( /4FCCFA9E $noname$ P35 CONN_1
+ ( /4FCCFA9E PIN_X1 P35 CONN_1
   ( 1 N-000096 )
  )
- ( /4FC7A39B $noname$ P36 CONN_1
+ ( /4FC7A39B PIN_X1 P36 CONN_1
   ( 1 E- )
  )
- ( /4FC7A36B $noname$ P37 CONN_1
+ ( /4FC7A36B PIN_X1 P37 CONN_1
   ( 1 ADC_DATA )
  )
- ( /4FCCFABC $noname$ P38 CONN_1
+ ( /4FCCFABC PIN_X1 P38 CONN_1
   ( 1 N-000105 )
  )
- ( /4FCCFAC6 $noname$ P39 CONN_1
+ ( /4FCCFAC6 PIN_X1 P39 CONN_1
   ( 1 N-000097 )
  )
- ( /4FCCFAC7 $noname$ P40 CONN_1
+ ( /4FCCFAC7 PIN_X1 P40 CONN_1
   ( 1 N-000104 )
  )
- ( /4FCCFAC9 $noname$ P41 CONN_1
+ ( /4FCCFAC9 PIN_X1 P41 CONN_1
   ( 1 N-000098 )
  )
- ( /4FCCFB64 $noname$ P42 CONN_1
+ ( /4FCCFB64 PIN_X1 P42 CONN_1
   ( 1 N-000103 )
  )
- ( /4FCCFB65 $noname$ P43 CONN_1
+ ( /4FCCFB65 PIN_X1 P43 CONN_1
   ( 1 N-000099 )
  )
- ( /4F9EC08F $noname$ P44 CONN_13
+ ( /4F9EC08F LCD_CONNECTOR_13 P44 CONN_13
   ( 1 N-000106 )
   ( 2 N-000108 )
   ( 3 N-000100 )
@@ -307,7 +307,7 @@
   ( 12 N-000103 )
   ( 13 N-000099 )
  )
- ( /4FBF7AB0 $noname$ Q1 MOSFET_P
+ ( /4FBF7AB0 SOT23 Q1 MOSFET_P
   ( D LCD_SUPPLY )
   ( G N-000013 )
   ( S +3V )
@@ -384,27 +384,27 @@
   ( 1 RST )
   ( 2 GND )
  )
- ( /4FBF83F1 $noname$ SJ1 SOLDER_JUMPER
+ ( /4FBF83F1 SOLDER_JUMPER SJ1 SOLDER_JUMPER
   ( 1 LCD_SUPPLY )
   ( 2 N-000005 )
  )
- ( /4FBF823E $noname$ SJ2 SOLDER_JUMPER
+ ( /4FBF823E SOLDER_JUMPER SJ2 SOLDER_JUMPER
   ( 1 GND )
   ( 2 N-000005 )
  )
- ( /4F9C2CDB $noname$ U1 MAX1555
+ ( /4F9C2CDB SOT23-5 U1 MAX1555
   ( 1 +VUSB )
   ( 2 GND )
   ( 3 CHG )
   ( 4 N-000078 )
   ( 5 E+ )
  )
- ( /4F9C1A72 $noname$ U2 MCP1700
+ ( /4F9C1A72 SOT89 U2 MCP1700
   ( GND GND )
   ( VI PWR_SW_OUT )
   ( VO +3V )
  )
- ( /4FCCF7C0 $noname$ U3 ATMEGA16U4/32U4
+ ( /4FCCF7C0 TQFP-44-80 U3 ATMEGA16U4/32U4
   ( 1 ? )
   ( 2 ? )
   ( 3 N-000026 )
@@ -450,7 +450,7 @@
   ( 43 GND )
   ( 44 N-000081 )
  )
- ( /4FB0A641 $noname$ U4 ADS1131
+ ( /4FB0A641 SOIC16 U4 ADS1131
   ( 1 +3V )
   ( 2 GND )
   ( 3 GND )
@@ -468,7 +468,7 @@
   ( 15 ADC_CLOCK )
   ( 16 ADC_DATA )
  )
- ( /4F9EC09D $noname$ U5 PCF8566
+ ( /4F9EC09D VSO40 U5 PCF8566
   ( 1 I2C_DATA )
   ( 2 I2C_CLOCK )
   ( 3 ? )
