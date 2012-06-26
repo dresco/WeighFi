@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2012-01-19 BZR 3256)-stable date = Fri 08 Jun 2012 12:13:14 BST
+Cmp-Mod V01 Created by CvPcb (2012-01-19 BZR 3256)-stable date = Tue 26 Jun 2012 19:36:29 BST
 
 BeginCmp
 TimeStamp = /4FBF865E;
@@ -148,6 +148,13 @@ IdModule  = SMD-LED-0805;
 EndCmp
 
 BeginCmp
+TimeStamp = /4FDB64DD;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = SMD-LED-0805;
+EndCmp
+
+BeginCmp
 TimeStamp = /4F9C1A6E;
 Reference = H1;
 ValeurCmp = HOLE;
@@ -155,42 +162,42 @@ IdModule  = HOLE_2.1MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F9C1A6D;
+TimeStamp = /4FCE3F9E;
 Reference = H2;
 ValeurCmp = HOLE;
 IdModule  = HOLE_2.1MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F9C1A6C;
+TimeStamp = /4F9C1A6D;
 Reference = H3;
 ValeurCmp = HOLE;
 IdModule  = HOLE_2.1MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F9C1A6B;
+TimeStamp = /4FCE3FAD;
 Reference = H4;
 ValeurCmp = HOLE;
 IdModule  = HOLE_2.1MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCE3F9E;
+TimeStamp = /4F9C1A6C;
 Reference = H5;
 ValeurCmp = HOLE;
 IdModule  = HOLE_2.1MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCE3FAD;
+TimeStamp = /4FCE3FB0;
 Reference = H6;
 ValeurCmp = HOLE;
 IdModule  = HOLE_2.1MM;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCE3FB0;
+TimeStamp = /4F9C1A6B;
 Reference = H7;
 ValeurCmp = HOLE;
 IdModule  = HOLE_2.1MM;
@@ -201,6 +208,13 @@ TimeStamp = /4F9C1A67;
 Reference = ISP1;
 ValeurCmp = AVR-ISP-6;
 IdModule  = PIN_ARRAY_3X2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FE9FA0C;
+Reference = JP1;
+ValeurCmp = JUMPER;
+IdModule  = PIN_ARRAY_2X1;
 EndCmp
 
 BeginCmp
@@ -344,183 +358,190 @@ IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFA3A;
+TimeStamp = /4FDB64DB;
 Reference = P19;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCF9F7;
+TimeStamp = /4FCCFA3A;
 Reference = P20;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFA3E;
+TimeStamp = /4FCCF9F7;
 Reference = P21;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC50040;
+TimeStamp = /4FCCFA3E;
 Reference = P22;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC50040;
+Reference = P23;
 ValeurCmp = CONN_4;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FCCFA92;
-Reference = P23;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCFA97;
 Reference = P24;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFA99;
+TimeStamp = /4FCCFA97;
 Reference = P25;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFA9A;
+TimeStamp = /4FCCFA99;
 Reference = P26;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A39E;
+TimeStamp = /4FCCFA9A;
 Reference = P27;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A35B;
+TimeStamp = /4FCCFA9B;
 Reference = P28;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFA9B;
+TimeStamp = /4FC7A39E;
 Reference = P29;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A39D;
+TimeStamp = /4FC7A35B;
 Reference = P30;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A369;
+TimeStamp = /4FCCFA9C;
 Reference = P31;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFA9C;
+TimeStamp = /4FC7A39D;
 Reference = P32;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A39C;
+TimeStamp = /4FC7A369;
 Reference = P33;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A36A;
+TimeStamp = /4FCCFA9E;
 Reference = P34;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFA9E;
+TimeStamp = /4FC7A39C;
 Reference = P35;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A39B;
+TimeStamp = /4FC7A36A;
 Reference = P36;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A36B;
+TimeStamp = /4FCCFABC;
 Reference = P37;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFABC;
+TimeStamp = /4FC7A39B;
 Reference = P38;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFAC6;
+TimeStamp = /4FC7A36B;
 Reference = P39;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFAC7;
+TimeStamp = /4FCCFAC6;
 Reference = P40;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFAC9;
+TimeStamp = /4FCCFAC7;
 Reference = P41;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFB64;
+TimeStamp = /4FCCFAC9;
 Reference = P42;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCFB65;
+TimeStamp = /4FCCFB64;
 Reference = P43;
 ValeurCmp = CONN_1;
 IdModule  = PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F9EC08F;
+TimeStamp = /4FCCFB65;
 Reference = P44;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F9EC08F;
+Reference = P45;
 ValeurCmp = CONN_13;
 IdModule  = LCD_CONNECTOR_13;
 EndCmp
@@ -617,31 +638,45 @@ IdModule  = SMD0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FBE9CE4;
+TimeStamp = /4FDB64DE;
 Reference = R13;
-ValeurCmp = 4K7;
+ValeurCmp = 1K8;
 IdModule  = SMD0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FBE9CD9;
+TimeStamp = /4FBE9CE4;
 Reference = R14;
 ValeurCmp = 4K7;
 IdModule  = SMD0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCF653;
-Reference = S1;
-ValeurCmp = SWITCH_DP4T;
-IdModule  = ;
+TimeStamp = /4FBE9CD9;
+Reference = R15;
+ValeurCmp = 4K7;
+IdModule  = SMD0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FCCF5EE;
+TimeStamp = /4FDB62EB;
+Reference = S1;
+ValeurCmp = SWITCH_SPDT;
+IdModule  = SWITCH_SLIDE_SPDT;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FDB62FA;
 Reference = S2;
-ValeurCmp = SWITCH_SPST;
-IdModule  = ;
+ValeurCmp = SWITCH_SP3T;
+IdModule  = SWITCH_SLIDE_SP3T;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FE9F9E8;
+Reference = S3;
+ValeurCmp = SWITCH_PUSH_NO;
+IdModule  = SWITCH_PUSH_6X6;
 EndCmp
 
 BeginCmp
@@ -697,14 +732,14 @@ BeginCmp
 TimeStamp = /4FBE9598;
 Reference = USB1;
 ValeurCmp = USB;
-IdModule  = ;
+IdModule  = USB_MICRO_B_VERT_MOLEX;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE75E9;
 Reference = X1;
 ValeurCmp = CRYSTAL;
-IdModule  = ;
+IdModule  = SM_XTAL_6.0x3.3;
 EndCmp
 
 EndListe
