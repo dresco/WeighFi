@@ -1,9 +1,9 @@
-# EESchema Netlist Version 1.1 created  Tue 26 Jun 2012 19:36:29 BST
+# EESchema Netlist Version 1.1 created  Wed 27 Jun 2012 17:26:07 BST
 (
- ( /4FBF865E $noname$ ANT1 ANTENNA
-  ( ~ N-000003 )
+ ( /4FBF865E ANT_SMD_7x2 ANT1 ANTENNA
+  ( 1 N-000003 )
  )
- ( /4F9C1A75 $noname$ BT1 BATTERY
+ ( /4F9C1A75 JST_PN_2 BT1 BATTERY
   ( 1 E+ )
   ( 2 GND )
  )
@@ -234,11 +234,11 @@
  ( /4FCCFA3E PIN_X1 P22 CONN_1
   ( 1 I2C_CLOCK )
  )
- ( /4FC50040 PIN_X1 P23 CONN_4
-  ( 1 S+ )
-  ( 2 S- )
-  ( 3 E+ )
-  ( 4 E- )
+ ( /4FC50040 PIN_ARRAY_4X1 P23 CONN_4
+  ( 1 E- )
+  ( 2 E+ )
+  ( 3 S- )
+  ( 4 S+ )
  )
  ( /4FCCFA92 PIN_X1 P24 CONN_1
   ( 1 N-000104 )

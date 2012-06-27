@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Tue 26 Jun 2012 19:12:08 BST
+EESchema Schematic File Version 2  date Wed 27 Jun 2012 17:24:55 BST
 LIBS:dresco
 LIBS:WeighFi-cache
 EELAYER 25  0
@@ -7,7 +7,7 @@ $Descr A3 16535 11700
 encoding utf-8
 Sheet 1 1
 Title "WeighFi"
-Date "26 jun 2012"
+Date "27 jun 2012"
 Rev "1.0"
 Comp ""
 Comment1 "Released under Creative Commons Attribution-Sharealike (CC BY-SA 3.0) license"
@@ -1467,13 +1467,13 @@ F 1 "PWR_FLAG" H 7150 1730 30  0000 C CNN
 	1    7150 1500
 	1    0    0    -1  
 $EndComp
-Text GLabel 12600 9800 0    60   Input ~ 0
-E-
-Text GLabel 12600 9700 0    60   Input ~ 0
-E+
-Text GLabel 12600 9600 0    60   Input ~ 0
-S-
 Text GLabel 12600 9500 0    60   Input ~ 0
+E-
+Text GLabel 12600 9600 0    60   Input ~ 0
+E+
+Text GLabel 12600 9700 0    60   Input ~ 0
+S-
+Text GLabel 12600 9800 0    60   Input ~ 0
 S+
 $Comp
 L CONN_4 P23
@@ -1487,7 +1487,7 @@ $EndComp
 Text Notes 12450 8900 0    60   ~ 0
 Strain gauge connector
 Text Notes 700  8900 0    60   ~ 0
-Power and display unit switches,\ndebug mode jumper
+Main power switch, display units switch,\ndebug mode jumper
 Text Notes 4400 8900 0    60   ~ 0
 Voltage divider for \nbattery measurements \nusing internal ADC
 Text Notes 7250 8900 0    60   ~ 0

@@ -1,17 +1,17 @@
-Cmp-Mod V01 Created by CvPcb (2012-01-19 BZR 3256)-stable date = Tue 26 Jun 2012 19:36:29 BST
+Cmp-Mod V01 Created by CvPcb (2012-01-19 BZR 3256)-stable date = Wed 27 Jun 2012 17:26:07 BST
 
 BeginCmp
 TimeStamp = /4FBF865E;
 Reference = ANT1;
 ValeurCmp = ANTENNA;
-IdModule  = ;
+IdModule  = ANT_SMD_7x2;
 EndCmp
 
 BeginCmp
 TimeStamp = /4F9C1A75;
 Reference = BT1;
 ValeurCmp = BATTERY;
-IdModule  = ;
+IdModule  = JST_PN_2;
 EndCmp
 
 BeginCmp
@@ -389,7 +389,7 @@ BeginCmp
 TimeStamp = /4FC50040;
 Reference = P23;
 ValeurCmp = CONN_4;
-IdModule  = PIN_X1;
+IdModule  = PIN_ARRAY_4X1;
 EndCmp
 
 BeginCmp
