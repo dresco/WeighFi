@@ -1,0 +1,382 @@
+# EESchema Netlist Version 1.1 created  Mon 03 Dec 2012 11:22:07 GMT
+(
+ ( /50BC8790 $noname  P1 CONN_12 {Lib=CONN_12}
+  (    1 LCD_SUPPLY )
+  (    2 I2C_DATA )
+  (    3 I2C_CLOCK )
+  (    4 LCD_CLOCK )
+  (    5 ADC_SPEED )
+  (    6 ADC_PWRDN )
+  (    7 ADC_CLOCK )
+  (    8 ADC_DATA )
+  (    9 ? )
+  (   10 E+ )
+  (   11 +3V )
+  (   12 GND )
+ )
+ ( /4FCE3FB0 $noname  H6 HOLE {Lib=HOLE}
+ )
+ ( /4FCE3FAD $noname  H4 HOLE {Lib=HOLE}
+ )
+ ( /4FCE3F9E $noname  H2 HOLE {Lib=HOLE}
+ )
+ ( /4FCCFB65 $noname  P26 CONN_1 {Lib=CONN_1}
+  (    1 N-000013 )
+ )
+ ( /4FCCFB64 $noname  P25 CONN_1 {Lib=CONN_1}
+  (    1 N-000035 )
+ )
+ ( /4FCCFAC9 $noname  P24 CONN_1 {Lib=CONN_1}
+  (    1 N-000016 )
+ )
+ ( /4FCCFAC7 $noname  P23 CONN_1 {Lib=CONN_1}
+  (    1 N-000036 )
+ )
+ ( /4FCCFAC6 $noname  P22 CONN_1 {Lib=CONN_1}
+  (    1 N-000020 )
+ )
+ ( /4FCCFABC $noname  P21 CONN_1 {Lib=CONN_1}
+  (    1 N-000037 )
+ )
+ ( /4FCCFA9E $noname  P20 CONN_1 {Lib=CONN_1}
+  (    1 N-000025 )
+ )
+ ( /4FCCFA9C $noname  P19 CONN_1 {Lib=CONN_1}
+  (    1 N-000045 )
+ )
+ ( /4FCCFA9B $noname  P18 CONN_1 {Lib=CONN_1}
+  (    1 N-000030 )
+ )
+ ( /4FCCFA9A $noname  P17 CONN_1 {Lib=CONN_1}
+  (    1 N-000038 )
+ )
+ ( /4FCCFA99 $noname  P16 CONN_1 {Lib=CONN_1}
+  (    1 N-000042 )
+ )
+ ( /4FCCFA97 $noname  P15 CONN_1 {Lib=CONN_1}
+  (    1 N-000041 )
+ )
+ ( /4FCCFA92 $noname  P14 CONN_1 {Lib=CONN_1}
+  (    1 N-000034 )
+ )
+ ( /4FCCFA3E $noname  P13 CONN_1 {Lib=CONN_1}
+  (    1 I2C_CLOCK )
+ )
+ ( /4FCCFA3A $noname  P11 CONN_1 {Lib=CONN_1}
+  (    1 I2C_DATA )
+ )
+ ( /4FCCF9F7 $noname  P12 CONN_1 {Lib=CONN_1}
+  (    1 LCD_CLOCK )
+ )
+ ( /4FC7A39E $noname  P2 CONN_1 {Lib=CONN_1}
+  (    1 S+ )
+ )
+ ( /4FC7A39D $noname  P4 CONN_1 {Lib=CONN_1}
+  (    1 S- )
+ )
+ ( /4FC7A39C $noname  P6 CONN_1 {Lib=CONN_1}
+  (    1 E+ )
+ )
+ ( /4FC7A39B $noname  P8 CONN_1 {Lib=CONN_1}
+  (    1 E- )
+ )
+ ( /4FC7A36B $noname  P9 CONN_1 {Lib=CONN_1}
+  (    1 ADC_DATA )
+ )
+ ( /4FC7A36A $noname  P7 CONN_1 {Lib=CONN_1}
+  (    1 ADC_CLOCK )
+ )
+ ( /4FC7A369 $noname  P5 CONN_1 {Lib=CONN_1}
+  (    1 ADC_PWRDN )
+ )
+ ( /4FC7A35B $noname  P3 CONN_1 {Lib=CONN_1}
+  (    1 ADC_SPEED )
+ )
+ ( /4FC50040 $noname  P10 CONN_4 {Lib=CONN_4}
+  (    1 E- )
+  (    2 E+ )
+  (    3 S- )
+  (    4 S+ )
+ )
+ ( /4FBF83F1 $noname  SJ1 SOLDER_JUMPER {Lib=SOLDER_JUMPER}
+  (    1 LCD_SUPPLY )
+  (    2 N-000040 )
+ )
+ ( /4FBF823E $noname  SJ2 SOLDER_JUMPER {Lib=SOLDER_JUMPER}
+  (    1 GND )
+  (    2 N-000040 )
+ )
+ ( /4FBE9CE4 $noname  R1 4K7 {Lib=R}
+  (    1 LCD_SUPPLY )
+  (    2 I2C_DATA )
+ )
+ ( /4FBE9CD9 $noname  R2 4K7 {Lib=R}
+  (    1 LCD_SUPPLY )
+  (    2 I2C_CLOCK )
+ )
+ ( /4FB0A71F $noname  C3 0.1uF {Lib=C}
+  (    1 N-000032 )
+  (    2 N-000008 )
+ )
+ ( /4FB0A71B $noname  C2 1uF {Lib=C}
+  (    1 E+ )
+  (    2 GND )
+ )
+ ( /4FB0A641 $noname  U1 ADS1131 {Lib=ADS1131}
+  (    1 +3V )
+  (    2 GND )
+  (    3 GND )
+  (    4 ADC_SPEED )
+  (    5 N-000032 )
+  (    6 N-000008 )
+  (    7 S+ )
+  (    8 S- )
+  (    9 E- )
+  (   10 E+ )
+  (   11 GND )
+  (   12 E- )
+  (   13 E+ )
+  (   14 ADC_PWRDN )
+  (   15 ADC_CLOCK )
+  (   16 ADC_DATA )
+ )
+ ( /4FB0A5B8 $noname  C1 1uF {Lib=C}
+  (    1 +3V )
+  (    2 GND )
+ )
+ ( /4F9EC09D $noname  U2 PCF8566 {Lib=PCF8566}
+  (    1 I2C_DATA )
+  (    2 I2C_CLOCK )
+  (    3 ? )
+  (    4 LCD_CLOCK )
+  (    5 LCD_SUPPLY )
+  (    6 N-000040 )
+  (    7 GND )
+  (    8 GND )
+  (    9 GND )
+  (   10 GND )
+  (   11 GND )
+  (   12 GND )
+  (   13 N-000034 )
+  (   14 N-000041 )
+  (   15 N-000042 )
+  (   16 N-000038 )
+  (   17 N-000030 )
+  (   18 N-000045 )
+  (   19 N-000025 )
+  (   20 N-000037 )
+  (   21 N-000020 )
+  (   22 N-000036 )
+  (   23 N-000016 )
+  (   24 N-000035 )
+  (   25 N-000013 )
+  (   26 ? )
+  (   27 ? )
+  (   28 ? )
+  (   29 ? )
+  (   30 ? )
+  (   31 ? )
+  (   32 ? )
+  (   33 ? )
+  (   34 ? )
+  (   35 ? )
+  (   36 ? )
+  (   37 ? )
+  (   38 ? )
+  (   39 ? )
+  (   40 ? )
+ )
+ ( /4F9EC08F $noname  P27 CONN_13 {Lib=CONN_13}
+  (    1 N-000034 )
+  (    2 N-000041 )
+  (    3 N-000042 )
+  (    4 N-000038 )
+  (    5 N-000030 )
+  (    6 N-000045 )
+  (    7 N-000025 )
+  (    8 N-000037 )
+  (    9 N-000020 )
+  (   10 N-000036 )
+  (   11 N-000016 )
+  (   12 N-000035 )
+  (   13 N-000013 )
+ )
+ ( /4F9C1A6E $noname  H1 HOLE {Lib=HOLE}
+ )
+ ( /4F9C1A6D $noname  H3 HOLE {Lib=HOLE}
+ )
+ ( /4F9C1A6C $noname  H5 HOLE {Lib=HOLE}
+ )
+ ( /4F9C1A6B $noname  H7 HOLE {Lib=HOLE}
+ )
+)
+*
+{ Allowed footprints by component:
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 1 "ADC_DATA" "ADC_DATA"
+ P1 8
+ U1 16
+ P9 1
+Net 2 "S+" "S+"
+ P10 4
+ P2 1
+ U1 7
+Net 3 "S-" "S-"
+ P10 3
+ U1 8
+ P4 1
+Net 4 "E-" "E-"
+ U1 9
+ U1 12
+ P10 1
+ P8 1
+Net 5 "ADC_CLOCK" "ADC_CLOCK"
+ P7 1
+ P1 7
+ U1 15
+Net 7 "LCD_CLOCK" "LCD_CLOCK"
+ U2 4
+ P12 1
+ P1 4
+Net 8 "" ""
+ C3 2
+ U1 6
+Net 9 "E+" "E+"
+ C2 1
+ U1 10
+ P1 10
+ P6 1
+ U1 13
+ P10 2
+Net 11 "GND" "GND"
+ C1 2
+ U2 11
+ U2 10
+ U2 9
+ U2 8
+ U2 7
+ U1 2
+ U1 3
+ SJ2 1
+ U1 11
+ U2 12
+ C2 2
+ P1 12
+Net 13 "" ""
+ U2 25
+ P27 13
+ P26 1
+Net 16 "" ""
+ P27 11
+ P24 1
+ U2 23
+Net 20 "" ""
+ U2 21
+ P27 9
+ P22 1
+Net 25 "" ""
+ U2 19
+ P20 1
+ P27 7
+Net 30 "" ""
+ P18 1
+ P27 5
+ U2 17
+Net 32 "" ""
+ U1 5
+ C3 1
+Net 33 "+3V" "+3V"
+ C1 1
+ P1 11
+ U1 1
+Net 34 "" ""
+ U2 13
+ P14 1
+ P27 1
+Net 35 "" ""
+ P25 1
+ U2 24
+ P27 12
+Net 36 "" ""
+ P23 1
+ P27 10
+ U2 22
+Net 37 "" ""
+ P21 1
+ P27 8
+ U2 20
+Net 38 "" ""
+ P17 1
+ P27 4
+ U2 16
+Net 39 "ADC_PWRDN" "ADC_PWRDN"
+ U1 14
+ P1 6
+ P5 1
+Net 40 "" ""
+ SJ2 2
+ SJ1 2
+ U2 6
+Net 41 "" ""
+ U2 14
+ P15 1
+ P27 2
+Net 42 "" ""
+ U2 15
+ P27 3
+ P16 1
+Net 43 "I2C_CLOCK" "I2C_CLOCK"
+ R2 2
+ P13 1
+ U2 2
+ P1 3
+Net 44 "ADC_SPEED" "ADC_SPEED"
+ P1 5
+ P3 1
+ U1 4
+Net 45 "" ""
+ P19 1
+ U2 18
+ P27 6
+Net 46 "LCD_SUPPLY" "LCD_SUPPLY"
+ R2 1
+ SJ1 1
+ R1 1
+ P1 1
+ U2 5
+Net 47 "I2C_DATA" "I2C_DATA"
+ R1 2
+ P1 2
+ U2 1
+ P11 1
+}
+#End

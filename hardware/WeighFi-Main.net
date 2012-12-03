@@ -1,0 +1,799 @@
+# EESchema Netlist Version 1.1 created  Mon 03 Dec 2012 11:27:35 GMT
+(
+ ( /50BC8C47 $noname  P20 CONN_12 {Lib=CONN_12}
+  (    1 LCD_SUPPLY )
+  (    2 I2C_DATA )
+  (    3 I2C_CLOCK )
+  (    4 LCD_CLOCK )
+  (    5 ADC_SPEED )
+  (    6 ADC_PWRDN )
+  (    7 ADC_CLOCK )
+  (    8 ADC_DATA )
+  (    9 ? )
+  (   10 PWR_SW_IN )
+  (   11 +3V )
+  (   12 GND )
+ )
+ ( /4FE9FA0C $noname  JP1 JUMPER {Lib=JUMPER}
+  (    1 DEBUG )
+  (    2 GND )
+ )
+ ( /4FE9F9E8 $noname  S3 SWITCH_PUSH_NO {Lib=SWITCH_PUSH_NO}
+  (    1 RST )
+  (    2 GND )
+ )
+ ( /4FDB64DE $noname  R13 1K8 {Lib=R}
+  (    1 STATUS )
+  (    2 N-000036 )
+ )
+ ( /4FDB64DD $noname  D2 LED {Lib=LED}
+  (    1 N-000036 )
+  (    2 GND )
+ )
+ ( /4FDB64DB $noname  P19 CONN_1 {Lib=CONN_1}
+  (    1 STATUS )
+ )
+ ( /4FDB62FA $noname  S2 SWITCH_SP3T {Lib=SWITCH_SP3T}
+  (    1 SW_KG )
+  (    2 GND )
+  (    3 SW_LB )
+  (    4 SW_ST )
+ )
+ ( /4FDB62EB $noname  S1 SWITCH_SPDT {Lib=SWITCH_SPDT}
+  (    1 ? )
+  (    2 PWR_SW_IN )
+  (    3 PWR_SW_OUT )
+ )
+ ( /4FCE3FB0 $noname  H6 HOLE {Lib=HOLE}
+ )
+ ( /4FCE3FAD $noname  H4 HOLE {Lib=HOLE}
+ )
+ ( /4FCE3F9E $noname  H2 HOLE {Lib=HOLE}
+ )
+ ( /4FCCF9BB $noname  P11 CONN_1 {Lib=CONN_1}
+  (    1 WIFI_ASSOC )
+ )
+ ( /4FCCF9B5 $noname  P10 CONN_1 {Lib=CONN_1}
+  (    1 WIFI_SLEEP )
+ )
+ ( /4FCCF98F $noname  P6 CONN_1 {Lib=CONN_1}
+  (    1 WIFI_RTS )
+ )
+ ( /4FCCF98B $noname  P7 CONN_1 {Lib=CONN_1}
+  (    1 WIFI_CTS )
+ )
+ ( /4FCCF987 $noname  P8 CONN_1 {Lib=CONN_1}
+  (    1 WIFI_RX )
+ )
+ ( /4FCCF97C $noname  P9 CONN_1 {Lib=CONN_1}
+  (    1 WIFI_TX )
+ )
+ ( /4FCCF965 $noname  P2 CONN_1 {Lib=CONN_1}
+  (    1 WIFI_WAKE )
+ )
+ ( /4FCCF940 $noname  P1 CONN_1 {Lib=CONN_1}
+  (    1 WIFI_RESET )
+ )
+ ( /4FCCF8DB $noname  P18 CONN_1 {Lib=CONN_1}
+  (    1 CHG )
+ )
+ ( /4FCCF7C0 $noname  U3 ATMEGA16U4/32U4 {Lib=ATMEGA16U4/32U4}
+  (    1 DEBUG )
+  (    2 ? )
+  (    3 N-000063 )
+  (    4 N-000061 )
+  (    5 GND )
+  (    6 +3V )
+  (    7 +VUSB )
+  (    8 SW_ST )
+  (    9 SCLK )
+  (   10 MOSI )
+  (   11 MISO )
+  (   12 WIFI_CTS )
+  (   13 RST )
+  (   14 +3V )
+  (   15 GND )
+  (   16 N-000065 )
+  (   17 N-000066 )
+  (   18 I2C_CLOCK )
+  (   19 I2C_DATA )
+  (   20 WIFI_TX )
+  (   21 WIFI_RX )
+  (   22 WIFI_RTS )
+  (   23 GND )
+  (   24 N-000060 )
+  (   25 LCD_ENABLE )
+  (   26 ADC_CLOCK )
+  (   27 ADC_DATA )
+  (   28 SW_LB )
+  (   29 LCD_CLOCK )
+  (   30 SW_KG )
+  (   31 ADC_SPEED )
+  (   32 ADC_PWRDN )
+  (   33 GND )
+  (   34 +3V )
+  (   35 GND )
+  (   36 WIFI_WAKE )
+  (   37 WIFI_SLEEP )
+  (   38 WIFI_ASSOC )
+  (   39 WIFI_RESET )
+  (   40 STATUS )
+  (   41 BAT_ADC )
+  (   42 N-000046 )
+  (   43 GND )
+  (   44 N-000060 )
+ )
+ ( /4FCCE26C $noname  D1 LED {Lib=LED}
+  (    1 N-000043 )
+  (    2 GND )
+ )
+ ( /4FCCE264 $noname  R12 1K8 {Lib=R}
+  (    1 CHG )
+  (    2 N-000043 )
+ )
+ ( /4FC7A464 $noname  P15 CONN_1 {Lib=CONN_1}
+  (    1 LCD_ENABLE )
+ )
+ ( /4FC7A442 $noname  P17 CONN_1 {Lib=CONN_1}
+  (    1 LCD_SUPPLY )
+ )
+ ( /4FC7A426 $noname  P12 CONN_1 {Lib=CONN_1}
+  (    1 BAT_ADC )
+ )
+ ( /4FC7A40D $noname  P5 CONN_1 {Lib=CONN_1}
+  (    1 SW_ST )
+ )
+ ( /4FC7A40A $noname  P4 CONN_1 {Lib=CONN_1}
+  (    1 SW_LB )
+ )
+ ( /4FC7A3FD $noname  P3 CONN_1 {Lib=CONN_1}
+  (    1 SW_KG )
+ )
+ ( /4FBF8D57 $noname  C4 10nF {Lib=C}
+  (    1 BAT_ADC )
+  (    2 GND )
+ )
+ ( /4FBF8CEF $noname  R6 R {Lib=R}
+  (    1 BAT_ADC )
+  (    2 GND )
+ )
+ ( /4FBF8CE3 $noname  R5 R {Lib=R}
+  (    1 PWR_SW_IN )
+  (    2 BAT_ADC )
+ )
+ ( /4FBF865E $noname  ANT1 ANTENNA {Lib=ANTENNA}
+  (    1 N-000017 )
+ )
+ ( /4FBF7AB0 $noname  Q1 MOSFET_P {Lib=MOSFET_P}
+  (    D LCD_SUPPLY )
+  (    G N-000018 )
+  (    S +3V )
+ )
+ ( /4FBEC438 $noname  R10 100 {Lib=R}
+  (    1 LCD_ENABLE )
+  (    2 N-000018 )
+ )
+ ( /4FBEC3ED $noname  R11 100K {Lib=R}
+  (    1 N-000018 )
+  (    2 +3V )
+ )
+ ( /4FBE97BB $noname  C6 10uF {Lib=C}
+  (    1 GND )
+  (    2 +VUSB )
+ )
+ ( /4FBE9598 $noname  USB1 USB {Lib=USB}
+  (    1 +VUSB )
+  (    2 D+ )
+  (    3 D- )
+  (    4 ? )
+  (    5 GND )
+ )
+ ( /4FBE83F1 $noname  R9 22 {Lib=R}
+  (    1 D- )
+  (    2 N-000063 )
+ )
+ ( /4FBE83EA $noname  R8 22 {Lib=R}
+  (    1 D+ )
+  (    2 N-000061 )
+ )
+ ( /4FBE82BB $noname  C7 1uF {Lib=C}
+  (    1 +3V )
+  (    2 GND )
+ )
+ ( /4FBE75E9 $noname  X1 CRYSTAL {Lib=CRYSTAL}
+  (    1 N-000065 )
+  (    2 N-000066 )
+ )
+ ( /4FBE75E8 $noname  C10 22pF {Lib=C}
+  (    1 GND )
+  (    2 N-000066 )
+ )
+ ( /4FBE75E7 $noname  C13 22pF {Lib=C}
+  (    1 GND )
+  (    2 N-000065 )
+ )
+ ( /4FB6D42C $noname  L1 INDUCTOR {Lib=INDUCTOR}
+  (    1 +3V )
+  (    2 N-000060 )
+ )
+ ( /4FB6D295 $noname  R7 10K {Lib=R}
+  (    1 RST )
+  (    2 +3V )
+ )
+ ( /4FB6D239 $noname  C8 0.1uF {Lib=C}
+  (    1 +3V )
+  (    2 GND )
+ )
+ ( /4FB6D1D8 $noname  C14 0.1uF {Lib=C}
+  (    1 N-000060 )
+  (    2 GND )
+ )
+ ( /4FB6D1D6 $noname  C5 0.1uF {Lib=C}
+  (    1 N-000046 )
+  (    2 GND )
+ )
+ ( /4FB6D1D3 $noname  C9 0.1uF {Lib=C}
+  (    1 +3V )
+  (    2 GND )
+ )
+ ( /4FB6D1B1 $noname  C11 0.1uF {Lib=C}
+  (    1 N-000060 )
+  (    2 GND )
+ )
+ ( /4FB136EA $noname  R1 R {Lib=R}
+  (    1 WIFI_RX )
+  (    2 N-000072 )
+ )
+ ( /4FB136E9 $noname  R2 R {Lib=R}
+  (    1 N-000072 )
+  (    2 GND )
+ )
+ ( /4FB136DD $noname  R4 R {Lib=R}
+  (    1 N-000069 )
+  (    2 GND )
+ )
+ ( /4FB136DA $noname  R3 R {Lib=R}
+  (    1 WIFI_RTS )
+  (    2 N-000069 )
+ )
+ ( /4FB0BBD2 $noname  MOD1 RN-171 {Lib=RN-171}
+  (    1 GND )
+  (    2 ? )
+  (    3 ? )
+  (    4 ? )
+  (    5 WIFI_SLEEP )
+  (    6 ? )
+  (    7 ? )
+  (    8 ? )
+  (    9 WIFI_ASSOC )
+  (   10 +3V )
+  (   11 ? )
+  (   12 ? )
+  (   13 ? )
+  (   14 GND )
+  (   15 ? )
+  (   16 ? )
+  (   17 ? )
+  (   18 ? )
+  (   19 ? )
+  (   20 GND )
+  (   21 GND )
+  (   22 GND )
+  (   23 GND )
+  (   24 N-000017 )
+  (   25 GND )
+  (   26 GND )
+  (   27 GND )
+  (   28 GND )
+  (   29 N-000072 )
+  (   30 N-000069 )
+  (   31 ? )
+  (   32 ? )
+  (   33 ? )
+  (   34 +3V )
+  (   35 ? )
+  (   36 ? )
+  (   37 ? )
+  (   38 ? )
+  (   39 GND )
+  (   40 WIFI_RESET )
+  (   41 WIFI_WAKE )
+  (   42 ? )
+  (   43 WIFI_RTS )
+  (   44 WIFI_CTS )
+  (   45 WIFI_RX )
+  (   46 WIFI_TX )
+  (   47 GND )
+  (   48 ? )
+  (   49 +3V )
+ )
+ ( /4F9C1A72 $noname  U2 MCP1700 {Lib=MCP1700}
+  (  GND GND )
+  (   VI PWR_SW_OUT )
+  (   VO +3V )
+ )
+ ( /4F9C2CDB $noname  U1 MAX1555 {Lib=MAX1555}
+  (    1 +VUSB )
+  (    2 GND )
+  (    3 CHG )
+  (    4 N-000059 )
+  (    5 PWR_SW_IN )
+ )
+ ( /4F9C1CF4 $noname  C1 1uF {Lib=C}
+  (    1 +VUSB )
+  (    2 GND )
+ )
+ ( /4F9C1C02 $noname  C3 1uF {Lib=C}
+  (    1 PWR_SW_IN )
+  (    2 GND )
+ )
+ ( /4F9C1BDF $noname  C2 1uF {Lib=C}
+  (    1 N-000059 )
+  (    2 GND )
+ )
+ ( /4F9C1A7A $noname  C12 1uF {Lib=C}
+  (    1 PWR_SW_OUT )
+  (    2 GND )
+ )
+ ( /4F9C1A79 $noname  C15 1uF {Lib=C}
+  (    1 +3V )
+  (    2 GND )
+ )
+ ( /4F9C1A75 $noname  BT1 BATTERY {Lib=BATTERY}
+  (    1 PWR_SW_IN )
+  (    2 GND )
+ )
+ ( /4F9C1A6E $noname  H1 HOLE {Lib=HOLE}
+ )
+ ( /4F9C1A6D $noname  H3 HOLE {Lib=HOLE}
+ )
+ ( /4F9C1A6C $noname  H5 HOLE {Lib=HOLE}
+ )
+ ( /4F9C1A6B $noname  H7 HOLE {Lib=HOLE}
+ )
+ ( /4F9C1A6A $noname  P13 CONN_1 {Lib=CONN_1}
+  (    1 PWR_SW_IN )
+ )
+ ( /4F9C1A69 $noname  P16 CONN_1 {Lib=CONN_1}
+  (    1 +3V )
+ )
+ ( /4F9C1A68 $noname  P14 CONN_1 {Lib=CONN_1}
+  (    1 GND )
+ )
+ ( /4F9C1A67 AVR-ISP-6  ISP1 AVR-ISP-6 {Lib=AVR-ISP-6}
+  (    1 MISO )
+  (    2 +3V )
+  (    3 SCLK )
+  (    4 MOSI )
+  (    5 RST )
+  (    6 GND )
+ )
+)
+*
+{ Allowed footprints by component:
+$component R13
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component D2
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component D1
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R12
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component R6
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R5
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R10
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R11
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component C6
+ SM*
+ C?
+ C1-1
+$endlist
+$component R9
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R8
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component C7
+ SM*
+ C?
+ C1-1
+$endlist
+$component C10
+ SM*
+ C?
+ C1-1
+$endlist
+$component C13
+ SM*
+ C?
+ C1-1
+$endlist
+$component R7
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component C8
+ SM*
+ C?
+ C1-1
+$endlist
+$component C14
+ SM*
+ C?
+ C1-1
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component C9
+ SM*
+ C?
+ C1-1
+$endlist
+$component C11
+ SM*
+ C?
+ C1-1
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R4
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R3
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component U2
+ SOT89
+ SOT-23A
+ TO92-INVERT
+$endlist
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C2
+ SM*
+ C?
+ C1-1
+$endlist
+$component C12
+ SM*
+ C?
+ C1-1
+$endlist
+$component C15
+ SM*
+ C?
+ C1-1
+$endlist
+$endfootprintlist
+}
+{ Pin List by Nets
+Net 17 "" ""
+ ANT1 1
+ MOD1 24
+Net 18 "" ""
+ R11 1
+ R10 2
+ Q1 G
+Net 20 "RST" "RST"
+ ISP1 5
+ S3 1
+ U3 13
+ R7 1
+Net 21 "PWR_SW_IN" "PWR_SW_IN"
+ S1 2
+ P20 10
+ U1 5
+ BT1 1
+ P13 1
+ C3 1
+ R5 1
+Net 22 "MOSI" "MOSI"
+ U3 10
+ ISP1 4
+Net 23 "DEBUG" "DEBUG"
+ JP1 1
+ U3 1
+Net 25 "+VUSB" "+VUSB"
+ USB1 1
+ C6 2
+ C1 1
+ U3 7
+ U1 1
+Net 26 "SCLK" "SCLK"
+ ISP1 3
+ U3 9
+Net 27 "WIFI_RESET" "WIFI_RESET"
+ U3 39
+ MOD1 40
+ P1 1
+Net 28 "WIFI_TX" "WIFI_TX"
+ P9 1
+ MOD1 46
+ U3 20
+Net 29 "SW_KG" "SW_KG"
+ P3 1
+ U3 30
+ S2 1
+Net 30 "MISO" "MISO"
+ U3 11
+ ISP1 1
+Net 31 "WIFI_RX" "WIFI_RX"
+ MOD1 45
+ U3 21
+ P8 1
+ R1 1
+Net 32 "ADC_SPEED" "ADC_SPEED"
+ P20 5
+ U3 31
+Net 33 "BAT_ADC" "BAT_ADC"
+ U3 41
+ C4 1
+ R5 2
+ P12 1
+ R6 1
+Net 34 "WIFI_CTS" "WIFI_CTS"
+ U3 12
+ P7 1
+ MOD1 44
+Net 35 "WIFI_RTS" "WIFI_RTS"
+ MOD1 43
+ R3 1
+ U3 22
+ P6 1
+Net 36 "" ""
+ R13 2
+ D2 1
+Net 37 "GND" "GND"
+ JP1 2
+ R2 2
+ C7 2
+ MOD1 21
+ MOD1 20
+ S3 2
+ MOD1 1
+ R4 2
+ U1 2
+ C11 2
+ MOD1 22
+ MOD1 23
+ MOD1 14
+ U2 GND
+ MOD1 25
+ MOD1 26
+ BT1 2
+ D1 2
+ R6 2
+ U3 23
+ U3 33
+ U3 43
+ C6 1
+ U3 15
+ U3 35
+ MOD1 39
+ MOD1 27
+ MOD1 47
+ MOD1 28
+ C4 2
+ C14 2
+ C13 1
+ C10 1
+ D2 2
+ C5 2
+ C9 2
+ U3 5
+ USB1 5
+ P20 12
+ P14 1
+ ISP1 6
+ S2 2
+ C1 2
+ C3 2
+ C8 2
+ C2 2
+ C12 2
+ C15 2
+Net 38 "ADC_PWRDN" "ADC_PWRDN"
+ U3 32
+ P20 6
+Net 39 "WIFI_ASSOC" "WIFI_ASSOC"
+ U3 38
+ MOD1 9
+ P11 1
+Net 40 "I2C_DATA" "I2C_DATA"
+ U3 19
+ P20 2
+Net 41 "SW_LB" "SW_LB"
+ S2 3
+ U3 28
+ P4 1
+Net 42 "CHG" "CHG"
+ P18 1
+ U1 3
+ R12 1
+Net 43 "" ""
+ D1 1
+ R12 2
+Net 44 "LCD_CLOCK" "LCD_CLOCK"
+ P20 4
+ U3 29
+Net 45 "LCD_SUPPLY" "LCD_SUPPLY"
+ Q1 D
+ P20 1
+ P17 1
+Net 46 "" ""
+ U3 42
+ C5 1
+Net 47 "LCD_ENABLE" "LCD_ENABLE"
+ P15 1
+ U3 25
+ R10 1
+Net 48 "ADC_CLOCK" "ADC_CLOCK"
+ P20 7
+ U3 26
+Net 49 "WIFI_WAKE" "WIFI_WAKE"
+ U3 36
+ P2 1
+ MOD1 41
+Net 50 "ADC_DATA" "ADC_DATA"
+ U3 27
+ P20 8
+Net 51 "WIFI_SLEEP" "WIFI_SLEEP"
+ MOD1 5
+ U3 37
+ P10 1
+Net 52 "I2C_CLOCK" "I2C_CLOCK"
+ U3 18
+ P20 3
+Net 59 "" ""
+ U1 4
+ C2 1
+Net 60 "" ""
+ U3 44
+ U3 24
+ L1 2
+ C14 1
+ C11 1
+Net 61 "" ""
+ U3 4
+ R8 2
+Net 62 "D-" "D-"
+ USB1 3
+ R9 1
+Net 63 "" ""
+ R9 2
+ U3 3
+Net 64 "D+" "D+"
+ R8 1
+ USB1 2
+Net 65 "" ""
+ X1 1
+ C13 2
+ U3 16
+Net 66 "" ""
+ U3 17
+ C10 2
+ X1 2
+Net 69 "" ""
+ R3 2
+ R4 1
+ MOD1 30
+Net 70 "STATUS" "STATUS"
+ R13 1
+ U3 40
+ P19 1
+Net 71 "+3V" "+3V"
+ L1 1
+ R7 2
+ C8 1
+ C9 1
+ C7 1
+ MOD1 10
+ U2 VO
+ Q1 S
+ R11 2
+ U3 6
+ U3 14
+ U3 34
+ MOD1 49
+ MOD1 34
+ P16 1
+ ISP1 2
+ C15 1
+ P20 11
+Net 72 "" ""
+ R2 1
+ R1 2
+ MOD1 29
+Net 74 "SW_ST" "SW_ST"
+ U3 8
+ S2 4
+ P5 1
+Net 75 "PWR_SW_OUT" "PWR_SW_OUT"
+ U2 VI
+ S1 3
+ C12 1
+}
+#End
