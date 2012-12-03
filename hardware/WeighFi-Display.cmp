@@ -1,0 +1,304 @@
+Cmp-Mod V01 Created by CvPcb (2012-01-19 BZR 3256)-stable date = Mon 03 Dec 2012 15:16:55 GMT
+
+BeginCmp
+TimeStamp = /4FB0A5B8;
+Reference = C1;
+ValeurCmp = 1uF;
+IdModule  = SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FB0A71B;
+Reference = C2;
+ValeurCmp = 1uF;
+IdModule  = SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FB0A71F;
+Reference = C3;
+ValeurCmp = 0.1uF;
+IdModule  = SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F9C1A6E;
+Reference = H1;
+ValeurCmp = HOLE;
+IdModule  = HOLE_2.1MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCE3F9E;
+Reference = H2;
+ValeurCmp = HOLE;
+IdModule  = HOLE_2.1MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F9C1A6D;
+Reference = H3;
+ValeurCmp = HOLE;
+IdModule  = HOLE_2.1MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCE3FAD;
+Reference = H4;
+ValeurCmp = HOLE;
+IdModule  = HOLE_2.1MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F9C1A6C;
+Reference = H5;
+ValeurCmp = HOLE;
+IdModule  = HOLE_2.1MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCE3FB0;
+Reference = H6;
+ValeurCmp = HOLE;
+IdModule  = HOLE_2.1MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F9C1A6B;
+Reference = H7;
+ValeurCmp = HOLE;
+IdModule  = HOLE_2.1MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /50BC8790;
+Reference = P1;
+ValeurCmp = CONN_12;
+IdModule  = PIN_ARRAY_6X2;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A39E;
+Reference = P2;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A35B;
+Reference = P3;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A39D;
+Reference = P4;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A369;
+Reference = P5;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A39C;
+Reference = P6;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A36A;
+Reference = P7;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A39B;
+Reference = P8;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A36B;
+Reference = P9;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC50040;
+Reference = P10;
+ValeurCmp = CONN_4;
+IdModule  = PIN_ARRAY_4X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA3A;
+Reference = P11;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCF9F7;
+Reference = P12;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA3E;
+Reference = P13;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA92;
+Reference = P14;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA97;
+Reference = P15;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA99;
+Reference = P16;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA9A;
+Reference = P17;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA9B;
+Reference = P18;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA9C;
+Reference = P19;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFA9E;
+Reference = P20;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFABC;
+Reference = P21;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFAC6;
+Reference = P22;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFAC7;
+Reference = P23;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFAC9;
+Reference = P24;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFB64;
+Reference = P25;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCFB65;
+Reference = P26;
+ValeurCmp = CONN_1;
+IdModule  = PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F9EC08F;
+Reference = P27;
+ValeurCmp = CONN_13;
+IdModule  = LCD_CONNECTOR_13;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FBE9CE4;
+Reference = R1;
+ValeurCmp = 4K7;
+IdModule  = SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FBE9CD9;
+Reference = R2;
+ValeurCmp = 4K7;
+IdModule  = SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FBF83F1;
+Reference = SJ1;
+ValeurCmp = SOLDER_JUMPER;
+IdModule  = SOLDER_JUMPER;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FBF823E;
+Reference = SJ2;
+ValeurCmp = SOLDER_JUMPER;
+IdModule  = SOLDER_JUMPER;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FB0A641;
+Reference = U1;
+ValeurCmp = ADS1131;
+IdModule  = SOIC16;
+EndCmp
+
+BeginCmp
+TimeStamp = /4F9EC09D;
+Reference = U2;
+ValeurCmp = PCF8566;
+IdModule  = VSO40;
+EndCmp
+
+EndListe

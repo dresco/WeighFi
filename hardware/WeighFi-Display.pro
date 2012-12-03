@@ -1,5 +1,5 @@
-update=Mon 03 Dec 2012 10:52:59 GMT
-last_client=eeschema
+update=Mon 03 Dec 2012 12:53:49 GMT
+last_client=cvpcb
 [eeschema]
 version=1
 LibDir=/usr/share/kicad/library;../../Library
@@ -33,3 +33,12 @@ RptLab=1
 LabSize=60
 [eeschema/libraries]
 LibName1=/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/Library/dresco
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
+[pcbnew]
+[pcbnew/libraries]
+LibName1=/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/Library/dresco
+LibDir=
