@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Thu 06 Dec 2012 14:46:45 GMT
+EESchema Schematic File Version 2  date Mon 10 Dec 2012 10:51:47 GMT
 LIBS:dresco
 LIBS:WeighFi-Display-cache
 EELAYER 25  0
@@ -7,7 +7,7 @@ $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
 Title "WeighFi-Display"
-Date "6 dec 2012"
+Date "10 dec 2012"
 Rev "1.0"
 Comp ""
 Comment1 "Released under Creative Commons Attribution-Sharealike (CC BY-SA 3.0) license"
@@ -15,6 +15,16 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Connection ~ 3850 6700
+Wire Wire Line
+	3850 6700 3850 7300
+Wire Wire Line
+	3850 7300 4250 7300
+Connection ~ 4050 6800
+Wire Wire Line
+	4050 6800 4050 7100
+Wire Wire Line
+	4050 7100 4250 7100
 Connection ~ 7350 2050
 Wire Wire Line
 	7100 2050 7350 2050
@@ -155,7 +165,7 @@ Wire Wire Line
 	1100 2600 1650 2600
 Connection ~ 1500 3400
 Wire Wire Line
-	1500 3400 1650 3400
+	1650 3400 1500 3400
 Connection ~ 7250 4500
 Wire Wire Line
 	7250 4500 7450 4500
@@ -388,6 +398,25 @@ Wire Notes Line
 Wire Wire Line
 	7100 1550 7100 1650
 Connection ~ 7100 1550
+Wire Wire Line
+	4250 7000 4150 7000
+Wire Wire Line
+	4150 7000 4150 6600
+Connection ~ 4150 6600
+Wire Wire Line
+	4250 7200 3950 7200
+Wire Wire Line
+	3950 7200 3950 6500
+Connection ~ 3950 6500
+$Comp
+L CONN_4 P28
+U 1 1 50C5BDF5
+P 4650 7100
+F 0 "P28" V 4600 7050 50  0000 C CNN
+F 1 "CONN_4" V 4700 7050 50  0000 C CNN
+	1    4650 7100
+	1    0    0    -1  
+$EndComp
 $Comp
 L C C4
 U 1 1 50BF8561
@@ -749,7 +778,7 @@ F 1 "CONN_4" V 4700 6550 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text Notes 3650 5900 0    60   ~ 0
-Strain gauge connector
+Strain gauge connector\n(plus alternate pinout \nfor later scales)
 Text Notes 8300 1000 0    60   ~ 0
 LCD Driver
 Text Notes 7450 4800 0    60   ~ 0

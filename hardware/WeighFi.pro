@@ -1,13 +1,11 @@
-update=Tue 03 Jul 2012 13:05:50 BST
+update=Mon 10 Dec 2012 10:53:46 GMT
 version=1
-last_client=pcbnew
+last_client=kicad
 [cvpcb]
 version=1
 NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=/usr/share/kicad/library;../../Library
@@ -61,3 +59,5 @@ LastNetListRead=
 [pcbnew/libraries]
 LibDir=../../Library;/usr/share/kicad/modules
 LibName1=/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/Library/dresco
+[general]
+version=1
