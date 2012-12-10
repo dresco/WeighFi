@@ -1,4 +1,4 @@
-update=Mon 10 Dec 2012 13:15:44 GMT
+update=Mon 10 Dec 2012 14:50:03 GMT
 version=1
 last_client=kicad
 [cvpcb]
@@ -50,7 +50,7 @@ TxtPcbH=600
 TxtModV=600
 TxtModH=600
 TxtModW=120
-VEgarde=52
+VEgarde=40
 DrawLar=150
 EdgeLar=150
 TxtLar=120
