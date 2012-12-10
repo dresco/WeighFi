@@ -1,5 +1,5 @@
-update=Mon 03 Dec 2012 12:53:49 GMT
-last_client=cvpcb
+update=Tue 04 Dec 2012 12:59:38 GMT
+last_client=pcbnew
 [eeschema]
 version=1
 LibDir=/usr/share/kicad/library;../../Library
@@ -39,6 +39,22 @@ NetIExt=net
 [cvpcb/libraries]
 EquName1=devcms
 [pcbnew]
+version=1
+PadDrlX=320
+PadDimH=600
+PadDimV=600
+BoardThickness=630
+TxtPcbV=800
+TxtPcbH=600
+TxtModV=600
+TxtModH=600
+TxtModW=120
+VEgarde=100
+DrawLar=150
+EdgeLar=150
+TxtLar=120
+MSegLar=150
+LastNetListRead=
 [pcbnew/libraries]
+LibDir=../../Library;/usr/share/kicad/modules
 LibName1=/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/Library/dresco
-LibDir=

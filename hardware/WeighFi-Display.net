@@ -1,4 +1,4 @@
-# EESchema Netlist Version 1.1 created  Mon 03 Dec 2012 15:16:55 GMT
+# EESchema Netlist Version 1.1 created  Thu 06 Dec 2012 14:47:01 GMT
 (
  ( /4FB0A5B8 SMD0805 C1 1uF
   ( 1 +3V )
@@ -9,8 +9,12 @@
   ( 2 GND )
  )
  ( /4FB0A71F SMD0805 C3 0.1uF
-  ( 1 N-000032 )
+  ( 1 N-000033 )
   ( 2 N-000008 )
+ )
+ ( /50BF8561 SMD0805 C4 0.1uF
+  ( 1 LCD_SUPPLY )
+  ( 2 GND )
  )
  ( /4F9C1A6E HOLE_2.1MM H1 HOLE
  )
@@ -73,65 +77,65 @@
  ( /4FCCFA3A PIN_X1 P11 CONN_1
   ( 1 I2C_DATA )
  )
- ( /4FCCF9F7 PIN_X1 P12 CONN_1
-  ( 1 LCD_CLOCK )
- )
- ( /4FCCFA3E PIN_X1 P13 CONN_1
+ ( /4FCCFA3E PIN_X1 P12 CONN_1
   ( 1 I2C_CLOCK )
  )
+ ( /4FCCF9F7 PIN_X1 P13 CONN_1
+  ( 1 LCD_CLOCK )
+ )
  ( /4FCCFA92 PIN_X1 P14 CONN_1
-  ( 1 N-000034 )
+  ( 1 N-000035 )
  )
  ( /4FCCFA97 PIN_X1 P15 CONN_1
-  ( 1 N-000041 )
+  ( 1 N-000040 )
  )
  ( /4FCCFA99 PIN_X1 P16 CONN_1
   ( 1 N-000042 )
  )
  ( /4FCCFA9A PIN_X1 P17 CONN_1
-  ( 1 N-000038 )
+  ( 1 N-000007 )
  )
  ( /4FCCFA9B PIN_X1 P18 CONN_1
-  ( 1 N-000030 )
+  ( 1 N-000031 )
  )
  ( /4FCCFA9C PIN_X1 P19 CONN_1
   ( 1 N-000045 )
  )
  ( /4FCCFA9E PIN_X1 P20 CONN_1
-  ( 1 N-000025 )
+  ( 1 N-000026 )
  )
  ( /4FCCFABC PIN_X1 P21 CONN_1
-  ( 1 N-000037 )
+  ( 1 N-000038 )
  )
  ( /4FCCFAC6 PIN_X1 P22 CONN_1
-  ( 1 N-000020 )
+  ( 1 N-000021 )
  )
  ( /4FCCFAC7 PIN_X1 P23 CONN_1
-  ( 1 N-000036 )
+  ( 1 N-000037 )
  )
  ( /4FCCFAC9 PIN_X1 P24 CONN_1
-  ( 1 N-000016 )
+  ( 1 N-000017 )
  )
  ( /4FCCFB64 PIN_X1 P25 CONN_1
-  ( 1 N-000035 )
+  ( 1 N-000036 )
  )
  ( /4FCCFB65 PIN_X1 P26 CONN_1
-  ( 1 N-000013 )
+  ( 1 N-000014 )
  )
  ( /4F9EC08F LCD_CONNECTOR_13 P27 CONN_13
-  ( 1 N-000034 )
-  ( 2 N-000041 )
+  ( 1 N-000035 )
+  ( 2 N-000040 )
   ( 3 N-000042 )
-  ( 4 N-000038 )
-  ( 5 N-000030 )
+  ( 4 N-000007 )
+  ( 5 N-000031 )
   ( 6 N-000045 )
-  ( 7 N-000025 )
-  ( 8 N-000037 )
-  ( 9 N-000020 )
-  ( 10 N-000036 )
-  ( 11 N-000016 )
-  ( 12 N-000035 )
-  ( 13 N-000013 )
+  ( 7 N-000026 )
+  ( 8 N-000038 )
+  ( 9 N-000021 )
+  ( 10 N-000037 )
+  ( 11 N-000017 )
+  ( 12 N-000036 )
+  ( 13 N-000014 )
  )
  ( /4FBE9CE4 SMD0805 R1 4K7
   ( 1 LCD_SUPPLY )
@@ -143,18 +147,18 @@
  )
  ( /4FBF83F1 SOLDER_JUMPER SJ1 SOLDER_JUMPER
   ( 1 LCD_SUPPLY )
-  ( 2 N-000040 )
+  ( 2 N-000039 )
  )
  ( /4FBF823E SOLDER_JUMPER SJ2 SOLDER_JUMPER
   ( 1 GND )
-  ( 2 N-000040 )
+  ( 2 N-000039 )
  )
  ( /4FB0A641 SOIC16 U1 ADS1131
   ( 1 +3V )
   ( 2 GND )
   ( 3 GND )
   ( 4 ADC_SPEED )
-  ( 5 N-000032 )
+  ( 5 N-000033 )
   ( 6 N-000008 )
   ( 7 S+ )
   ( 8 S- )
@@ -173,26 +177,26 @@
   ( 3 ? )
   ( 4 LCD_CLOCK )
   ( 5 LCD_SUPPLY )
-  ( 6 N-000040 )
+  ( 6 N-000039 )
   ( 7 GND )
   ( 8 GND )
   ( 9 GND )
   ( 10 GND )
   ( 11 GND )
   ( 12 GND )
-  ( 13 N-000034 )
-  ( 14 N-000041 )
+  ( 13 N-000035 )
+  ( 14 N-000040 )
   ( 15 N-000042 )
-  ( 16 N-000038 )
-  ( 17 N-000030 )
+  ( 16 N-000007 )
+  ( 17 N-000031 )
   ( 18 N-000045 )
-  ( 19 N-000025 )
-  ( 20 N-000037 )
-  ( 21 N-000020 )
-  ( 22 N-000036 )
-  ( 23 N-000016 )
-  ( 24 N-000035 )
-  ( 25 N-000013 )
+  ( 19 N-000026 )
+  ( 20 N-000038 )
+  ( 21 N-000021 )
+  ( 22 N-000037 )
+  ( 23 N-000017 )
+  ( 24 N-000036 )
+  ( 25 N-000014 )
   ( 26 ? )
   ( 27 ? )
   ( 28 ? )
@@ -223,6 +227,11 @@ $component C2
  C1-1
 $endlist
 $component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C4
  SM*
  C?
  C1-1
