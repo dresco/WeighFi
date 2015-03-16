@@ -1,0 +1,42 @@
+Notes for setting up a LUFA project in eclipse
+==============================================
+
+--
+Create a new AVR project in eclipse
+
+--
+Copy in LUFAConfig.h, Descriptors.c/.h files, and <project>.c/h files from any suitable LUFA demo project
+		
+--
+Create a LUFA subdirectory, containing the following items copied from current release
+  Common\
+  Drivers\
+  Platform\
+  License.txt
+  Version.h
+
+** note: have stripped out unused LUFA architectures (just less to commit)..
+ 
+--
+Properties -> C/C++ Build -> Settings -> AVR Compiler -> Directories -> Include Paths
+Configuration -> [All Configurations]
+${ProjDirPath}
+
+** note: lets the LUFA build system find the config and library files
+
+--
+Properties -> C/C++ Build -> Settings -> AVR Compiler -> Symbols
+Configuration -> [All Configurations]
+USE_LUFA_CONFIG_HEADER
+ARCH=AVR8
+F_USB=16000000
+BOARD=BOARD_ADAFRUITU4
+
+** note: F_USB gets passed to command line before F_CPU so can't just refer to that
+
+--
+Properties -> C/C++ Build -> Settings -> AVR Linker -> General -> Other Arguments
+Configuration -> [All Configurations]
+-Wl,--gc-sections
+
+** note: prevents all the unused LUFA library code being linked in 
