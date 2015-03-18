@@ -19,7 +19,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 #include <avr/io.h>
 #include <avr/wdt.h>
 #include <avr/power.h>
@@ -33,12 +32,17 @@
 #include <LUFA/Drivers/USB/USB.h>
 #include <LUFA/Platform/Platform.h>
 
+#define ADC_DATA_BITS 18
+#define ADC_SPARE_BITS 1
+
+#define ADC_SPEED_LOW 0
+#define ADC_SPEED_HIGH 1
 
 // LUFA LED support macros
-#define LEDMASK_USB_NOTREADY     LEDS_LED1              // Interface not ready
-#define LEDMASK_USB_ENUMERATING (LEDS_LED2 | LEDS_LED3) // Interface is enumerating
-#define LEDMASK_USB_READY       (LEDS_LED2 | LEDS_LED4) // Interface is ready
-#define LEDMASK_USB_ERROR       (LEDS_LED1 | LEDS_LED3) // Error has occurred
+#define LEDMASK_USB_NOTREADY     LEDS_LED1                  // Interface not ready
+#define LEDMASK_USB_ENUMERATING (LEDS_LED2 | LEDS_LED3)     // Interface is enumerating
+#define LEDMASK_USB_READY       (LEDS_LED2 | LEDS_LED4)     // Interface is ready
+#define LEDMASK_USB_ERROR       (LEDS_LED1 | LEDS_LED3)     // Error has occurred
 
 // LUFA Function Prototypes
 void EVENT_USB_Device_Connect(void);
