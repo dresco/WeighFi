@@ -26,6 +26,7 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "i2cmaster.h"
 #include "Descriptors.h"
 
 #include <LUFA/Drivers/Board/LEDs.h>
@@ -37,6 +38,24 @@
 
 #define ADC_SPEED_LOW 0
 #define ADC_SPEED_HIGH 1
+
+#define LCD_DEV_ID     0x7C                                 // Device address of LCD driver, see datasheet
+
+#define LCD_CHAR_0     0b11011110
+#define LCD_CHAR_1     0b00000110
+#define LCD_CHAR_2     0b01111010
+#define LCD_CHAR_3     0b00111110
+#define LCD_CHAR_4     0b10100110
+#define LCD_CHAR_5     0b10111100
+#define LCD_CHAR_6     0b11111100
+#define LCD_CHAR_7     0b00001110
+#define LCD_CHAR_8     0b11111110
+#define LCD_CHAR_9     0b10101110
+#define LCD_CHAR_BLANK 0b00000000
+#define LCD_CHAR_SEP   0b00000001
+#define LCD_CHAR_KG    0b10000000
+#define LCD_CHAR_LB    0b00100000
+#define LCD_CHAR_ST    0b01000000
 
 // LUFA LED support macros
 #define LEDMASK_USB_NOTREADY     LEDS_LED1                  // Interface not ready

@@ -19,16 +19,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+// ADC
+//  ---
+// TI ADS1131
+//  - 18-bit delta sigma ADC
 //
 // Bit banging the SPI interface. Is slightly odd as there is no MOSI, and the
 // ADC uses MISO to signify conversion data is ready, as well as for data..
 //
+// LCD
+// --
+// NXP PCF8566 LCD driver IC
+//  - 1:4 multiplex mode, 1/3 bias configuration
+//  - 4 backplane lines, 9 segment lines
+//
+// Using the Peter Fleury I2C library
+//
+// Pin assignments
+// ---------------
+// PD0 -        - I2C clock
+// PD1 -        - I2C data
 // PD4 - output - ADC speed control
 // PD5 - output - ADC power control
 // PD6 - output - SPI serial clock
 // PD7 - input  - SPI data in (MISO)
 //
-
 
 #include "WeighFi.h"
 
@@ -65,6 +80,78 @@ USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
 // Standard file stream for the CDC interface when set up, so that the virtual CDC COM port can be
 // used like any regular character stream in the C APIs.
 static FILE USBSerialStream;
+
+void LCDEnable(void)
+{
+    // todo: power up LCD supply
+
+    i2c_init();                                             // Initialise I2C library
+    i2c_start_wait(LCD_DEV_ID+I2C_WRITE);                   // Set device address and write mode
+
+    //i2c_write(0xC8);                                      // Enable display + continuation bit
+    i2c_write(0xD8);                                        // Enable display + low power + continuation bit
+    //i2c_write(0xF2);                                      // Set 1Hz blink mode + continuation bit
+    i2c_write(0x00);                                        // Set data pointer to 0
+}
+
+void LCDDisable(void)
+{
+    i2c_stop();                                             // Set stop condition = release bus
+
+    // todo: power down LCD supply
+}
+
+void LCDWrite(uint8_t data)
+{
+    switch (data) {
+
+        case '0':
+            i2c_write(LCD_CHAR_0);
+            break;
+
+        case '1':
+            i2c_write(LCD_CHAR_1);
+            break;
+
+        case '2':
+            i2c_write(LCD_CHAR_2);
+            break;
+
+        case '3':
+            i2c_write(LCD_CHAR_3);
+            break;
+
+        case '4':
+            i2c_write(LCD_CHAR_4);
+            break;
+
+        case '5':
+            i2c_write(LCD_CHAR_5);
+            break;
+
+        case '6':
+            i2c_write(LCD_CHAR_6);
+            break;
+
+        case '7':
+            i2c_write(LCD_CHAR_7);
+            break;
+
+        case '8':
+            i2c_write(LCD_CHAR_8);
+            break;
+
+        case '9':
+            i2c_write(LCD_CHAR_9);
+            break;
+
+        default:
+            i2c_write(LCD_CHAR_BLANK);
+            break;
+    }
+
+    //i2c_write(data);                                        // Display character on LCD
+}
 
 int32_t GetADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
 {
@@ -219,6 +306,8 @@ void EVENT_USB_Device_ControlRequest(void)
 
 int main(void)
 {
+    char DisplayData[6];
+
     SetupHardware();
 
     // Create a regular character stream for the interface so that it can be used with the stdio.h functions
@@ -226,6 +315,11 @@ int main(void)
 
     LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
     GlobalInterruptEnable();
+
+    LCDEnable();
+    for (int i = 0; i < 5; i++)                             // Blank the display
+        LCDWrite(0x00);
+    LCDDisable();
 
     while (1)
     {
@@ -242,6 +336,16 @@ int main(void)
             // Write the a debug char to USB output if connected
             if (USB_DeviceState == DEVICE_STATE_Configured)
                 fprintf(&USBSerialStream, "%ld\n\r", ADCResult);
+
+            // Write value to the LCD
+            LCDEnable();
+
+            memset(DisplayData, 0x00, sizeof(DisplayData));
+            sprintf(DisplayData, "%4ld", ADCResult);
+            for (int i = 0; i < sizeof(DisplayData); i++)
+                LCDWrite(DisplayData[i]);
+
+            LCDDisable();
         }
 
         CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
