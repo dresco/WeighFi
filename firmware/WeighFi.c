@@ -81,76 +81,121 @@ USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
 // used like any regular character stream in the C APIs.
 static FILE USBSerialStream;
 
-void LCDEnable(void)
+uint8_t LCDTranslateDigit(uint8_t ascii_char)
 {
-    // todo: power up LCD supply
+    uint8_t lcd_char;
 
+    switch (ascii_char) {
+
+        case '0':
+            lcd_char = LCD_CHAR_0;
+            break;
+
+        case '1':
+            lcd_char = LCD_CHAR_1;
+            break;
+
+        case '2':
+            lcd_char = LCD_CHAR_2;
+            break;
+
+        case '3':
+            lcd_char = LCD_CHAR_3;
+            break;
+
+        case '4':
+            lcd_char = LCD_CHAR_4;
+            break;
+
+        case '5':
+            lcd_char = LCD_CHAR_5;
+            break;
+
+        case '6':
+            lcd_char = LCD_CHAR_6;
+            break;
+
+        case '7':
+            lcd_char = LCD_CHAR_7;
+            break;
+
+        case '8':
+            lcd_char = LCD_CHAR_8;
+            break;
+
+        case '9':
+            lcd_char = LCD_CHAR_9;
+            break;
+
+        default:
+            lcd_char = LCD_CHAR_BLANK;
+            break;
+    }
+
+    return(lcd_char);
+}
+
+void LCDEnable(uint8_t enable)
+{
+    if (enable)
+    {
+        // todo: power up LCD supply, wait 1ms before transferring data..
+    }
+    else
+    {
+        // todo: power down LCD supply
+    }
+}
+
+void LCDUpdate(DisplayData_t * DisplayData)
+{
     i2c_init();                                             // Initialise I2C library
     i2c_start_wait(LCD_DEV_ID+I2C_WRITE);                   // Set device address and write mode
 
     //i2c_write(0xC8);                                      // Enable display + continuation bit
     i2c_write(0xD8);                                        // Enable display + low power + continuation bit
-    //i2c_write(0xF2);                                      // Set 1Hz blink mode + continuation bit
-    i2c_write(0x00);                                        // Set data pointer to 0
-}
 
-void LCDDisable(void)
-{
-    i2c_stop();                                             // Set stop condition = release bus
+    if (DisplayData->Flags & LCD_FLAG_BLINK)
+        i2c_write(0xF2);                                    // Set 1Hz blink mode + continuation bit
+    else
+        i2c_write(0xF0);                                    // Disable blink mode + continuation bit
 
-    // todo: power down LCD supply
-}
+    i2c_write(0x00);                                        // Set data pointer to 0, ready for data
 
-void LCDWrite(uint8_t data)
-{
-    switch (data) {
+    if (DisplayData->Flags & LCD_FLAG_BLANK)
+    {
+        for (int i = 0; i < 5; i++)                         // Blank the display
+            i2c_write(0x00);
+    }
+    else if (DisplayData->Flags & LCD_FLAG_FILL)
+    {
+        for (int i = 0; i < 5; i++)                         // Turn on all segments
+            i2c_write(0xFF);
+    }
+    else if (DisplayData->Flags & LCD_FLAG_DATA)
+    {
+        i2c_write(LCDTranslateDigit(DisplayData->Char1));
 
-        case '0':
-            i2c_write(LCD_CHAR_0);
-            break;
+        i2c_write(LCDTranslateDigit(DisplayData->Char2) +
+                ((DisplayData->Flags & LCD_FLAG_ST) ? LCD_CHAR_SEP : 0));
 
-        case '1':
-            i2c_write(LCD_CHAR_1);
-            break;
+        i2c_write(LCDTranslateDigit(DisplayData->Char3) +
+                (((DisplayData->Flags & LCD_FLAG_KG) ||
+                  (DisplayData->Flags & LCD_FLAG_LB)) ? LCD_CHAR_SEP : 0));
 
-        case '2':
-            i2c_write(LCD_CHAR_2);
-            break;
+        i2c_write(LCDTranslateDigit(DisplayData->Char4));
 
-        case '3':
-            i2c_write(LCD_CHAR_3);
-            break;
-
-        case '4':
-            i2c_write(LCD_CHAR_4);
-            break;
-
-        case '5':
-            i2c_write(LCD_CHAR_5);
-            break;
-
-        case '6':
-            i2c_write(LCD_CHAR_6);
-            break;
-
-        case '7':
-            i2c_write(LCD_CHAR_7);
-            break;
-
-        case '8':
-            i2c_write(LCD_CHAR_8);
-            break;
-
-        case '9':
-            i2c_write(LCD_CHAR_9);
-            break;
-
-        default:
+        if (DisplayData->Flags & LCD_FLAG_KG)
+            i2c_write(LCD_CHAR_KG);
+        else if (DisplayData->Flags & LCD_FLAG_LB)
+            i2c_write(LCD_CHAR_LB);
+        else if (DisplayData->Flags & LCD_FLAG_ST)
+            i2c_write(LCD_CHAR_ST);
+        else
             i2c_write(LCD_CHAR_BLANK);
-            break;
     }
 
-    //i2c_write(data);                                        // Display character on LCD
+    i2c_stop();                                             // Set stop condition = release bus
 }
 
 int32_t GetADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
@@ -306,7 +351,8 @@ void EVENT_USB_Device_ControlRequest(void)
 
 int main(void)
 {
-    char DisplayData[6];
+    DisplayData_t DisplayData = {0};
+    char DisplayString[6];
 
     SetupHardware();
 
@@ -316,10 +362,9 @@ int main(void)
     LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
     GlobalInterruptEnable();
 
-    LCDEnable();
-    for (int i = 0; i < 5; i++)                             // Blank the display
-        LCDWrite(0x00);
-    LCDDisable();
+    DisplayData.Flags |= LCD_FLAG_FILL;
+    DisplayData.Flags |= LCD_FLAG_BLINK;
+    LCDUpdate(&DisplayData);
 
     while (1)
     {
@@ -337,15 +382,18 @@ int main(void)
             if (USB_DeviceState == DEVICE_STATE_Configured)
                 fprintf(&USBSerialStream, "%ld\n\r", ADCResult);
 
-            // Write value to the LCD
-            LCDEnable();
+            // Write the raw ADC value to the LCD
+            sprintf(DisplayString, "%04ld\n\r", ADCResult);
 
-            memset(DisplayData, 0x00, sizeof(DisplayData));
-            sprintf(DisplayData, "%4ld", ADCResult);
-            for (int i = 0; i < sizeof(DisplayData); i++)
-                LCDWrite(DisplayData[i]);
+            memset(&DisplayData, 0x00, sizeof(DisplayData));
 
-            LCDDisable();
+            DisplayData.Flags |= LCD_FLAG_DATA;
+            DisplayData.Char1 = DisplayString[0];
+            DisplayData.Char2 = DisplayString[1];
+            DisplayData.Char3 = DisplayString[2];
+            DisplayData.Char4 = DisplayString[3];
+
+            LCDUpdate(&DisplayData);
         }
 
         CDC_Device_USBTask(&VirtualSerial_CDC_Interface);

@@ -39,6 +39,24 @@
 #define ADC_SPEED_LOW 0
 #define ADC_SPEED_HIGH 1
 
+typedef struct DisplayData
+{
+    uint8_t Char1;
+    uint8_t Char2;
+    uint8_t Char3;
+    uint8_t Char4;
+    uint8_t Char5;                                          // May not need this one if units are defined in flags
+    uint8_t Flags;
+} DisplayData_t;
+
+#define LCD_FLAG_KG    0b00000001
+#define LCD_FLAG_LB    0b00000010
+#define LCD_FLAG_ST    0b00000100
+#define LCD_FLAG_DATA  0b00001000
+#define LCD_FLAG_BLANK 0b00010000
+#define LCD_FLAG_FILL  0b00100000
+#define LCD_FLAG_BLINK 0b01000000
+
 #define LCD_DEV_ID     0x7C                                 // Device address of LCD driver, see datasheet
 
 #define LCD_CHAR_0     0b11011110
