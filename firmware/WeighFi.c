@@ -127,6 +127,10 @@ uint8_t LCDTranslateDigit(uint8_t ascii_char)
             lcd_char = LCD_CHAR_9;
             break;
 
+        case '-':
+            lcd_char = LCD_CHAR_MINUS;
+            break;
+
         default:
             lcd_char = LCD_CHAR_BLANK;
             break;
@@ -321,6 +325,84 @@ void SetupHardware(void)
     PortSetup();
 }
 
+int32_t DivideAndRoundToClosest(const int32_t n, const int32_t d)
+{
+    return ((n < 0) ^ (d < 0)) ? ((n - d/2)/d) : ((n + d/2)/d);
+}
+
+
+void PrepareDisplayData(int32_t Weight, DisplayUnits_t DisplayUnits, DisplayData_t *DisplayData)
+{
+    char DisplayString[6];
+
+    memset(DisplayData, 0x00, sizeof(DisplayData_t));
+
+    // Routines for converting to appropriate units for display on LCD
+    // Rounding up/down where appropriate..
+    if (DisplayUnits == KILOS)
+    {
+        // Written to the LCD in units of 100 grams,
+        // display routine will insert the decimal point
+        int tenthkilos = DivideAndRoundToClosest(Weight, 100);
+
+        if (USB_DeviceState == DEVICE_STATE_Configured)
+            fprintf(&USBSerialStream, "grams: %ld, tenthkilos: %d\n\r", Weight, tenthkilos);
+
+        DisplayData->Flags |= LCD_FLAG_KG;
+        sprintf(DisplayString, "%4d", tenthkilos);
+    }
+    else if (DisplayUnits == POUNDS)
+    {
+        // Written to the LCD in units of 1/10th of a pound,
+        // display routine will insert the decimal point
+        int tenthpounds = DivideAndRoundToClosest(Weight*100, 4536);
+
+        if (USB_DeviceState == DEVICE_STATE_Configured)
+            fprintf(&USBSerialStream, "grams: %ld, tenthpounds: %d\n\r", Weight, tenthpounds);
+
+        DisplayData->Flags |= LCD_FLAG_LB;
+        sprintf(DisplayString, "%4d", tenthpounds);
+    }
+    else if (DisplayUnits == STONES)
+    {
+        // Written to the LCD in stones and whole pounds
+        int tenthpounds = DivideAndRoundToClosest(Weight*100, 4536);
+        int stones = tenthpounds / 140;             // must round down
+        int remainder = tenthpounds % 140;
+        int pounds = DivideAndRoundToClosest(remainder, 10);
+
+        if (USB_DeviceState == DEVICE_STATE_Configured)
+            fprintf(&USBSerialStream, "tenthpounds: %d, stones: %d, remainder %d, pounds: %d\n\r",
+                    tenthpounds, stones, remainder, pounds);
+
+        DisplayData->Flags |= LCD_FLAG_ST;
+        sprintf(DisplayString, "%2d%02d", stones, pounds);
+    }
+
+    DisplayData->Flags |= LCD_FLAG_DATA;
+    DisplayData->Char1 = DisplayString[0];
+    DisplayData->Char2 = DisplayString[1];
+    DisplayData->Char3 = DisplayString[2];
+    DisplayData->Char4 = DisplayString[3];
+
+    // As we're not using printf to insert the decimal point and handle any leading zeros, we need
+    // to take care of the situation where we have just the decimal with no preceding characters
+    if (DisplayUnits == KILOS || DisplayUnits == POUNDS)
+    {
+        // Positive
+        if (DisplayData->Char1 == ' ' && DisplayData->Char2 == ' ' && DisplayData->Char3 == ' ')
+        {
+            DisplayData->Char3 = '0';
+        }
+        // Negative
+        if (DisplayData->Char1 == ' ' && DisplayData->Char2 == ' ' && DisplayData->Char3 == '-')
+        {
+            DisplayData->Char3 = '0';
+            DisplayData->Char2 = '-';
+        }
+    }
+}
+
 // Event handler for the library USB Connection event.
 void EVENT_USB_Device_Connect(void)
 {
@@ -351,8 +433,11 @@ void EVENT_USB_Device_ControlRequest(void)
 
 int main(void)
 {
+    DisplayUnits_t DisplayUnits = POUNDS;
     DisplayData_t DisplayData = {0};
-    char DisplayString[6];
+
+    int32_t ADCZeroReading;
+    int32_t Weight;
 
     SetupHardware();
 
@@ -366,6 +451,8 @@ int main(void)
     DisplayData.Flags |= LCD_FLAG_BLINK;
     LCDUpdate(&DisplayData);
 
+    ADCZeroReading = GetADCValue(ADC_SPEED_LOW, 3);
+
     while (1)
     {
         // Wait for a character from the host, and send back an ADC result
@@ -374,24 +461,20 @@ int main(void)
 
         if (!(ReceivedByte < 0))
         {
-            // Get a reading from the ADC, configured for high speed and a
-            // single sample (no averaging) - worst combination for accuracy..
-            int32_t ADCResult = GetADCValue(ADC_SPEED_HIGH, 1);
+            // Get a reading from the ADC, configured for low speed and
+            // averaging multiple readings for accuracy
+            int32_t ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+            int32_t ADCDelta = ADCResult - ADCZeroReading;
 
-            // Write the a debug char to USB output if connected
+            // Write the raw ADC difference to USB output if connected
             if (USB_DeviceState == DEVICE_STATE_Configured)
-                fprintf(&USBSerialStream, "%ld\n\r", ADCResult);
+                fprintf(&USBSerialStream, "%ld\n\r", ADCDelta);
 
-            // Write the raw ADC value to the LCD
-            sprintf(DisplayString, "%04ld\n\r", ADCResult);
+            // Calculate the weight in grams
+            Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
 
-            memset(&DisplayData, 0x00, sizeof(DisplayData));
-
-            DisplayData.Flags |= LCD_FLAG_DATA;
-            DisplayData.Char1 = DisplayString[0];
-            DisplayData.Char2 = DisplayString[1];
-            DisplayData.Char3 = DisplayString[2];
-            DisplayData.Char4 = DisplayString[3];
+            // Format the display data for the current weight and display options
+            PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
 
             LCDUpdate(&DisplayData);
         }

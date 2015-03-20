@@ -39,6 +39,14 @@
 #define ADC_SPEED_LOW 0
 #define ADC_SPEED_HIGH 1
 
+#define ADC_COUNTS_PER_KG 140                                // Will move to EEPROM in due course
+
+typedef enum {
+    KILOS,
+    POUNDS,
+    STONES,
+} DisplayUnits_t;
+
 typedef struct DisplayData
 {
     uint8_t Char1;
@@ -74,6 +82,7 @@ typedef struct DisplayData
 #define LCD_CHAR_KG    0b10000000
 #define LCD_CHAR_LB    0b00100000
 #define LCD_CHAR_ST    0b01000000
+#define LCD_CHAR_MINUS 0b00100000
 
 // LUFA LED support macros
 #define LEDMASK_USB_NOTREADY     LEDS_LED1                  // Interface not ready
