@@ -454,6 +454,7 @@ void EVENT_USB_Device_ControlRequest(void)
 int main(void)
 {
     DisplayUnits_t DisplayUnits = KILOS;
+    SystemState_t SystemState = IDLE;
     DisplayData_t DisplayData = {0};
 
     int32_t ADCPeriodicReading = 0;
@@ -462,6 +463,7 @@ int main(void)
     int32_t ADCDelta;
     int32_t ADCResult = 0;
     int32_t ADCLastResult = 0;
+    int32_t ADCInitialResult;
 
     SetupHardware();
 
@@ -473,7 +475,7 @@ int main(void)
     LCDUpdate(&DisplayData);
 
     // Get a one off reading to populate the variables before fist use..
-    ADCResult = ADCZeroReading = ADCPeriodicReading = GetADCValue(ADC_SPEED_HIGH, 1);
+    ADCInitialResult = ADCZeroReading = ADCPeriodicReading = GetADCValue(ADC_SPEED_HIGH, 1);
 
     while (1)
     {
@@ -487,12 +489,20 @@ int main(void)
             // Perform a quick ADC reading for comparison
             ADCResult = GetADCValue(ADC_SPEED_HIGH, 1);
 
-            // Both readings checked to try and cater for the situation where weight is left on the scale
-            // after previous reading has been processed, i.e. don't wake if it's just a change back to zero
-            // todo: find a more intuitive way..
-            if ((abs(ADCResult - ADCPeriodicReading) > ADC_WAKE_THRESHOLD) && (abs(ADCResult - ADCZeroReading) > ADC_WAKE_THRESHOLD))
+            // If we have previously been weighing, don't start again until weight removed from scales.
+            // Using the 'initial' zero value in case the 'accurate' zero was set incorrectly due to
+            // already weighted scales (which would make it difficult to change back to idle state).
+            if ((SystemState == WEIGHING) && (abs(ADCResult - ADCInitialResult) < ADC_WAKE_THRESHOLD))
+            {
+                ADCPeriodicReading = ADCResult;
+                SystemState = IDLE;
+            }
+
+            if ((abs(ADCResult - ADCPeriodicReading) > ADC_WAKE_THRESHOLD) && (SystemState == IDLE))
             {
                 // Seems that we've been prodded to wake us
+                SystemState = WEIGHING;
+
                 // Fill the display and pause for 1 second
                 DisplayData.Flags = LCD_FLAG_FILL;
                 LCDUpdate(&DisplayData);
@@ -507,6 +517,11 @@ int main(void)
                         break;
                     ADCLastResult = ADCResult;
                 }
+
+                // Only set a new zero reading if close enough to previous zero reading, else might be weighted already
+                // if (abs(ADCResult - ADCZeroReading) < ADC_WAKE_THRESHOLD)
+                //     ADCZeroReading = ADCResult;
+
                 ADCZeroReading = ADCResult;
                 Weight = 0;
 
@@ -517,6 +532,7 @@ int main(void)
 
                 // Get a more accurate reading from the ADC, configured for low speed and averaging multiple
                 // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
+                // todo: probably ought to filter out negative weight values
                 for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
                 {
                     ADCResult = GetADCValue(ADC_SPEED_LOW, 3);

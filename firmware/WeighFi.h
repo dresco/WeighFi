@@ -46,6 +46,13 @@
 #define ADC_WAKE_THRESHOLD 100                              // Difference in periodic readings that will start processing
 #define ADC_STABLE_THRESHOLD 2                              // Max difference in stable readings before accepting result
 #define ADC_MAX_RETRIES     10                              // Max attempts whilst waiting for weight to settle
+
+typedef enum {
+    IDLE,
+    WEIGHING,
+    CHARGING,
+} SystemState_t;
+
 typedef enum {
     KILOS,
     POUNDS,
