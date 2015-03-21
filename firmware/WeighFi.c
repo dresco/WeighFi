@@ -453,24 +453,27 @@ void EVENT_USB_Device_ControlRequest(void)
 
 int main(void)
 {
-    DisplayUnits_t DisplayUnits = POUNDS;
+    DisplayUnits_t DisplayUnits = KILOS;
     DisplayData_t DisplayData = {0};
 
     int32_t ADCPeriodicReading = 0;
     int32_t ADCZeroReading;
     int32_t Weight;
+    int32_t ADCDelta;
+    int32_t ADCResult = 0;
+    int32_t ADCLastResult = 0;
 
     SetupHardware();
 
     // Create a regular character stream for the interface so that it can be used with the stdio.h functions
     CDC_Device_CreateStream(&VirtualSerial_CDC_Interface, &USBSerialStream);
 
-    DisplayData.Flags |= LCD_FLAG_FILL;
-    DisplayData.Flags |= LCD_FLAG_BLINK;
+    // Blank the LCD display
+    DisplayData.Flags = LCD_FLAG_BLANK;
     LCDUpdate(&DisplayData);
-    _delay_ms(3000);
 
-    ADCZeroReading = ADCPeriodicReading = GetADCValue(ADC_SPEED_LOW, 3);
+    // Get a one off reading to populate the variables before fist use..
+    ADCResult = ADCZeroReading = ADCPeriodicReading = GetADCValue(ADC_SPEED_HIGH, 1);
 
     while (1)
     {
@@ -482,23 +485,67 @@ int main(void)
             // whether we are being woken up for a measurement
 
             // Perform a quick ADC reading for comparison
-            int32_t ADCResult = GetADCValue(ADC_SPEED_HIGH, 1);
+            ADCResult = GetADCValue(ADC_SPEED_HIGH, 1);
 
-            if (abs(ADCResult - ADCPeriodicReading) > ADC_WAKE_THRESHOLD)
+            // Both readings checked to try and cater for the situation where weight is left on the scale
+            // after previous reading has been processed, i.e. don't wake if it's just a change back to zero
+            // todo: find a more intuitive way..
+            if ((abs(ADCResult - ADCPeriodicReading) > ADC_WAKE_THRESHOLD) && (abs(ADCResult - ADCZeroReading) > ADC_WAKE_THRESHOLD))
             {
-                // Seems that we've been proddded to wake us
-                // initiate a proper weight reading
+                // Seems that we've been prodded to wake us
+                // Fill the display and pause for 1 second
+                DisplayData.Flags = LCD_FLAG_FILL;
+                LCDUpdate(&DisplayData);
+                _delay_ms(1000);
 
-                // Get a reading from the ADC, configured for low speed and
-                // averaging multiple readings for accuracy
-                int32_t ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
-                int32_t ADCDelta = ADCResult - ADCZeroReading;
+                // Get a more accurate reading from the ADC, configured for low speed and averaging multiple
+                // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
+                for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
+                {
+                    ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+                    if (abs(ADCResult - ADCLastResult) < ADC_STABLE_THRESHOLD)
+                        break;
+                    ADCLastResult = ADCResult;
+                }
+                ADCZeroReading = ADCResult;
+                Weight = 0;
 
-                // Calculate the weight in grams
-                Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
-
-                // Format and display the current weight
+                // Format and display the zero weight
                 PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
+                LCDUpdate(&DisplayData);
+                _delay_ms(2000);
+
+                // Get a more accurate reading from the ADC, configured for low speed and averaging multiple
+                // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
+                for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
+                {
+                    ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+
+                    // Calculate the weight in grams
+                    ADCDelta = ADCResult - ADCZeroReading;
+                    Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
+
+                    // Format and display the current weight
+                    PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
+                    LCDUpdate(&DisplayData);
+
+                    // If weight is stable AND above wakeup threshold (i.e. actually weighing something)
+                    if ((abs(ADCResult - ADCLastResult) < ADC_STABLE_THRESHOLD) && (abs(ADCResult - ADCZeroReading) > ADC_WAKE_THRESHOLD))
+                        break;
+
+                    ADCLastResult = ADCResult;
+                }
+
+                // Weight has settled, blink the display and pause for 5 seconds
+                PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
+                DisplayData.Flags |= LCD_FLAG_BLINK;
+                LCDUpdate(&DisplayData);
+                _delay_ms(5000);
+
+                // todo: upload weight data to network if not 0.0
+
+                // Blank the display
+                DisplayData.Flags = LCD_FLAG_BLANK;
                 LCDUpdate(&DisplayData);
             }
 
@@ -507,7 +554,7 @@ int main(void)
         }
 
         // Wait for a character from the host, and send back an ADC result
-        // fixme: does this block ???
+        // fixme: does this block if connected ???
         int16_t ReceivedByte = CDC_Device_ReceiveByte(&VirtualSerial_CDC_Interface);
 
         if (!(ReceivedByte < 0))
@@ -532,7 +579,7 @@ int main(void)
         CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
         USB_USBTask();
 
-        // Sleep if not USB connected, woken by watchdog interrupt?
+        // Sleep if not USB connected, woken each second by watchdog interrupt
         if (USB_DeviceState == DEVICE_STATE_Unattached)
             sleep_mode();
     }
