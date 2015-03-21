@@ -20,12 +20,15 @@
 // THE SOFTWARE.
 
 #include <avr/io.h>
-#include <avr/wdt.h>
+//#include <avr/wdt.h>
 #include <avr/power.h>
+#include <avr/sleep.h>
 #include <avr/interrupt.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
+#include "wd.h"
 #include "i2cmaster.h"
 #include "Descriptors.h"
 
@@ -39,7 +42,8 @@
 #define ADC_SPEED_LOW 0
 #define ADC_SPEED_HIGH 1
 
-#define ADC_COUNTS_PER_KG 140                                // Will move to EEPROM in due course
+#define ADC_COUNTS_PER_KG  140                              // Will move to EEPROM in due course
+#define ADC_WAKE_THRESHOLD 100                              // Difference in periodic readings that will start processing
 
 typedef enum {
     KILOS,

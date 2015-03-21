@@ -19,6 +19,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+//
+// Using alternate watchdog routines in wd.h to enable watchdog interrupt wakes
+//
+//
 // ADC
 //  ---
 // TI ADS1131
@@ -43,6 +47,7 @@
 // PD5 - output - ADC power control
 // PD6 - output - SPI serial clock
 // PD7 - input  - SPI data in (MISO)
+// PF7 - output - debug LED
 //
 
 #include "WeighFi.h"
@@ -80,6 +85,10 @@ USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
 // Standard file stream for the CDC interface when set up, so that the virtual CDC COM port can be
 // used like any regular character stream in the C APIs.
 static FILE USBSerialStream;
+
+ISR (WDT_vect)
+{
+}
 
 uint8_t LCDTranslateDigit(uint8_t ascii_char)
 {
@@ -307,13 +316,15 @@ void PortSetup(void)
     PORTD &= ~(1 << 5);                                     // Clear PD5 to ensure ADC is powered down
 
     DDRD |= (1 << 6);                                       // Configure PD6 as output for SPI SCK
+
+    DDRF |= (1 << 7);                                       // Configure PF7 as output for debug LED
 }
 
 void SetupHardware(void)
 {
     // Disable watchdog if enabled by bootloader/fuses
     MCUSR &= ~(1 << WDRF);
-    wdt_disable();
+    WD_DISABLE();
 
     // Disable clock division
     clock_prescale_set(clock_div_1);
@@ -323,6 +334,15 @@ void SetupHardware(void)
     USB_Init();
 
     PortSetup();
+
+    LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
+
+    WD_SET(WD_IRQ,WDTO_1S);                     // Setup Watchdog interrupt for 1 second interval
+
+    GlobalInterruptEnable();
+
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);        // Set POWER DOWN sleep mode
+
 }
 
 int32_t DivideAndRoundToClosest(const int32_t n, const int32_t d)
@@ -436,6 +456,7 @@ int main(void)
     DisplayUnits_t DisplayUnits = POUNDS;
     DisplayData_t DisplayData = {0};
 
+    int32_t ADCPeriodicReading = 0;
     int32_t ADCZeroReading;
     int32_t Weight;
 
@@ -444,17 +465,47 @@ int main(void)
     // Create a regular character stream for the interface so that it can be used with the stdio.h functions
     CDC_Device_CreateStream(&VirtualSerial_CDC_Interface, &USBSerialStream);
 
-    LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
-    GlobalInterruptEnable();
-
     DisplayData.Flags |= LCD_FLAG_FILL;
     DisplayData.Flags |= LCD_FLAG_BLINK;
     LCDUpdate(&DisplayData);
+    _delay_ms(3000);
 
-    ADCZeroReading = GetADCValue(ADC_SPEED_LOW, 3);
+    ADCZeroReading = ADCPeriodicReading = GetADCValue(ADC_SPEED_LOW, 3);
 
     while (1)
     {
+        PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+        if (USB_DeviceState == DEVICE_STATE_Unattached)
+        {
+            // Not connected to USB host (normal state of operation), so see
+            // whether we are being woken up for a measurement
+
+            // Perform a quick ADC reading for comparison
+            int32_t ADCResult = GetADCValue(ADC_SPEED_HIGH, 1);
+
+            if (abs(ADCResult - ADCPeriodicReading) > ADC_WAKE_THRESHOLD)
+            {
+                // Seems that we've been proddded to wake us
+                // initiate a proper weight reading
+
+                // Get a reading from the ADC, configured for low speed and
+                // averaging multiple readings for accuracy
+                int32_t ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+                int32_t ADCDelta = ADCResult - ADCZeroReading;
+
+                // Calculate the weight in grams
+                Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
+
+                // Format and display the current weight
+                PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
+                LCDUpdate(&DisplayData);
+            }
+
+            // Save current reading for next comparison
+            ADCPeriodicReading = ADCResult;
+        }
+
         // Wait for a character from the host, and send back an ADC result
         // fixme: does this block ???
         int16_t ReceivedByte = CDC_Device_ReceiveByte(&VirtualSerial_CDC_Interface);
@@ -473,13 +524,16 @@ int main(void)
             // Calculate the weight in grams
             Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
 
-            // Format the display data for the current weight and display options
+            // Format and display the current weight
             PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
-
             LCDUpdate(&DisplayData);
         }
 
         CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
         USB_USBTask();
+
+        // Sleep if not USB connected, woken by watchdog interrupt?
+        if (USB_DeviceState == DEVICE_STATE_Unattached)
+            sleep_mode();
     }
 }
