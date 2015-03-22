@@ -423,6 +423,81 @@ void PrepareDisplayData(int32_t Weight, DisplayUnits_t DisplayUnits, DisplayData
     }
 }
 
+int32_t WeighAndDisplay(void)
+{
+    DisplayUnits_t DisplayUnits = KILOS;
+    DisplayData_t DisplayData = {0};
+
+    int32_t Weight;
+    int32_t ADCResult;
+    int32_t ADCDelta;
+    int32_t ADCZeroReading;
+    int32_t ADCLastResult = 0;
+
+    // Fill the display and pause for 1 second
+    DisplayData.Flags = LCD_FLAG_FILL;
+    LCDUpdate(&DisplayData);
+    _delay_ms(1000);
+
+    // Get a more accurate reading from the ADC, configured for low speed and averaging multiple
+    // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
+    for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
+    {
+        ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+        if (abs(ADCResult - ADCLastResult) < ADC_STABLE_THRESHOLD)
+            break;
+        ADCLastResult = ADCResult;
+    }
+
+    // Only set a new zero reading if close enough to previous zero reading, else might be weighted already
+    // if (abs(ADCResult - ADCZeroReading) < ADC_WAKE_THRESHOLD)
+    //     ADCZeroReading = ADCResult;
+
+    ADCZeroReading = ADCResult;
+    Weight = 0;
+
+    // Format and display the zero weight
+    PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
+    LCDUpdate(&DisplayData);
+    _delay_ms(2000);
+
+    // Get a more accurate reading from the ADC, configured for low speed and averaging multiple
+    // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
+    // todo: probably ought to filter out negative weight values
+    for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
+    {
+        ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+
+        // Calculate the weight in grams
+        ADCDelta = ADCResult - ADCZeroReading;
+        Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
+
+        // Format and display the current weight
+        PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
+        LCDUpdate(&DisplayData);
+
+        // If weight is stable AND above wakeup threshold (i.e. actually weighing something)
+        if ((abs(ADCResult - ADCLastResult) < ADC_STABLE_THRESHOLD) && (abs(ADCResult - ADCZeroReading) > ADC_WAKE_THRESHOLD))
+            break;
+
+        ADCLastResult = ADCResult;
+    }
+
+    // Weight has settled, blink the display and pause for 5 seconds
+    PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
+    DisplayData.Flags |= LCD_FLAG_BLINK;
+    LCDUpdate(&DisplayData);
+    _delay_ms(5000);
+
+    // todo: upload weight data to network if not 0.0
+
+    // Blank the display
+    DisplayData.Flags = LCD_FLAG_BLANK;
+    LCDUpdate(&DisplayData);
+
+    return(Weight);
+}
+
 // Event handler for the library USB Connection event.
 void EVENT_USB_Device_Connect(void)
 {
@@ -453,17 +528,13 @@ void EVENT_USB_Device_ControlRequest(void)
 
 int main(void)
 {
-    DisplayUnits_t DisplayUnits = KILOS;
     SystemState_t SystemState = IDLE;
-    DisplayData_t DisplayData = {0};
 
-    int32_t ADCPeriodicReading = 0;
-    int32_t ADCZeroReading;
+    //int32_t ADCZeroReading;
     int32_t Weight;
-    int32_t ADCDelta;
     int32_t ADCResult = 0;
-    int32_t ADCLastResult = 0;
     int32_t ADCInitialResult;
+    int32_t ADCLastResult;
 
     SetupHardware();
 
@@ -471,11 +542,11 @@ int main(void)
     CDC_Device_CreateStream(&VirtualSerial_CDC_Interface, &USBSerialStream);
 
     // Blank the LCD display
-    DisplayData.Flags = LCD_FLAG_BLANK;
-    LCDUpdate(&DisplayData);
+    //DisplayData.Flags = LCD_FLAG_BLANK;
+    //LCDUpdate(&DisplayData);
 
     // Get a one off reading to populate the variables before fist use..
-    ADCInitialResult = ADCZeroReading = ADCPeriodicReading = GetADCValue(ADC_SPEED_HIGH, 1);
+    ADCInitialResult = ADCLastResult = GetADCValue(ADC_SPEED_HIGH, 1);
 
     while (1)
     {
@@ -492,81 +563,27 @@ int main(void)
             // If we have previously been weighing, don't start again until weight removed from scales.
             // Using the 'initial' zero value in case the 'accurate' zero was set incorrectly due to
             // already weighted scales (which would make it difficult to change back to idle state).
-            if ((SystemState == WEIGHING) && (abs(ADCResult - ADCInitialResult) < ADC_WAKE_THRESHOLD))
+            if ((SystemState == WEIGHING) && (abs(ADCResult - ADCLastResult) < ADC_WAKE_THRESHOLD))
             {
-                ADCPeriodicReading = ADCResult;
+                ADCLastResult = ADCResult;
                 SystemState = IDLE;
             }
 
-            if ((abs(ADCResult - ADCPeriodicReading) > ADC_WAKE_THRESHOLD) && (SystemState == IDLE))
+            if ((abs(ADCResult - ADCLastResult) > ADC_WAKE_THRESHOLD) && (SystemState == IDLE))
             {
                 // Seems that we've been prodded to wake us
                 SystemState = WEIGHING;
 
-                // Fill the display and pause for 1 second
-                DisplayData.Flags = LCD_FLAG_FILL;
-                LCDUpdate(&DisplayData);
-                _delay_ms(1000);
-
-                // Get a more accurate reading from the ADC, configured for low speed and averaging multiple
-                // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
-                for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
-                {
-                    ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
-                    if (abs(ADCResult - ADCLastResult) < ADC_STABLE_THRESHOLD)
-                        break;
-                    ADCLastResult = ADCResult;
-                }
-
-                // Only set a new zero reading if close enough to previous zero reading, else might be weighted already
-                // if (abs(ADCResult - ADCZeroReading) < ADC_WAKE_THRESHOLD)
-                //     ADCZeroReading = ADCResult;
-
-                ADCZeroReading = ADCResult;
-                Weight = 0;
-
-                // Format and display the zero weight
-                PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
-                LCDUpdate(&DisplayData);
-                _delay_ms(2000);
-
-                // Get a more accurate reading from the ADC, configured for low speed and averaging multiple
-                // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
-                // todo: probably ought to filter out negative weight values
-                for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
-                {
-                    ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
-
-                    // Calculate the weight in grams
-                    ADCDelta = ADCResult - ADCZeroReading;
-                    Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
-
-                    // Format and display the current weight
-                    PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
-                    LCDUpdate(&DisplayData);
-
-                    // If weight is stable AND above wakeup threshold (i.e. actually weighing something)
-                    if ((abs(ADCResult - ADCLastResult) < ADC_STABLE_THRESHOLD) && (abs(ADCResult - ADCZeroReading) > ADC_WAKE_THRESHOLD))
-                        break;
-
-                    ADCLastResult = ADCResult;
-                }
-
-                // Weight has settled, blink the display and pause for 5 seconds
-                PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
-                DisplayData.Flags |= LCD_FLAG_BLINK;
-                LCDUpdate(&DisplayData);
-                _delay_ms(5000);
-
-                // todo: upload weight data to network if not 0.0
-
-                // Blank the display
-                DisplayData.Flags = LCD_FLAG_BLANK;
-                LCDUpdate(&DisplayData);
+                Weight = WeighAndDisplay();
             }
 
             // Save current reading for next comparison
-            ADCPeriodicReading = ADCResult;
+            // ADCLastResult = ADCResult;
+
+            // Only set a new zero reading if close enough to previous zero reading, else might be weighted already
+            if (abs(ADCResult - ADCLastResult) < ADC_WAKE_THRESHOLD)
+                ADCLastResult = ADCResult;
+
         }
 
         // Wait for a character from the host, and send back an ADC result
@@ -578,18 +595,22 @@ int main(void)
             // Get a reading from the ADC, configured for low speed and
             // averaging multiple readings for accuracy
             int32_t ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
-            int32_t ADCDelta = ADCResult - ADCZeroReading;
+            //int32_t ADCDelta = ADCResult - ADCZeroReading;
+
+            // Write the raw ADC value to USB output if connected
+            if (USB_DeviceState == DEVICE_STATE_Configured)
+                fprintf(&USBSerialStream, "%ld\n\r", ADCResult);
 
             // Write the raw ADC difference to USB output if connected
-            if (USB_DeviceState == DEVICE_STATE_Configured)
-                fprintf(&USBSerialStream, "%ld\n\r", ADCDelta);
+            //if (USB_DeviceState == DEVICE_STATE_Configured)
+            //    fprintf(&USBSerialStream, "%ld\n\r", ADCDelta);
 
             // Calculate the weight in grams
-            Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
+            //Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
 
             // Format and display the current weight
-            PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
-            LCDUpdate(&DisplayData);
+            //PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
+            //LCDUpdate(&DisplayData);
         }
 
         CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
