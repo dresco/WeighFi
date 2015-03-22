@@ -567,6 +567,12 @@ int main(void)
     {
         PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
+        //
+        // Note that the weighing and displaying process is synchronous (and slow).
+        // This would cause problems for any active USB connection, as our LUFA
+        // implementation is polling, so we can't block in the main program loop.
+        // todo: move LUFA processing to timer interrupts?
+        //
         if (USB_DeviceState == DEVICE_STATE_Unattached)
         {
             // Not connected to USB host (normal state of operation), so see
