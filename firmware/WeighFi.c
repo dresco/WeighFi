@@ -41,6 +41,7 @@
 //
 // Pin assignments
 // ---------------
+// PB0 - output - LCD enable
 // PD0 -        - I2C clock
 // PD1 -        - I2C data
 // PD4 - output - ADC speed control
@@ -152,11 +153,16 @@ void LCDEnable(uint8_t enable)
 {
     if (enable)
     {
-        // todo: power up LCD supply, wait 1ms before transferring data..
+        // Clear PB0 to power up the LCD supply
+        PORTB &= ~(1 << 0);
+
+        // Wait 1ms before transferring data..
+        _delay_ms(1);
     }
     else
     {
-        // todo: power down LCD supply
+        // Set PB0 to power down the LCD
+        PORTB |= (1 << 0);
     }
 }
 
@@ -309,6 +315,9 @@ int32_t GetADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
 
 void PortSetup(void)
 {
+    DDRB |= (1 << 0);                                       // Configure PB0 as output for LCD power supply
+    PORTB |= (1 << 0);                                      // Set PB0 to ensure LCD is powered down
+
     DDRD |= (1 << 4);                                       // Configure PD4 as output to control the ADC speed
     PORTD |= (1 << 4);                                      // Set PD4 for 80 samples per second
 
@@ -434,6 +443,9 @@ int32_t WeighAndDisplay(void)
     int32_t ADCZeroReading;
     int32_t ADCLastResult = 0;
 
+    // Power up the LCD
+    LCDEnable(1);
+
     // Fill the display and pause for 1 second
     DisplayData.Flags = LCD_FLAG_FILL;
     LCDUpdate(&DisplayData);
@@ -492,8 +504,11 @@ int32_t WeighAndDisplay(void)
     // todo: upload weight data to network if not 0.0
 
     // Blank the display
-    DisplayData.Flags = LCD_FLAG_BLANK;
-    LCDUpdate(&DisplayData);
+    //DisplayData.Flags = LCD_FLAG_BLANK;
+    //LCDUpdate(&DisplayData);
+
+    // Power down the LCD
+    LCDEnable(0);
 
     return(Weight);
 }
