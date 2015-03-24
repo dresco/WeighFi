@@ -576,6 +576,7 @@ void EVENT_USB_Device_ControlRequest(void)
 int main(void)
 {
     SystemState_t SystemState = IDLE;
+    EEPROMData_t  EEPROMData = {0};
 
     //int32_t ADCZeroReading;
     int32_t Weight;
@@ -584,6 +585,15 @@ int main(void)
     int32_t ADCLastResult;
 
     SetupHardware();
+
+    // one-off update of set some EEPROM defaults
+    //EEPROMData.SRAM_VersionMajor = 1;
+    //EEPROMData.SRAM_VersionMinor = 0;
+    //EEPROMData.SRAM_Calibration = 140;
+    //UpdateEEPROMData(&EEPROMData);
+
+    // Get default settings from EEPROM
+    FetchEEPROMData(&EEPROMData);
 
     // Create a regular character stream for the interface so that it can be used with the stdio.h functions
     CDC_Device_CreateStream(&VirtualSerial_CDC_Interface, &USBSerialStream);
@@ -645,6 +655,22 @@ int main(void)
 
         if (!(ReceivedByte < 0))
         {
+            // Debug dump of EEPROM settings to USB output
+            if (USB_DeviceState == DEVICE_STATE_Configured)
+            {
+                fprintf(&USBSerialStream, "Version Major: %d\n\r", EEPROMData.SRAM_VersionMajor);
+                fprintf(&USBSerialStream, "Version Minor: %d\n\r", EEPROMData.SRAM_VersionMinor);
+                fprintf(&USBSerialStream, "Calibration  : %d\n\r", EEPROMData.SRAM_Calibration);
+                fprintf(&USBSerialStream, "Site ID      : %s\n\r", EEPROMData.SRAM_SiteID);
+                fprintf(&USBSerialStream, "Site Key     : %s\n\r", EEPROMData.SRAM_SiteKey);
+                fprintf(&USBSerialStream, "Device ID    : %s\n\r", EEPROMData.SRAM_DeviceID);
+                fprintf(&USBSerialStream, "Network      : %s\n\r", EEPROMData.SRAM_WiFi_SSID);
+                fprintf(&USBSerialStream, "Passphrase   : %s\n\r", EEPROMData.SRAM_WiFi_PASS);
+            }
+
+
+            // todo: add a simple terminal interface to manage EEPROM configuration data
+
             // Get a reading from the ADC, configured for low speed and
             // averaging multiple readings for accuracy
             int32_t ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
