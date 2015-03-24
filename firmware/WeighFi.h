@@ -31,6 +31,7 @@
 
 #include "wd.h"
 #include "i2cmaster.h"
+#include "uart.h"
 #include "Descriptors.h"
 
 #include <LUFA/Drivers/Board/LEDs.h>
@@ -120,6 +121,8 @@ typedef struct EEPROMData
 #define LCD_CHAR_LB    0b00100000
 #define LCD_CHAR_ST    0b01000000
 #define LCD_CHAR_MINUS 0b00100000
+
+#define UART_BAUD_RATE 115200                               // Maybe dodgy with a 16MHz clock?
 
 // LUFA LED support macros
 #define LEDMASK_USB_NOTREADY     LEDS_LED1                  // Interface not ready

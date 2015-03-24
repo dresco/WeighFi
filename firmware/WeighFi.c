@@ -24,7 +24,7 @@
 //
 //
 // ADC
-//  ---
+// ---
 // TI ADS1131
 //  - 18-bit delta sigma ADC
 //
@@ -32,12 +32,19 @@
 // ADC uses MISO to signify conversion data is ready, as well as for data..
 //
 // LCD
-// --
+// ---
 // NXP PCF8566 LCD driver IC
 //  - 1:4 multiplex mode, 1/3 bias configuration
 //  - 4 backplane lines, 9 segment lines
 //
 // Using the Peter Fleury I2C library
+//
+// WIFI
+// ----
+//
+// Using an ESP8266 wireless module, connected to UART0
+//
+// Using the Peter Fleury uart library
 //
 // Pin assignments
 // ---------------
@@ -594,6 +601,10 @@ int main(void)
 
     // Get default settings from EEPROM
     FetchEEPROMData(&EEPROMData);
+
+    // Initialise the serial library
+    // todo: port to LUFA serial library
+    uart_init(UART_BAUD_SELECT(UART_BAUD_RATE,F_CPU));
 
     // Create a regular character stream for the interface so that it can be used with the stdio.h functions
     CDC_Device_CreateStream(&VirtualSerial_CDC_Interface, &USBSerialStream);
