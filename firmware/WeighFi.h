@@ -123,6 +123,20 @@ typedef struct EEPROMData
 #define LCD_CHAR_MINUS 0b00100000
 
 #define UART_BAUD_RATE 115200                               // Maybe dodgy with a 16MHz clock?
+#define NETWORK_BUFLEN 80
+volatile uint16_t      g_ms;                                // Free running millisecond counter
+
+typedef enum {
+    INIT,
+    READY,
+    OKAY,
+    ONLINE,
+    CONNECTING,
+    CONNECTED,
+    DISCONNECTING,
+    DISCONNECTED,
+    DONE,
+    ERROR} WLANState_t;
 
 // LUFA LED support macros
 #define LEDMASK_USB_NOTREADY     LEDS_LED1                  // Interface not ready

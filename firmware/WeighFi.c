@@ -51,10 +51,13 @@
 // PB0 - output - LCD enable
 // PD0 -        - I2C clock
 // PD1 -        - I2C data
+// PD2 -        - UART
+// PD3 -        - UART
 // PD4 - output - ADC speed control
 // PD5 - output - ADC power control
 // PD6 - output - SPI serial clock
 // PD7 - input  - SPI data in (MISO)
+// PF0 - output - WLAN module enable
 // PF7 - output - debug LED
 //
 
@@ -96,6 +99,527 @@ static FILE USBSerialStream;
 
 ISR (WDT_vect)
 {
+}
+
+ISR(TIMER1_COMPA_vect)
+{
+    g_ms++;
+}
+
+unsigned int GetMilliSeconds(void)
+{
+    return g_ms;
+}
+
+int UART_ReceiveLine(unsigned char * buffer, unsigned int length, unsigned int timeout)
+{
+    // Try to read a line from the UART, ending with an ASCII newline character
+
+    unsigned int c;
+    unsigned char bufpos = 0;
+    unsigned int start = GetMilliSeconds();
+
+    while (GetMilliSeconds() - start < timeout)
+    {
+        // Get received character from ringbuffer
+        // uart_getc() returns in the lower byte the received character and
+        // in the higher byte (bitmask) the last receive error
+        // UART_NO_DATA is returned when no data is available.
+        c = uart_getc();
+
+        if ( c & UART_NO_DATA )
+        {
+            // no data available from UART
+        }
+        else
+        {
+            // new data available from UART
+            // check for Frame or Overrun error
+            if ( c & UART_FRAME_ERROR )
+            {
+                // Framing Error detected, i.e no stop bit detected
+
+                //uart_puts("UART Frame Error: ");
+            }
+            if ( c & UART_OVERRUN_ERROR )
+            {
+                // Overrun, a character already present in the UART UDR register was
+                // not read by the interrupt handler before the next character arrived,
+                // one or more received characters have been dropped
+
+                //uart_puts("UART Overrun Error: ");
+            }
+            if ( c & UART_BUFFER_OVERFLOW )
+            {
+                // We are not reading the receive buffer fast enough,
+                // one or more received character have been dropped
+
+                //uart_puts("Buffer overflow error: ");
+            }
+
+            // Add received character to local buffer if not full
+            if (bufpos < length)
+            {
+                buffer[bufpos++] = (unsigned char)c;
+                if (bufpos == length)
+                {
+                    // null terminate the final character
+                    // in case we try to read as a string later
+                    buffer[bufpos] = 0x00;
+                }
+            }
+
+            // If received new line ASCII char
+            if ((unsigned char)c == 0x0A)
+            {
+                // write no. of chars in buffer
+                //uart_putc(bufpos);
+
+                // if buffer is not already full, add a null  terminator
+                // in case we try to read as a string later
+                if (bufpos < length)
+                {
+                    buffer[bufpos+1] = 0x00;
+                }
+
+                return(bufpos);
+            }
+        }
+    }
+    return 0;
+}
+
+int UART_ReceiveDataPrompt(unsigned char * buffer, unsigned int length, unsigned int timeout)
+{
+    // Try to read a line from the UART, ending with an ASCII newline character
+
+    unsigned int c;
+    unsigned char bufpos = 0;
+    unsigned int start = GetMilliSeconds();
+
+    while (GetMilliSeconds() - start < timeout)
+    {
+        // Get received character from ringbuffer
+        // uart_getc() returns in the lower byte the received character and
+        // in the higher byte (bitmask) the last receive error
+        // UART_NO_DATA is returned when no data is available.
+        c = uart_getc();
+
+        if ( c & UART_NO_DATA )
+        {
+            // no data available from UART
+        }
+        else
+        {
+            // new data available from UART
+            // check for Frame or Overrun error
+            if ( c & UART_FRAME_ERROR )
+            {
+                // Framing Error detected, i.e no stop bit detected
+
+                //uart_puts("UART Frame Error: ");
+            }
+            if ( c & UART_OVERRUN_ERROR )
+            {
+                // Overrun, a character already present in the UART UDR register was
+                // not read by the interrupt handler before the next character arrived,
+                // one or more received characters have been dropped
+
+                //uart_puts("UART Overrun Error: ");
+            }
+            if ( c & UART_BUFFER_OVERFLOW )
+            {
+                // We are not reading the receive buffer fast enough,
+                // one or more received character have been dropped
+
+                //uart_puts("Buffer overflow error: ");
+            }
+
+            // Add received character to local buffer if not full
+            if (bufpos < length)
+            {
+                buffer[bufpos++] = (unsigned char)c;
+                if (bufpos == length)
+                {
+                    // null terminate the final character
+                    // in case we try to read as a string later
+                    buffer[bufpos] = 0x00;
+                }
+            }
+
+            // If received data prompt
+            if ((buffer[0] == '>') && buffer[1] == ' ')
+            {
+                // write no. of chars in buffer
+                //uart_putc(bufpos);
+
+                // if buffer is not already full, add a null  terminator
+                // in case we try to read as a string later
+                if (bufpos < length)
+                {
+                    buffer[bufpos+1] = 0x00;
+                }
+
+                return(bufpos);
+            }
+        }
+    }
+    return 0;
+}
+
+
+int UART_ReceiveChar(unsigned char * character, unsigned int timeout)
+{
+    // Try to read a single character from the UART
+
+    unsigned int c;
+    unsigned int start = GetMilliSeconds();
+
+    while (GetMilliSeconds() - start < timeout)
+    {
+        // Get received character from ringbuffer
+        // uart_getc() returns in the lower byte the received character and
+        // in the higher byte (bitmask) the last receive error
+        // UART_NO_DATA is returned when no data is available.
+        c = uart_getc();
+
+        if ( c & UART_NO_DATA )
+        {
+            // no data available from UART
+        }
+        else
+        {
+            // new data available from UART
+            // check for Frame or Overrun error
+            if ( c & UART_FRAME_ERROR )
+            {
+                // Framing Error detected, i.e no stop bit detected
+
+                //uart_puts("UART Frame Error: ");
+            }
+            if ( c & UART_OVERRUN_ERROR )
+            {
+                // Overrun, a character already present in the UART UDR register was
+                // not read by the interrupt handler before the next character arrived,
+                // one or more received characters have been dropped
+
+                //uart_puts("UART Overrun Error: ");
+            }
+            if ( c & UART_BUFFER_OVERFLOW )
+            {
+                // We are not reading the receive buffer fast enough,
+                // one or more received character have been dropped
+
+                //uart_puts("Buffer overflow error: ");
+            }
+
+            // Return received character
+            character[0] = (unsigned char)c;
+            return 1;
+        }
+    }
+    return 0;
+}
+
+void TimerSetup(void)
+{
+    TCCR1B |= (1 << WGM12);                     // Configure 16bit timer1 for CTC mode 4
+    TIMSK1 |= (1 << OCIE1A);                    // Enable CTC interrupt
+    OCR1A = 250;                                // Set output compare value
+    TCCR1B |= (1 << CS10);                      // Start timer with x64 prescaler for a 1MHz timer
+}
+
+void WLANEnable(int enable)
+{
+    if (enable)
+        PORTF |= (1 << 0);                      // Set F0 to enable WLAN module
+    else
+        PORTF &= ~(1 << 0);                     // Clear F0 to disable WLAN module
+}
+
+void WLANTransmit(int32_t Weight)
+{
+    WLANState_t state = INIT;
+
+    unsigned char buff[NETWORK_BUFLEN];
+    unsigned int start;
+
+    char wlan_tx_data[8];
+    char wlan_tx_data_len[8];
+
+    itoa(Weight, wlan_tx_data, 10);
+    itoa(strlen(wlan_tx_data), wlan_tx_data_len, 10);
+
+    while (1)
+    {
+
+        switch (state) {
+
+            case INIT:
+
+                // Turn on the wireless module
+                WLANEnable(1);
+
+                // Wait for the ready prompt
+                // max wait of 3 seconds before error
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        if (strstr((char*)buff, "ready"))
+                        {
+                            state = READY;
+                            break;                          // note: breaks out of while loop only
+                        }
+                    }
+                }
+
+                // If we got here without setting the state to READY, then error.
+                if (state != READY)
+                    state = ERROR;
+
+                break;
+
+            case READY:
+                uart_puts("AT\r\n");
+
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        if (strstr((char*)buff, "OK"))
+                        {
+                            state = OKAY;
+                            break;
+                        }
+                    }
+                }
+
+                // If we got here without setting the state to ONLINE, then error.
+                if (state != OKAY)
+                    state = ERROR;
+
+
+                break;
+
+            case OKAY:
+
+#ifdef ONETIME
+                // client mode
+                uart_puts("AT+CWMODE=1\r\n");
+                start = MilliSeconds();
+                while (MilliSeconds() - start < 3000)
+                {
+                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                    }
+                }
+
+                // join ssid
+                uart_puts("AT+CWJAP=\"SSID\",\"PASSWORD\"\r\n");
+                start = MilliSeconds();
+                while (MilliSeconds() - start < 3000)
+                {
+                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                    }
+                }
+
+                // reset
+                uart_puts("AT+RST\r\n");
+                start = MilliSeconds();
+                while (MilliSeconds() - start < 3000)
+                {
+                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                    }
+                }
+
+                state = ERROR;
+                break;
+#endif
+
+
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 5000)
+                {
+                    uart_puts("AT+CIFSR\r\n");
+
+                    // have to read multiple lines for address
+                    for (int i = 0; i < 3 ; i++)
+                    {
+                        if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                        {
+
+                            PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                            // Things we might get back..
+                            //
+                            // ERROR
+                            // Error
+                            // busy now ...
+                            // <ip addr>
+                            //
+                            // Just looking for a dot in the IP address for now - but watch out for "busy now ..."
+
+                            if (strstr((char*)buff, "."))
+                            {
+                                if (!strstr((char*)buff, "busy"))
+                                {
+                                    state = ONLINE;
+                                    break;                      // note: breaks out of for loop only
+                                }
+                            }
+                        }
+                    }
+
+                    if (state == ONLINE)
+                        break;          // note: break out of while loop
+
+                    _delay_ms(200);
+                }
+
+                // If we got here without setting the state to ONLINE, then error.
+                if (state != ONLINE)
+                    state = ERROR;
+                break;
+
+            case ONLINE:
+
+                // Try to establish a TCP connection to server
+                uart_puts("AT+CIPSTART=\"TCP\",\"192.168.100.20\",80\r\n");
+
+                // max wait of 3 seconds before error
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        if (strstr((char*)buff, "Linked"))
+                        {
+                            state = CONNECTED;
+                            break;                          // note: breaks out of while loop only
+                        }
+                    }
+                }
+
+                // If we got here without setting the state to CONNECTED, then error.
+                if (state != CONNECTED)
+                    state = ERROR;
+
+                break;
+
+            case CONNECTING:    // not using yet
+                break;
+
+            case CONNECTED:
+
+                // prepare to send some data
+                uart_puts("AT+CIPSEND=");
+                uart_puts(wlan_tx_data_len);
+                uart_puts("\r\n");
+
+                // max wait of 3 seconds before error
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        if (strstr((char*)buff, "AT+CIPSEND"))
+                        {
+                            // send command echoed back, next data should
+                            // be "> " with no new line termination
+                            if (UART_ReceiveDataPrompt(buff, NETWORK_BUFLEN, 100))
+                            {
+                                uart_puts(wlan_tx_data);
+
+                                // max wait of 3 seconds before error
+                                start = GetMilliSeconds();
+                                while (GetMilliSeconds() - start < 3000)
+                                {
+                                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                                    {
+                                        if (strstr((char*)buff, "SEND OK"))
+                                        {
+                                            break;                          // note: breaks out of while loop only
+                                        }
+                                    }
+                                }
+                                break;                          // note: breaks out of while loop only
+                            }
+                        }
+                    }
+                }
+
+                state = DISCONNECTING;
+                break;
+
+            case DISCONNECTING:
+
+                // Close TCP connection
+                uart_puts("AT+CIPCLOSE\r\n");
+
+                // max wait of 3 seconds before error
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        if (strstr((char*)buff, "Unlink"))  // note: sometimes see "Linked" instead?
+                        {
+                            state = DISCONNECTED;
+                            break;                          // note: breaks out of while loop only
+                        }
+                    }
+                }
+
+                // If we got here without setting the state to CONNECTED, then error.
+                if (state != DISCONNECTED)
+                    state = ERROR;
+
+                break;
+
+            case DISCONNECTED:
+                state = DONE;
+                break;
+
+            case DONE:
+                // Turn off wireless module
+                WLANEnable(0);
+                _delay_ms(5000);
+
+                state = INIT;
+                break;
+
+            case ERROR:
+                WLANEnable(0); // do nothing further
+                break;
+
+            default:
+                break;
+
+        }
+    }
 }
 
 uint8_t LCDTranslateDigit(uint8_t ascii_char)
@@ -333,6 +857,8 @@ void PortSetup(void)
 
     DDRD |= (1 << 6);                                       // Configure PD6 as output for SPI SCK
 
+    DDRF |= (1 << 0);                                       // Configure PF0 as output to enable WLAN module
+
     DDRF |= (1 << 7);                                       // Configure PF7 as output for debug LED
 }
 
@@ -509,6 +1035,7 @@ int32_t WeighAndDisplay(void)
     _delay_ms(5000);
 
     // todo: upload weight data to network if not 0.0
+    WLANTransmit(Weight);
 
     // Blank the display
     //DisplayData.Flags = LCD_FLAG_BLANK;
