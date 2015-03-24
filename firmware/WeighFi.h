@@ -70,26 +70,29 @@ typedef struct DisplayData
     uint8_t Flags;
 } DisplayData_t;
 
+// Let GCC allocate the EEPROM offsets for us..
+uint8_t EEMEM EEPROM_VersionMajor  = 1;
+uint8_t EEMEM EEPROM_VersionMinor  = 0;
+uint8_t EEMEM EEPROM_Calibration   = 140;
+uint8_t EEMEM EEPROM_SiteID[36]    = "1000";
+uint8_t EEMEM EEPROM_SiteKey[36]   = "12345678";
+uint8_t EEMEM EEPROM_DeviceID[36]  = "1010";
+uint8_t EEMEM EEPROM_Reserved[36];
+uint8_t EEMEM EEPROM_WiFi_SSID[32] = "SSID";
+uint8_t EEMEM EEPROM_WiFi_PASS[64] = "PASSWORD";
+
 typedef struct EEPROMData
 {
-    uint16_t    VersionMajor;
-    uint16_t    VersionMinor;
-    uint8_t     SiteID[36];
-    uint8_t     SiteKey[36];
-    uint8_t     DeviceID[36];
-    uint8_t     Reserved[36];
-    uint8_t     WiFi_SSID[32];
-    uint8_t     WiFi_PASS[64];
+    uint8_t SRAM_VersionMajor;
+    uint8_t SRAM_VersionMinor;
+    uint8_t SRAM_Calibration;
+    uint8_t SRAM_SiteID[36];
+    uint8_t SRAM_SiteKey[36];
+    uint8_t SRAM_DeviceID[36];
+    uint8_t SRAM_Reserved[36];
+    uint8_t SRAM_WiFi_SSID[32];
+    uint8_t SRAM_WiFi_PASS[64];
 } EEPROMData_t;
-
-#define EEPROM_OFFSET_VERSION_MAJOR 0x00
-#define EEPROM_OFFSET_VERSION_MINOR 0x02
-#define EEPROM_OFFSET_SITE_ID       0x04
-#define EEPROM_OFFSET_SITE_KEY      0x28
-#define EEPROM_OFFSET_DEVICE_ID     0x4C
-#define EEPROM_OFFSET_RESERVED      0x70
-#define EEPROM_OFFSET_WIFI_SSID     0x94
-#define EEPROM_OFFSET_WIFI_PASS     0xB4
 
 #define LCD_FLAG_KG    0b00000001
 #define LCD_FLAG_LB    0b00000010

@@ -515,30 +515,34 @@ int32_t WeighAndDisplay(void)
 
 void FetchEEPROMData(EEPROMData_t *EEPROMData)
 {
-    EEPROMData->VersionMajor = eeprom_read_word((uint16_t *) EEPROM_OFFSET_VERSION_MAJOR);
-    EEPROMData->VersionMinor = eeprom_read_word((uint16_t *) EEPROM_OFFSET_VERSION_MINOR);
+    EEPROMData->SRAM_VersionMajor = eeprom_read_byte(&EEPROM_VersionMajor);
+    EEPROMData->SRAM_VersionMinor = eeprom_read_byte(&EEPROM_VersionMinor);
 
-    eeprom_read_block((void*)EEPROMData->SiteID, (const void *)EEPROM_OFFSET_SITE_ID, 36);
-    eeprom_read_block((void*)EEPROMData->SiteKey, (const void *)EEPROM_OFFSET_SITE_KEY, 36);
-    eeprom_read_block((void*)EEPROMData->DeviceID, (const void *)EEPROM_OFFSET_DEVICE_ID, 36);
-    eeprom_read_block((void*)EEPROMData->Reserved, (const void *)EEPROM_OFFSET_RESERVED, 36);
+    EEPROMData->SRAM_Calibration = eeprom_read_byte(&EEPROM_Calibration);
 
-    eeprom_read_block((void*)EEPROMData->WiFi_SSID, (const void *)EEPROM_OFFSET_WIFI_SSID, 32);
-    eeprom_read_block((void*)EEPROMData->WiFi_PASS, (const void *)EEPROM_OFFSET_WIFI_PASS, 64);
+    eeprom_read_block((void*)EEPROMData->SRAM_SiteID, (const void *)EEPROM_SiteID, 36);
+    eeprom_read_block((void*)EEPROMData->SRAM_SiteKey, (const void *)EEPROM_SiteKey, 36);
+    eeprom_read_block((void*)EEPROMData->SRAM_DeviceID, (const void *)EEPROM_DeviceID, 36);
+    eeprom_read_block((void*)EEPROMData->SRAM_Reserved, (const void *)EEPROM_Reserved, 36);
+
+    eeprom_read_block((void*)EEPROMData->SRAM_WiFi_SSID, (const void *)EEPROM_WiFi_SSID, 32);
+    eeprom_read_block((void*)EEPROMData->SRAM_WiFi_PASS, (const void *)EEPROM_WiFi_PASS, 64);
 }
 
 void UpdateEEPROMData(EEPROMData_t *EEPROMData)
 {
-    eeprom_update_word((uint16_t *) EEPROM_OFFSET_VERSION_MAJOR, EEPROMData->VersionMajor);
-    eeprom_update_word((uint16_t *) EEPROM_OFFSET_VERSION_MINOR, EEPROMData->VersionMinor);
+    eeprom_update_byte(&EEPROM_VersionMajor, EEPROMData->SRAM_VersionMajor);
+    eeprom_update_byte(&EEPROM_VersionMinor, EEPROMData->SRAM_VersionMinor);
 
-    eeprom_update_block((const void *)EEPROMData->SiteID, (void *)EEPROM_OFFSET_SITE_ID, 36);
-    eeprom_update_block((const void *)EEPROMData->SiteKey, (void *)EEPROM_OFFSET_SITE_KEY, 36);
-    eeprom_update_block((const void *)EEPROMData->DeviceID, (void *)EEPROM_OFFSET_DEVICE_ID, 36);
-    eeprom_update_block((const void *)EEPROMData->Reserved, (void *)EEPROM_OFFSET_RESERVED, 36);
+    eeprom_update_byte(&EEPROM_Calibration, EEPROMData->SRAM_Calibration);
 
-    eeprom_update_block((const void *)EEPROMData->WiFi_SSID, (void *)EEPROM_OFFSET_WIFI_SSID, 32);
-    eeprom_update_block((const void *)EEPROMData->WiFi_PASS, (void *)EEPROM_OFFSET_WIFI_PASS, 64);
+    eeprom_update_block((const void *)EEPROMData->SRAM_SiteID, (void *)EEPROM_SiteID, 36);
+    eeprom_update_block((const void *)EEPROMData->SRAM_SiteKey, (void *)EEPROM_SiteKey, 36);
+    eeprom_update_block((const void *)EEPROMData->SRAM_DeviceID, (void *)EEPROM_DeviceID, 36);
+    eeprom_update_block((const void *)EEPROMData->SRAM_Reserved, (void *)EEPROM_Reserved, 36);
+
+    eeprom_update_block((const void *)EEPROMData->SRAM_WiFi_SSID, (void *)EEPROM_WiFi_SSID, 32);
+    eeprom_update_block((const void *)EEPROMData->SRAM_WiFi_PASS, (void *)EEPROM_WiFi_PASS, 64);
 }
 
 // Event handler for the library USB Connection event.
