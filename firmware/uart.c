@@ -159,6 +159,15 @@ LICENSE:
  #define UART0_CONTROL  UCSR0B
  #define UART0_DATA     UDR0
  #define UART0_UDRIE    UDRIE0
+#elif  defined(__AVR_ATmega32U4__)
+ /* ATmega32u4 with one USART */
+ #define ATMEGA_USART_U4
+ #define UART0_RECEIVE_INTERRUPT   USART1_RX_vect
+ #define UART0_TRANSMIT_INTERRUPT  USART1_UDRE_vect
+ #define UART0_STATUS   UCSR1A
+ #define UART0_CONTROL  UCSR1B
+ #define UART0_DATA     UDR1
+ #define UART0_UDRIE    UDRIE1
 #elif defined(__AVR_ATtiny2313__) 
  #define ATMEGA_USART
  #define UART0_RECEIVE_INTERRUPT   USART_RX_vect
