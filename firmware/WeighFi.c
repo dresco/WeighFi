@@ -513,6 +513,34 @@ int32_t WeighAndDisplay(void)
     return(Weight);
 }
 
+void FetchEEPROMData(EEPROMData_t *EEPROMData)
+{
+    EEPROMData->VersionMajor = eeprom_read_word((uint16_t *) EEPROM_OFFSET_VERSION_MAJOR);
+    EEPROMData->VersionMinor = eeprom_read_word((uint16_t *) EEPROM_OFFSET_VERSION_MINOR);
+
+    eeprom_read_block((void*)EEPROMData->SiteID, (const void *)EEPROM_OFFSET_SITE_ID, 36);
+    eeprom_read_block((void*)EEPROMData->SiteKey, (const void *)EEPROM_OFFSET_SITE_KEY, 36);
+    eeprom_read_block((void*)EEPROMData->DeviceID, (const void *)EEPROM_OFFSET_DEVICE_ID, 36);
+    eeprom_read_block((void*)EEPROMData->Reserved, (const void *)EEPROM_OFFSET_RESERVED, 36);
+
+    eeprom_read_block((void*)EEPROMData->WiFi_SSID, (const void *)EEPROM_OFFSET_WIFI_SSID, 32);
+    eeprom_read_block((void*)EEPROMData->WiFi_PASS, (const void *)EEPROM_OFFSET_WIFI_PASS, 64);
+}
+
+void UpdateEEPROMData(EEPROMData_t *EEPROMData)
+{
+    eeprom_update_word((uint16_t *) EEPROM_OFFSET_VERSION_MAJOR, EEPROMData->VersionMajor);
+    eeprom_update_word((uint16_t *) EEPROM_OFFSET_VERSION_MINOR, EEPROMData->VersionMinor);
+
+    eeprom_update_block((const void *)EEPROMData->SiteID, (void *)EEPROM_OFFSET_SITE_ID, 36);
+    eeprom_update_block((const void *)EEPROMData->SiteKey, (void *)EEPROM_OFFSET_SITE_KEY, 36);
+    eeprom_update_block((const void *)EEPROMData->DeviceID, (void *)EEPROM_OFFSET_DEVICE_ID, 36);
+    eeprom_update_block((const void *)EEPROMData->Reserved, (void *)EEPROM_OFFSET_RESERVED, 36);
+
+    eeprom_update_block((const void *)EEPROMData->WiFi_SSID, (void *)EEPROM_OFFSET_WIFI_SSID, 32);
+    eeprom_update_block((const void *)EEPROMData->WiFi_PASS, (void *)EEPROM_OFFSET_WIFI_PASS, 64);
+}
+
 // Event handler for the library USB Connection event.
 void EVENT_USB_Device_Connect(void)
 {
