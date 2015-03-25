@@ -338,18 +338,19 @@ void WLANEnable(int enable)
         PORTF &= ~(1 << 0);                     // Clear F0 to disable WLAN module
 }
 
-uint8_t WLANTransmit(int32_t Weight)
+uint8_t WLANTransmit(int32_t Weight, char * SiteKey, char * DeviceID)
 {
     WLANState_t state = INIT;
 
     unsigned char buff[NETWORK_BUFLEN];
     unsigned int start;
 
-    char wlan_tx_data[8];
+    char weight_str[8];
+    char wlan_tx_data[80];
     char wlan_tx_data_len[8];
 
-    ltoa(Weight, wlan_tx_data, 10);
-    ltoa(strlen(wlan_tx_data)+2, wlan_tx_data_len, 10); //crlf
+    //ltoa(Weight, wlan_tx_data, 10);
+    //ltoa(strlen(wlan_tx_data)+2, wlan_tx_data_len, 10); //crlf
 
     while (1)
     {
@@ -500,7 +501,8 @@ uint8_t WLANTransmit(int32_t Weight)
             case ONLINE:
 
                 // Try to establish a TCP connection to server
-                uart_puts("AT+CIPSTART=\"TCP\",\"192.168.100.20\",80\r\n");
+                //uart_puts("AT+CIPSTART=\"TCP\",\"192.168.100.20\",80\r\n");
+                uart_puts("AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80\r\n");
 
                 // max wait of 3 seconds before error
                 start = GetMilliSeconds();
@@ -529,6 +531,20 @@ uint8_t WLANTransmit(int32_t Weight)
 
             case CONNECTED:
 
+                // construct the data to send
+                ltoa(Weight, weight_str, 10);
+
+                memset(wlan_tx_data, 0x00, sizeof(wlan_tx_data));
+                strcat(wlan_tx_data, "GET /update?key=");
+                strcat(wlan_tx_data, SiteKey);
+                strcat(wlan_tx_data, "&");
+                strcat(wlan_tx_data, DeviceID);
+                strcat(wlan_tx_data, "=");
+                strcat(wlan_tx_data, weight_str);
+                strcat(wlan_tx_data, "\n\r");
+
+                ltoa(strlen(wlan_tx_data), wlan_tx_data_len, 10);
+
                 // prepare to send some data
                 uart_puts("AT+CIPSEND=");
                 uart_puts(wlan_tx_data_len);
@@ -549,7 +565,6 @@ uint8_t WLANTransmit(int32_t Weight)
                             if (UART_ReceiveDataPrompt(buff, NETWORK_BUFLEN, 100))
                             {
                                 uart_puts(wlan_tx_data);
-                                uart_puts("\n\r");
 
                                 // max wait of 3 seconds before error
                                 start = GetMilliSeconds();
@@ -968,7 +983,7 @@ void PrepareDisplayData(int32_t Weight, DisplayUnits_t DisplayUnits, DisplayData
     }
 }
 
-int32_t WeighAndDisplay(void)
+int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
 {
     DisplayUnits_t DisplayUnits = KILOS;
     DisplayData_t DisplayData = {0};
@@ -1038,7 +1053,7 @@ int32_t WeighAndDisplay(void)
     _delay_ms(5000);
 
     // todo: upload weight data to network if not 0.0
-    WLANTransmit(Weight);
+    WLANTransmit(Weight, (char *)EEPROMData->SRAM_SiteKey, (char *)EEPROMData->SRAM_DeviceID);
 
     // Blank the display
     //DisplayData.Flags = LCD_FLAG_BLANK;
@@ -1134,6 +1149,8 @@ int main(void)
     //EEPROMData.SRAM_VersionMajor = 1;
     //EEPROMData.SRAM_VersionMinor = 0;
     //EEPROMData.SRAM_Calibration = 140;
+    //strcpy((char*)EEPROMData.SRAM_SiteKey,"xxxxxxxxxxxx");
+    //strcpy((char*)EEPROMData.SRAM_DeviceID,"field1");
     //UpdateEEPROMData(&EEPROMData);
 
     // Get default settings from EEPROM
@@ -1185,7 +1202,7 @@ int main(void)
                 // Seems that we've been prodded to wake us
                 SystemState = WEIGHING;
 
-                Weight = WeighAndDisplay();
+                Weight = WeighAndDisplay(&EEPROMData);
             }
 
             // Save current reading for next comparison
