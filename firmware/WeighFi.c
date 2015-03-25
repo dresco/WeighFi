@@ -104,6 +104,7 @@ ISR (WDT_vect)
 ISR(TIMER1_COMPA_vect)
 {
     g_ms++;
+    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 }
 
 unsigned int GetMilliSeconds(void)
@@ -326,7 +327,7 @@ void TimerSetup(void)
     TCCR1B |= (1 << WGM12);                     // Configure 16bit timer1 for CTC mode 4
     TIMSK1 |= (1 << OCIE1A);                    // Enable CTC interrupt
     OCR1A = 250;                                // Set output compare value
-    TCCR1B |= (1 << CS10);                      // Start timer with x64 prescaler for a 1MHz timer
+    TCCR1B |= (1 << CS11) | (1 << CS10);        // Start timer with x64 prescaler for a 1MHz timer
 }
 
 void WLANEnable(int enable)
@@ -337,7 +338,7 @@ void WLANEnable(int enable)
         PORTF &= ~(1 << 0);                     // Clear F0 to disable WLAN module
 }
 
-void WLANTransmit(int32_t Weight)
+uint8_t WLANTransmit(int32_t Weight)
 {
     WLANState_t state = INIT;
 
@@ -347,8 +348,8 @@ void WLANTransmit(int32_t Weight)
     char wlan_tx_data[8];
     char wlan_tx_data_len[8];
 
-    itoa(Weight, wlan_tx_data, 10);
-    itoa(strlen(wlan_tx_data), wlan_tx_data_len, 10);
+    ltoa(Weight, wlan_tx_data, 10);
+    ltoa(strlen(wlan_tx_data)+2, wlan_tx_data_len, 10); //crlf
 
     while (1)
     {
@@ -365,7 +366,7 @@ void WLANTransmit(int32_t Weight)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -389,7 +390,7 @@ void WLANTransmit(int32_t Weight)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -463,7 +464,7 @@ void WLANTransmit(int32_t Weight)
                         if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                         {
 
-                            PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                            //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
                             // Things we might get back..
                             //
@@ -505,7 +506,7 @@ void WLANTransmit(int32_t Weight)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -537,7 +538,7 @@ void WLANTransmit(int32_t Weight)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -548,12 +549,13 @@ void WLANTransmit(int32_t Weight)
                             if (UART_ReceiveDataPrompt(buff, NETWORK_BUFLEN, 100))
                             {
                                 uart_puts(wlan_tx_data);
+                                uart_puts("\n\r");
 
                                 // max wait of 3 seconds before error
                                 start = GetMilliSeconds();
                                 while (GetMilliSeconds() - start < 3000)
                                 {
-                                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
                                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                                     {
@@ -581,7 +583,7 @@ void WLANTransmit(int32_t Weight)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -606,13 +608,13 @@ void WLANTransmit(int32_t Weight)
             case DONE:
                 // Turn off wireless module
                 WLANEnable(0);
-                _delay_ms(5000);
-
-                state = INIT;
+                return(1);
                 break;
 
             case ERROR:
+                //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
                 WLANEnable(0); // do nothing further
+                return(0);
                 break;
 
             default:
@@ -876,6 +878,7 @@ void SetupHardware(void)
     USB_Init();
 
     PortSetup();
+    TimerSetup();
 
     LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
 
@@ -1107,6 +1110,13 @@ void EVENT_USB_Device_ControlRequest(void)
     CDC_Device_ProcessControlRequest(&VirtualSerial_CDC_Interface);
 }
 
+int freeRam()
+{
+    extern int __heap_start, *__brkval;
+    int v;
+    return (int) &v - (__brkval == 0 ? (int) &__heap_start : (int) __brkval);
+}
+
 int main(void)
 {
     SystemState_t SystemState = IDLE;
@@ -1145,7 +1155,7 @@ int main(void)
 
     while (1)
     {
-        PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+        //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
         //
         // Note that the weighing and displaying process is synchronous (and slow).
@@ -1206,6 +1216,9 @@ int main(void)
                 fprintf(&USBSerialStream, "Passphrase   : %s\n\r", EEPROMData.SRAM_WiFi_PASS);
             }
 
+            fprintf(&USBSerialStream, "Free RAM     : %d\n\r", freeRam());
+
+            fprintf(&USBSerialStream, "ms           : %u\n\r", GetMilliSeconds());
 
             // todo: add a simple terminal interface to manage EEPROM configuration data
 
@@ -1216,7 +1229,9 @@ int main(void)
 
             // Write the raw ADC value to USB output if connected
             if (USB_DeviceState == DEVICE_STATE_Configured)
-                fprintf(&USBSerialStream, "%ld\n\r", ADCResult);
+                fprintf(&USBSerialStream, "ADCResult    : %ld\n\r", ADCResult);
+
+            //WLANTransmit(ADCResult);
 
             // Write the raw ADC difference to USB output if connected
             //if (USB_DeviceState == DEVICE_STATE_Configured)
