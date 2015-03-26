@@ -1055,6 +1055,8 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     // todo: upload weight data to network if not 0.0
     WLANTransmit(Weight, (char *)EEPROMData->SRAM_SiteKey, (char *)EEPROMData->SRAM_DeviceID);
 
+    // todo: update display to indicate a successful (or otherwise) upload
+
     // Blank the display
     //DisplayData.Flags = LCD_FLAG_BLANK;
     //LCDUpdate(&DisplayData);
