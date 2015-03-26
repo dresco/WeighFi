@@ -19,49 +19,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef WEIGHFI_H
-#define WEIGHFI_H
+#ifndef EEPROM_H
+#define EEPROM_H
 
-#include <avr/io.h>
-#include <avr/power.h>
-#include <avr/sleep.h>
-#include <avr/interrupt.h>
-#include <avr/eeprom.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+typedef struct EEPROMData
+{
+    uint8_t SRAM_VersionMajor;
+    uint8_t SRAM_VersionMinor;
+    uint8_t SRAM_Calibration;
+    uint8_t SRAM_SiteID[36];
+    uint8_t SRAM_SiteKey[36];
+    uint8_t SRAM_DeviceID[36];
+    uint8_t SRAM_Reserved[36];
+    uint8_t SRAM_WiFi_SSID[32];
+    uint8_t SRAM_WiFi_PASS[64];
+} EEPROMData_t;
 
-#include <LUFA/Drivers/Board/LEDs.h>
-#include <LUFA/Drivers/USB/USB.h>
-#include <LUFA/Platform/Platform.h>
+// function prototypes
+void FetchEEPROMData(EEPROMData_t *);
 
-#include "wd.h"
-#include "i2cmaster.h"
-#include "uart.h"
-#include "lcd.h"
-#include "eeprom.h"
-#include "wlan.h"
-#include "adc.h"
-#include "lufa.h"
-#include "Descriptors.h"
-
-volatile uint16_t      g_ms;                                // Free running millisecond counter
-
-#define UART_BAUD_RATE 115200                               // Maybe dodgy with a 16MHz clock?
-
-typedef enum {
-    IDLE,
-    WEIGHING,
-    CHARGING,
-} SystemState_t;
-
-typedef enum {
-    KILOS,
-    POUNDS,
-    STONES,
-} DisplayUnits_t;
-
-// Function Prototypes
-unsigned int GetMilliSeconds(void);
-
-#endif //WEIGHFI_H
+#endif //EEPROM_H

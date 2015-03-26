@@ -19,49 +19,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef WEIGHFI_H
-#define WEIGHFI_H
+#ifndef LUFA_H
+#define LUFA_H
 
-#include <avr/io.h>
-#include <avr/power.h>
-#include <avr/sleep.h>
-#include <avr/interrupt.h>
-#include <avr/eeprom.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+// LUFA LED support macros
+#define LEDMASK_USB_NOTREADY     LEDS_LED1                  // Interface not ready
+#define LEDMASK_USB_ENUMERATING (LEDS_LED2 | LEDS_LED3)     // Interface is enumerating
+#define LEDMASK_USB_READY       (LEDS_LED2 | LEDS_LED4)     // Interface is ready
+#define LEDMASK_USB_ERROR       (LEDS_LED1 | LEDS_LED3)     // Error has occurred
 
-#include <LUFA/Drivers/Board/LEDs.h>
-#include <LUFA/Drivers/USB/USB.h>
-#include <LUFA/Platform/Platform.h>
+// LUFA Function Prototypes
+void EVENT_USB_Device_Connect(void);
+void EVENT_USB_Device_Disconnect(void);
+void EVENT_USB_Device_ConfigurationChanged(void);
+void EVENT_USB_Device_ControlRequest(void);
 
-#include "wd.h"
-#include "i2cmaster.h"
-#include "uart.h"
-#include "lcd.h"
-#include "eeprom.h"
-#include "wlan.h"
-#include "adc.h"
-#include "lufa.h"
-#include "Descriptors.h"
-
-volatile uint16_t      g_ms;                                // Free running millisecond counter
-
-#define UART_BAUD_RATE 115200                               // Maybe dodgy with a 16MHz clock?
-
-typedef enum {
-    IDLE,
-    WEIGHING,
-    CHARGING,
-} SystemState_t;
-
-typedef enum {
-    KILOS,
-    POUNDS,
-    STONES,
-} DisplayUnits_t;
-
-// Function Prototypes
-unsigned int GetMilliSeconds(void);
-
-#endif //WEIGHFI_H
+#endif // LUFA_H

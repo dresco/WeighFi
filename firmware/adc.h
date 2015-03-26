@@ -19,49 +19,24 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef WEIGHFI_H
-#define WEIGHFI_H
+#ifndef ADC_H
+#define ADC_H
 
-#include <avr/io.h>
-#include <avr/power.h>
-#include <avr/sleep.h>
-#include <avr/interrupt.h>
-#include <avr/eeprom.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
+#define ADC_DATA_BITS 18
+#define ADC_SPARE_BITS 1
 
-#include <LUFA/Drivers/Board/LEDs.h>
-#include <LUFA/Drivers/USB/USB.h>
-#include <LUFA/Platform/Platform.h>
+#define ADC_SPEED_LOW 0
+#define ADC_SPEED_HIGH 1
 
-#include "wd.h"
-#include "i2cmaster.h"
-#include "uart.h"
-#include "lcd.h"
-#include "eeprom.h"
-#include "wlan.h"
-#include "adc.h"
-#include "lufa.h"
-#include "Descriptors.h"
+#define ADC_COUNTS_PER_KG  140                              // Will move to EEPROM in due course
+#define ADC_WAKE_THRESHOLD 100                              // Difference in periodic readings that will start processing
+#define ADC_STABLE_THRESHOLD 2                              // Max difference in stable readings before accepting result
+#define ADC_MAX_RETRIES     10                              // Max attempts whilst waiting for weight to settle
 
-volatile uint16_t      g_ms;                                // Free running millisecond counter
+// function prototypes
 
-#define UART_BAUD_RATE 115200                               // Maybe dodgy with a 16MHz clock?
+int32_t GetADCValue(uint8_t, uint8_t);
 
-typedef enum {
-    IDLE,
-    WEIGHING,
-    CHARGING,
-} SystemState_t;
+#endif //ADC_H
 
-typedef enum {
-    KILOS,
-    POUNDS,
-    STONES,
-} DisplayUnits_t;
 
-// Function Prototypes
-unsigned int GetMilliSeconds(void);
-
-#endif //WEIGHFI_H

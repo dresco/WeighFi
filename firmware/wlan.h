@@ -19,49 +19,26 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef WEIGHFI_H
-#define WEIGHFI_H
+#ifndef WLAN_H
+#define WLAN_H
 
-#include <avr/io.h>
-#include <avr/power.h>
-#include <avr/sleep.h>
-#include <avr/interrupt.h>
-#include <avr/eeprom.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include <LUFA/Drivers/Board/LEDs.h>
-#include <LUFA/Drivers/USB/USB.h>
-#include <LUFA/Platform/Platform.h>
-
-#include "wd.h"
-#include "i2cmaster.h"
-#include "uart.h"
-#include "lcd.h"
-#include "eeprom.h"
-#include "wlan.h"
-#include "adc.h"
-#include "lufa.h"
-#include "Descriptors.h"
-
-volatile uint16_t      g_ms;                                // Free running millisecond counter
-
-#define UART_BAUD_RATE 115200                               // Maybe dodgy with a 16MHz clock?
+#define NETWORK_BUFLEN 80
 
 typedef enum {
-    IDLE,
-    WEIGHING,
-    CHARGING,
-} SystemState_t;
+    INIT,
+    READY,
+    OKAY,
+    ONLINE,
+    CONNECTING,
+    CONNECTED,
+    DISCONNECTING,
+    DISCONNECTED,
+    DONE,
+    ERROR} WLANState_t;
 
-typedef enum {
-    KILOS,
-    POUNDS,
-    STONES,
-} DisplayUnits_t;
+// function prototypes
+uint8_t WLANTransmit(int32_t, char *, char *);
 
-// Function Prototypes
-unsigned int GetMilliSeconds(void);
+#endif //WLAN_H
 
-#endif //WEIGHFI_H
+
