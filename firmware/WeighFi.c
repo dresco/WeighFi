@@ -312,10 +312,15 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
     DisplayData.Flags |= LCD_FLAG_BLINK;
     LCDUpdate(&DisplayData);
-    _delay_ms(5000);
+
+    uint32_t start = GetMilliSeconds();
 
     // todo: upload weight data to network if not 0.0
     WLANTransmit(Weight, (char *)EEPROMData->SRAM_SiteKey, (char *)EEPROMData->SRAM_DeviceID);
+
+    // Ensure display blinks for at least 5 seconds
+    while (GetMilliSeconds() - start < 5000)
+        ;
 
     // todo: update display to indicate a successful (or otherwise) upload
 
