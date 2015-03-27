@@ -285,7 +285,6 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
 
     // Get a more accurate reading from the ADC, configured for low speed and averaging multiple
     // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
-    // todo: probably ought to filter out negative weight values
     for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
     {
         ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
@@ -293,6 +292,10 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
         // Calculate the weight in grams
         ADCDelta = ADCResult - ADCZeroReading;
         Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
+
+        // Filter out any negative values
+        if (Weight < 0)
+            Weight = 0;
 
         // Format and display the current weight
         PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
