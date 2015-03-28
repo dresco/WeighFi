@@ -503,7 +503,7 @@ uint8_t WLANTransmit(int32_t Weight, char * SiteKey, char * DeviceID)
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
-                        if (strstr((char*)buff, "Unlink"))  // note: sometimes see "Linked" instead?
+                        if (strstr((char*)buff, "Unlink") || strstr((char*)buff, "Linked"))
                         {
                             state = DISCONNECTED;
                             break;                          // note: breaks out of while loop only
