@@ -48,6 +48,7 @@ uint8_t LCDTranslateDigit(uint8_t ascii_char)
             break;
 
         case '5':
+        case 'S':
             lcd_char = LCD_CHAR_5;
             break;
 
@@ -69,6 +70,22 @@ uint8_t LCDTranslateDigit(uint8_t ascii_char)
 
         case '-':
             lcd_char = LCD_CHAR_MINUS;
+            break;
+
+        case 'E':
+            lcd_char = LCD_CHAR_E;
+            break;
+
+        case 'N':
+            lcd_char = LCD_CHAR_N;
+            break;
+
+        case 'T':
+            lcd_char = LCD_CHAR_T;
+            break;
+
+        case 'R':
+            lcd_char = LCD_CHAR_R;
             break;
 
         default:

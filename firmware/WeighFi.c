@@ -252,6 +252,7 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     int32_t ADCDelta;
     int32_t ADCZeroReading;
     int32_t ADCLastResult = 0;
+    uint8_t WLANResult = 0;
 
     // Power up the LCD
     LCDEnable(1);
@@ -315,14 +316,42 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
 
     uint32_t start = GetMilliSeconds();
 
-    // todo: upload weight data to network if not 0.0
-    WLANTransmit(Weight, (char *)EEPROMData->SRAM_SiteKey, (char *)EEPROMData->SRAM_DeviceID);
+    // Upload weight data to network, ignore reading if less than 1 KG
+    if (Weight > 1000)
+        WLANResult = WLANTransmit(Weight, (char *)EEPROMData->SRAM_SiteKey, (char *)EEPROMData->SRAM_DeviceID);
 
     // Ensure display blinks for at least 5 seconds
     while (GetMilliSeconds() - start < 5000)
         ;
 
-    // todo: update display to indicate a successful (or otherwise) upload
+    // Update display to indicate a successful (or otherwise) upload
+    if (Weight)
+    {
+        if (WLANResult)
+        {
+            // Successful upload
+            memset(&DisplayData, 0x00, sizeof(DisplayData_t));
+            DisplayData.Flags |= LCD_FLAG_DATA;
+            DisplayData.Flags |= LCD_FLAG_BLINK;
+            DisplayData.Char1 = 'S';
+            DisplayData.Char2 = 'E';
+            DisplayData.Char3 = 'N';
+            DisplayData.Char4 = 'T';
+            LCDUpdate(&DisplayData);
+        }
+        else
+        {
+            // Upload failed
+            memset(&DisplayData, 0x00, sizeof(DisplayData_t));
+            DisplayData.Flags |= LCD_FLAG_DATA;
+            DisplayData.Flags |= LCD_FLAG_BLINK;
+            DisplayData.Char1 = 'E';
+            DisplayData.Char2 = 'R';
+            DisplayData.Char3 = 'R';
+            LCDUpdate(&DisplayData);
+        }
+        _delay_ms(3000);
+    }
 
     // Blank the display
     //DisplayData.Flags = LCD_FLAG_BLANK;

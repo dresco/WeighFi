@@ -42,12 +42,18 @@
 #define LCD_CHAR_7     0b00001110
 #define LCD_CHAR_8     0b11111110
 #define LCD_CHAR_9     0b10101110
+
 #define LCD_CHAR_BLANK 0b00000000
 #define LCD_CHAR_SEP   0b00000001
 #define LCD_CHAR_KG    0b10000000
 #define LCD_CHAR_LB    0b00100000
 #define LCD_CHAR_ST    0b01000000
 #define LCD_CHAR_MINUS 0b00100000
+
+#define LCD_CHAR_E     0b11111000
+#define LCD_CHAR_N     0b01100100
+#define LCD_CHAR_T     0b11110000
+#define LCD_CHAR_R     0b01100000
 
 typedef struct DisplayData
 {
