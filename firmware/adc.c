@@ -21,7 +21,37 @@
 
 #include "WeighFi.h"
 
-int32_t GetADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
+void ADCSetup(void)
+{
+
+    ADMUX |= (1<<REFS0);                                    // Use AVcc with external capacitor at AREF pin
+    ADMUX  |= (1 << MUX0);                                  // Select ADC channel 1 (PF1)
+
+    ADCSRA |= (1<<ADPS2) | (1<<ADPS1)
+                         | (1<<ADPS1);                      // ADC clock prescaler = 16MHz/128 = 125kHz
+}
+
+int16_t GetIntADCValue(uint8_t NumSamples)
+{
+    int16_t result = 0;
+
+    ADCSRA |= (1 << ADEN);                                  // Enable the ADC
+
+    for (uint8_t adc_count = 0; adc_count < NumSamples; adc_count++)
+    {
+        ADCSRA |= (1 << ADSC);                              // Start ADC conversion
+        while(ADCSRA & (1<<ADSC));                          // Wait for conversion to finish
+        result += ADC;                                      // Add conversion result
+    }
+
+    ADCSRA &= ~(1 << ADEN);                                 // Disable the ADC
+
+    result = result / NumSamples;
+
+    return(result);
+}
+
+int32_t GetExtADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
 {
     int32_t adc_value;                                      // signed 32 bit integer for ADC output
     int32_t adc_final;

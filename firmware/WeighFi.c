@@ -53,11 +53,12 @@
 // PD1 -        - I2C data
 // PD2 -        - UART
 // PD3 -        - UART
-// PD4 - output - ADC speed control
-// PD5 - output - ADC power control
+// PD4 - output - External ADC speed control
+// PD5 - output - External ADC power control
 // PD6 - output - SPI serial clock
 // PD7 - input  - SPI data in (MISO)
 // PF0 - output - WLAN module enable
+// PF1 - input  - Internal ADC channel 1 - battery voltage
 // PF7 - output - debug LED
 //
 
@@ -153,6 +154,7 @@ void SetupHardware(void)
 
     PortSetup();
     TimerSetup();
+    ADCSetup();
 
     //LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
 
@@ -266,7 +268,7 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
     for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
     {
-        ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+        ADCResult = GetExtADCValue(ADC_SPEED_LOW, 3);
         if (abs(ADCResult - ADCLastResult) < ADC_STABLE_THRESHOLD)
             break;
         ADCLastResult = ADCResult;
@@ -288,7 +290,7 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     // readings for accuracy. Also waiting for the reading to stabilise before accepting it.
     for (int i = 0 ; i < ADC_MAX_RETRIES ; i++)
     {
-        ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+        ADCResult = GetExtADCValue(ADC_SPEED_LOW, 3);
 
         // Calculate the weight in grams
         ADCDelta = ADCResult - ADCZeroReading;
@@ -314,11 +316,22 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     DisplayData.Flags |= LCD_FLAG_BLINK;
     LCDUpdate(&DisplayData);
 
+    uint16_t Battery = GetIntADCValue(ADC_BATTERY_SAMPLES);
+
+    // Convert to millivolts
+    // 0 = 0v, 1023 = 3.0v ADC reference
+    // Expecting battery voltage up to ~5v
+    // Using 670k:470k voltage divider to give full scale at 5.1v
+    //  (note: high impedance to minimise battery drain in prototype,
+    //         using 10uF capacitor to hold the voltage steady as ADC samples)
+    // Close enough to multiply the ADC reading up by 5
+    Battery = Battery * 5;
+
     uint32_t start = GetMilliSeconds();
 
     // Upload weight data to network, ignore reading if less than 1 KG
     if (Weight > 1000)
-        WLANResult = WLANTransmit(Weight, (char *)EEPROMData->SRAM_SiteKey, (char *)EEPROMData->SRAM_DeviceID);
+        WLANResult = WLANTransmit(Weight, Battery, (char *)EEPROMData->SRAM_SiteKey, (char *)EEPROMData->SRAM_DeviceID);
 
     // Ensure display blinks for at least 5 seconds
     while (GetMilliSeconds() - start < 5000)
@@ -434,7 +447,7 @@ int main(void)
     //LCDUpdate(&DisplayData);
 
     // Get a one off reading to populate the variables before fist use..
-    ADCInitialResult = ADCLastResult = GetADCValue(ADC_SPEED_HIGH, 1);
+    ADCInitialResult = ADCLastResult = GetExtADCValue(ADC_SPEED_HIGH, 1);
 
     while (1)
     {
@@ -452,7 +465,7 @@ int main(void)
             // whether we are being woken up for a measurement
 
             // Perform a quick ADC reading for comparison
-            ADCResult = GetADCValue(ADC_SPEED_HIGH, 1);
+            ADCResult = GetExtADCValue(ADC_SPEED_HIGH, 1);
 
             // If we have previously been weighing, don't start again until weight removed from scales.
             // Using the 'initial' zero value in case the 'accurate' zero was set incorrectly due to
@@ -507,7 +520,7 @@ int main(void)
 
             // Get a reading from the ADC, configured for low speed and
             // averaging multiple readings for accuracy
-            int32_t ADCResult = GetADCValue(ADC_SPEED_LOW, 3);
+            int32_t ADCResult = GetExtADCValue(ADC_SPEED_LOW, 3);
             //int32_t ADCDelta = ADCResult - ADCZeroReading;
 
             // Write the raw ADC value to USB output if connected

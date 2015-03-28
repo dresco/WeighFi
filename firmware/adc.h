@@ -33,9 +33,13 @@
 #define ADC_STABLE_THRESHOLD 2                              // Max difference in stable readings before accepting result
 #define ADC_MAX_RETRIES     10                              // Max attempts whilst waiting for weight to settle
 
+#define ADC_BATTERY_SAMPLES 3                               // Number of internal ADC readings to average for battery voltage
+
 // function prototypes
 
-int32_t GetADCValue(uint8_t, uint8_t);
+void ADCSetup(void);
+int16_t GetIntADCValue(uint8_t);
+int32_t GetExtADCValue(uint8_t, uint8_t);
 
 #endif //ADC_H
 

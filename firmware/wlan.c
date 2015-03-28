@@ -239,7 +239,7 @@ void WLANEnable(int enable)
         PORTF &= ~(1 << 0);                     // Clear F0 to disable WLAN module
 }
 
-uint8_t WLANTransmit(int32_t Weight, char * SiteKey, char * DeviceID)
+uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * DeviceID)
 {
     WLANState_t state = INIT;
 
@@ -247,6 +247,7 @@ uint8_t WLANTransmit(int32_t Weight, char * SiteKey, char * DeviceID)
     unsigned int start;
 
     char weight_str[8];
+    char battery_str[8];
     char wlan_tx_data[80];
     char wlan_tx_data_len[8];
 
@@ -434,14 +435,15 @@ uint8_t WLANTransmit(int32_t Weight, char * SiteKey, char * DeviceID)
 
                 // construct the data to send
                 ltoa(Weight, weight_str, 10);
+                itoa(Battery, battery_str, 10);
 
                 memset(wlan_tx_data, 0x00, sizeof(wlan_tx_data));
                 strcat(wlan_tx_data, "GET /update?key=");
                 strcat(wlan_tx_data, SiteKey);
-                strcat(wlan_tx_data, "&");
-                strcat(wlan_tx_data, DeviceID);
-                strcat(wlan_tx_data, "=");
+                strcat(wlan_tx_data, "&field1=");
                 strcat(wlan_tx_data, weight_str);
+                strcat(wlan_tx_data, "&field2=");
+                strcat(wlan_tx_data, battery_str);
                 strcat(wlan_tx_data, "\n\r");
 
                 ltoa(strlen(wlan_tx_data), wlan_tx_data_len, 10);

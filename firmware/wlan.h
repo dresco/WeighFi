@@ -37,7 +37,7 @@ typedef enum {
     ERROR} WLANState_t;
 
 // function prototypes
-uint8_t WLANTransmit(int32_t, char *, char *);
+uint8_t WLANTransmit(int32_t, uint16_t, char *, char *);
 
 #endif //WLAN_H
 
