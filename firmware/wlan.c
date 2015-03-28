@@ -241,6 +241,8 @@ void WLANEnable(int enable)
 
 uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * DeviceID)
 {
+    // todo: differentiate between various error states, can be displayed on LCD
+
     WLANState_t state = INIT;
 
     unsigned char buff[NETWORK_BUFLEN];

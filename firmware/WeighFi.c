@@ -293,6 +293,7 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
         ADCResult = GetExtADCValue(ADC_SPEED_LOW, 3);
 
         // Calculate the weight in grams
+        // todo: use calibration byte from EEPROM instead of constant
         ADCDelta = ADCResult - ADCZeroReading;
         Weight = DivideAndRoundToClosest((ADCDelta * 1000), ADC_COUNTS_PER_KG);
 
