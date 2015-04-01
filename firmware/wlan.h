@@ -36,6 +36,15 @@ typedef enum {
     DONE,
     ERROR} WLANState_t;
 
+ typedef enum {
+    ERR_NO_ERROR,
+    ERR_NOT_READY,
+    ERR_NOT_OKAY,
+    ERR_NOT_ONLINE,
+    ERR_NOT_CONNECTED,
+    ERR_SEND_FAILURE,
+    ERR_NOT_DISCONNECTED} WLANError_t;
+
 // function prototypes
 uint8_t WLANTransmit(int32_t, uint16_t, char *, char *);
 

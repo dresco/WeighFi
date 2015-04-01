@@ -344,7 +344,7 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     // Update display to indicate a successful (or otherwise) upload
     if (Weight)
     {
-        if (WLANResult)
+        if (!WLANResult)
         {
             // Successful upload
             memset(&DisplayData, 0x00, sizeof(DisplayData_t));
@@ -365,6 +365,7 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
             DisplayData.Char1 = 'E';
             DisplayData.Char2 = 'R';
             DisplayData.Char3 = 'R';
+            DisplayData.Char3 =  WLANResult;
             LCDUpdate(&DisplayData);
         }
         _delay_ms(3000);

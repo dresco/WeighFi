@@ -241,9 +241,8 @@ void WLANEnable(int enable)
 
 uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * DeviceID)
 {
-    // todo: differentiate between various error states, can be displayed on LCD
-
     WLANState_t state = INIT;
+    WLANError_t error = ERR_NO_ERROR;
 
     unsigned char buff[NETWORK_BUFLEN];
     unsigned int start;
@@ -285,8 +284,10 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
 
                 // If we got here without setting the state to READY, then error.
                 if (state != READY)
+                {
                     state = ERROR;
-
+                    error = ERR_NOT_READY;
+                }
                 break;
 
             case READY:
@@ -309,7 +310,10 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
 
                 // If we got here without setting the state to ONLINE, then error.
                 if (state != OKAY)
+                {
                     state = ERROR;
+                    error = ERR_NOT_OKAY;
+                }
 
 
                 break;
@@ -399,7 +403,10 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
 
                 // If we got here without setting the state to ONLINE, then error.
                 if (state != ONLINE)
+                {
                     state = ERROR;
+                    error = ERR_NOT_ONLINE;
+                }
                 break;
 
             case ONLINE:
@@ -426,7 +433,10 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
 
                 // If we got here without setting the state to CONNECTED, then error.
                 if (state != CONNECTED)
+                {
                     state = ERROR;
+                    error = ERR_NOT_CONNECTED;
+                }
 
                 break;
 
@@ -434,6 +444,8 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 break;
 
             case CONNECTED:
+
+                // todo: add additional error handling in this state
 
                 // construct the data to send
                 ltoa(Weight, weight_str, 10);
@@ -515,9 +527,12 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                     }
                 }
 
-                // If we got here without setting the state to CONNECTED, then error.
+                // If we got here without setting the state to DISCONNECTED, then error.
                 if (state != DISCONNECTED)
+                {
                     state = ERROR;
+                    error = ERR_NOT_DISCONNECTED;
+                }
 
                 break;
 
@@ -525,16 +540,15 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 state = DONE;
                 break;
 
+            case ERROR:
+                //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                state = DONE;
+                break;
+
             case DONE:
                 // Turn off wireless module
                 WLANEnable(0);
-                return(1);
-                break;
-
-            case ERROR:
-                //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
-                WLANEnable(0); // do nothing further
-                return(0);
+                return(error);
                 break;
 
             default:
