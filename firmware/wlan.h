@@ -31,6 +31,7 @@ typedef enum {
     ONLINE,
     CONNECTING,
     CONNECTED,
+    SENT,
     DISCONNECTING,
     DISCONNECTED,
     DONE,
@@ -42,7 +43,7 @@ typedef enum {
     ERR_NOT_OKAY,
     ERR_NOT_ONLINE,
     ERR_NOT_CONNECTED,
-    ERR_SEND_FAILURE,
+    ERR_NOT_SENT,
     ERR_NOT_DISCONNECTED} WLANError_t;
 
 // function prototypes

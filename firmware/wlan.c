@@ -444,9 +444,6 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 break;
 
             case CONNECTED:
-
-                // todo: add additional error handling in this state
-
                 // construct the data to send
                 ltoa(Weight, weight_str, 10);
                 itoa(Battery, battery_str, 10);
@@ -493,6 +490,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                                     {
                                         if (strstr((char*)buff, "SEND OK"))
                                         {
+                                            state = SENT;
                                             break;                          // note: breaks out of while loop only
                                         }
                                     }
@@ -503,6 +501,15 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                     }
                 }
 
+                // If we got here without setting the state to SENT, then error.
+                if (state != SENT)
+                {
+                    state = ERROR;
+                    result = ERR_NOT_SENT;
+                }
+                break;
+
+            case SENT:
                 state = DISCONNECTING;
                 break;
 
