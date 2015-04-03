@@ -365,7 +365,7 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
             DisplayData.Char1 = 'E';
             DisplayData.Char2 = 'R';
             DisplayData.Char3 = 'R';
-            DisplayData.Char3 =  WLANResult;
+            DisplayData.Char4 = '0' + WLANResult;
             LCDUpdate(&DisplayData);
         }
         _delay_ms(3000);
