@@ -29,7 +29,7 @@
 #define ADC_SPEED_HIGH 1
 
 #define ADC_COUNTS_PER_KG  140                              // Will move to EEPROM in due course
-#define ADC_WAKE_THRESHOLD 100                              // Difference in periodic readings that will start processing
+#define ADC_WAKE_THRESHOLD 250                              // Difference in periodic readings that will start processing
 #define ADC_STABLE_THRESHOLD 2                              // Max difference in stable readings before accepting result
 #define ADC_MAX_RETRIES     10                              // Max attempts whilst waiting for weight to settle
 
