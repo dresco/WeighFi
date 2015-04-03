@@ -242,7 +242,7 @@ void WLANEnable(int enable)
 uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * DeviceID)
 {
     WLANState_t state = INIT;
-    WLANError_t error = ERR_NO_ERROR;
+    WLANError_t result = ERR_NO_ERROR;
 
     unsigned char buff[NETWORK_BUFLEN];
     unsigned int start;
@@ -286,7 +286,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 if (state != READY)
                 {
                     state = ERROR;
-                    error = ERR_NOT_READY;
+                    result = ERR_NOT_READY;
                 }
                 break;
 
@@ -312,7 +312,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 if (state != OKAY)
                 {
                     state = ERROR;
-                    error = ERR_NOT_OKAY;
+                    result = ERR_NOT_OKAY;
                 }
 
 
@@ -405,7 +405,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 if (state != ONLINE)
                 {
                     state = ERROR;
-                    error = ERR_NOT_ONLINE;
+                    result = ERR_NOT_ONLINE;
                 }
                 break;
 
@@ -435,7 +435,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 if (state != CONNECTED)
                 {
                     state = ERROR;
-                    error = ERR_NOT_CONNECTED;
+                    result = ERR_NOT_CONNECTED;
                 }
 
                 break;
@@ -531,7 +531,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 if (state != DISCONNECTED)
                 {
                     state = ERROR;
-                    error = ERR_NOT_DISCONNECTED;
+                    result = ERR_NOT_DISCONNECTED;
                 }
 
                 break;
@@ -548,7 +548,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
             case DONE:
                 // Turn off wireless module
                 WLANEnable(0);
-                return(error);
+                return(result);
                 break;
 
             default:
