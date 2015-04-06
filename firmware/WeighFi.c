@@ -96,7 +96,7 @@ USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface =
 
 // Standard file stream for the CDC interface when set up, so that the virtual CDC COM port can be
 // used like any regular character stream in the C APIs.
-static FILE USBSerialStream;
+FILE USBSerialStream;
 
 ISR (WDT_vect)
 {
@@ -429,16 +429,18 @@ int main(void)
 
     SetupHardware();
 
-    // one-off update of set some EEPROM defaults
-    //EEPROMData.SRAM_VersionMajor = 1;
-    //EEPROMData.SRAM_VersionMinor = 0;
-    //EEPROMData.SRAM_Calibration = 140;
-    //strcpy((char*)EEPROMData.SRAM_SiteKey,"xxxxxxxxxxxx");
-    //strcpy((char*)EEPROMData.SRAM_DeviceID,"field1");
-    //UpdateEEPROMData(&EEPROMData);
-
     // Get default settings from EEPROM
     FetchEEPROMData(&EEPROMData);
+
+    // If firmware and EEPROM *major* versions differ then erase all EEPROM content
+    // to allow for changes in the size/position of any members between versions..
+    if (EEPROMData.SRAM_VersionMajor |= VERSION_MAJOR)
+        memset(&EEPROMData, 0x00, sizeof(EEPROMData));
+
+    // Ensure code and EEPROM versions are in sync
+    EEPROMData.SRAM_VersionMajor = VERSION_MAJOR;
+    EEPROMData.SRAM_VersionMinor = VERSION_MINOR;
+    UpdateEEPROMData(&EEPROMData);
 
     // Initialise the serial library
     // todo: port to LUFA serial library
@@ -498,52 +500,9 @@ int main(void)
 
         }
 
-        // Wait for a character from the host, and send back an ADC result
-        // fixme: does this block if connected ???
-        int16_t ReceivedByte = CDC_Device_ReceiveByte(&VirtualSerial_CDC_Interface);
-
-        if (!(ReceivedByte < 0))
+        if (USB_DeviceState == DEVICE_STATE_Configured)
         {
-            // Debug dump of EEPROM settings to USB output
-            if (USB_DeviceState == DEVICE_STATE_Configured)
-            {
-                fprintf(&USBSerialStream, "Version Major: %d\n\r", EEPROMData.SRAM_VersionMajor);
-                fprintf(&USBSerialStream, "Version Minor: %d\n\r", EEPROMData.SRAM_VersionMinor);
-                fprintf(&USBSerialStream, "Calibration  : %d\n\r", EEPROMData.SRAM_Calibration);
-                fprintf(&USBSerialStream, "Site ID      : %s\n\r", EEPROMData.SRAM_SiteID);
-                fprintf(&USBSerialStream, "Site Key     : %s\n\r", EEPROMData.SRAM_SiteKey);
-                fprintf(&USBSerialStream, "Device ID    : %s\n\r", EEPROMData.SRAM_DeviceID);
-                fprintf(&USBSerialStream, "Network      : %s\n\r", EEPROMData.SRAM_WiFi_SSID);
-                fprintf(&USBSerialStream, "Passphrase   : %s\n\r", EEPROMData.SRAM_WiFi_PASS);
-            }
-
-            fprintf(&USBSerialStream, "Free RAM     : %d\n\r", freeRam());
-
-            fprintf(&USBSerialStream, "ms           : %u\n\r", GetMilliSeconds());
-
-            // todo: add a simple terminal interface to manage EEPROM configuration data
-
-            // Get a reading from the ADC, configured for low speed and
-            // averaging multiple readings for accuracy
-            int32_t ADCResult = GetExtADCValue(ADC_SPEED_LOW, 3);
-            //int32_t ADCDelta = ADCResult - ADCZeroReading;
-
-            // Write the raw ADC value to USB output if connected
-            if (USB_DeviceState == DEVICE_STATE_Configured)
-                fprintf(&USBSerialStream, "ADCResult    : %ld\n\r", ADCResult);
-
-            //WLANTransmit(ADCResult);
-
-            // Write the raw ADC difference to USB output if connected
-            //if (USB_DeviceState == DEVICE_STATE_Configured)
-            //    fprintf(&USBSerialStream, "%ld\n\r", ADCDelta);
-
-            // Calculate the weight in grams
-            //Weight = DivideAndRoundToClosest((ADCDelta * 1000), EEPROMData.SRAM_Calibration);
-
-            // Format and display the current weight
-            //PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
-            //LCDUpdate(&DisplayData);
+            TerminalCheckInput(&EEPROMData);
         }
 
         CDC_Device_USBTask(&VirtualSerial_CDC_Interface);

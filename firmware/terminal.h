@@ -19,37 +19,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#ifndef WLAN_H
-#define WLAN_H
+#ifndef TERMINAL_H
+#define TERMINAL_H
 
-#define NETWORK_BUFLEN 80
+#define TERMINAL_BUFLEN 32
+#define CMD_ONLY        2               // single command character plus carriage return
 
-typedef enum {
-    INIT,
-    READY,
-    OKAY,
-    ONLINE,
-    CONNECTING,
-    CONNECTED,
-    SENT,
-    DISCONNECTING,
-    DISCONNECTED,
-    DONE,
-    ERROR} WLANState_t;
+extern USB_ClassInfo_CDC_Device_t VirtualSerial_CDC_Interface;
+extern FILE USBSerialStream;
 
- typedef enum {
-    ERR_NO_ERROR,
-    ERR_NOT_READY,
-    ERR_NOT_OKAY,
-    ERR_NOT_ONLINE,
-    ERR_NOT_CONNECTED,
-    ERR_NOT_SENT,
-    ERR_NOT_DISCONNECTED} WLANError_t;
+void TerminalCheckInput(EEPROMData_t *);
 
-// function prototypes
-uint8_t WLANConfigure(char *, char *);
-uint8_t WLANTransmit(int32_t, uint16_t, char *, char *);
-
-#endif //WLAN_H
-
-
+#endif // TERMINAL_H

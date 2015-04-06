@@ -42,10 +42,14 @@
 #include "eeprom.h"
 #include "wlan.h"
 #include "adc.h"
+#include "terminal.h"
 #include "lufa.h"
 #include "Descriptors.h"
 
 volatile uint16_t      g_ms;                                // Free running millisecond counter
+
+#define VERSION_MAJOR 0
+#define VERSION_MINOR 1
 
 #define UART_BAUD_RATE 115200                               // Maybe dodgy with a 16MHz clock?
 

@@ -239,6 +239,148 @@ void WLANEnable(int enable)
         PORTF &= ~(1 << 0);                     // Clear F0 to disable WLAN module
 }
 
+uint8_t WLANConfigure(char * ssid, char * passphrase)
+{
+    WLANState_t state = INIT;
+    WLANError_t result = ERR_NO_ERROR;
+
+    unsigned char buff[NETWORK_BUFLEN];
+    unsigned int start;
+
+    char wlan_tx_data[80];
+
+    while (1)
+    {
+        switch (state) {
+
+            case INIT:
+                // Turn on the wireless module
+                WLANEnable(1);
+
+                // Wait for the ready prompt
+                // max wait of 3 seconds before error
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        if (strstr((char*)buff, "ready"))
+                        {
+                            state = READY;
+                            break;                          // note: breaks out of while loop only
+                        }
+                    }
+                }
+
+                // If we got here without setting the state to READY, then error.
+                if (state != READY)
+                {
+                    state = ERROR;
+                    result = ERR_NOT_READY;
+                }
+                break;
+
+            case READY:
+                uart_puts("AT\r\n");
+
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        if (strstr((char*)buff, "OK"))
+                        {
+                            state = OKAY;
+                            break;
+                        }
+                    }
+                }
+
+                // If we got here without setting the state to ONLINE, then error.
+                if (state != OKAY)
+                {
+                    state = ERROR;
+                    result = ERR_NOT_OKAY;
+                }
+
+
+                break;
+
+            case OKAY:
+                // todo: check these responses
+
+                // client only mode
+                uart_puts("AT+CWMODE=1\r\n");
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        break;
+                    }
+                }
+
+                // join ssid
+                memset(wlan_tx_data, 0x00, sizeof(wlan_tx_data));
+                strcat(wlan_tx_data,"AT+CWJAP=\"");
+                strcat(wlan_tx_data, ssid);
+                strcat(wlan_tx_data, "\",\"");
+                strcat(wlan_tx_data, passphrase);
+                strcat(wlan_tx_data, "\"\r\n");
+
+                uart_puts(wlan_tx_data);
+
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        break;
+                    }
+                }
+
+                // reset
+                uart_puts("AT+RST\r\n");
+                start = GetMilliSeconds();
+                while (GetMilliSeconds() - start < 3000)
+                {
+                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+
+                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
+                    {
+                        break;
+                    }
+                }
+
+                state = DONE;
+                break;
+
+            case ERROR:
+                //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                state = DONE;
+                break;
+
+            case DONE:
+                // Turn off wireless module
+                WLANEnable(0);
+                return(result);
+                break;
+
+            default:
+                break;
+
+        }
+    }
+}
+
 uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * DeviceID)
 {
     WLANState_t state = INIT;
@@ -319,48 +461,6 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 break;
 
             case OKAY:
-
-#ifdef ONETIME
-                // client mode
-                uart_puts("AT+CWMODE=1\r\n");
-                start = MilliSeconds();
-                while (MilliSeconds() - start < 3000)
-                {
-                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
-
-                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
-                    {
-                    }
-                }
-
-                // join ssid
-                uart_puts("AT+CWJAP=\"SSID\",\"PASSWORD\"\r\n");
-                start = MilliSeconds();
-                while (MilliSeconds() - start < 3000)
-                {
-                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
-
-                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
-                    {
-                    }
-                }
-
-                // reset
-                uart_puts("AT+RST\r\n");
-                start = MilliSeconds();
-                while (MilliSeconds() - start < 3000)
-                {
-                    PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
-
-                    if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
-                    {
-                    }
-                }
-
-                state = ERROR;
-                break;
-#endif
-
 
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 5000)

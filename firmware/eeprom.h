@@ -37,5 +37,6 @@ typedef struct EEPROMData
 
 // function prototypes
 void FetchEEPROMData(EEPROMData_t *);
+void UpdateEEPROMData(EEPROMData_t *);
 
 #endif //EEPROM_H
