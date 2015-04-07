@@ -1,5 +1,11 @@
-update=Mon 10 Dec 2012 11:52:49 GMT
-last_client=pcbnew
+update=Mon 10 Dec 2012 14:50:03 GMT
+version=1
+last_client=kicad
+[cvpcb]
+version=1
+NetIExt=net
+[cvpcb/libraries]
+EquName1=devcms
 [eeschema]
 version=1
 LibDir=/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/Library
@@ -33,11 +39,6 @@ RptLab=1
 LabSize=60
 [eeschema/libraries]
 LibName1=dresco
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
 [pcbnew]
 version=1
 PadDrlX=320
@@ -58,3 +59,5 @@ LastNetListRead=
 [pcbnew/libraries]
 LibDir=/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/Library
 LibName1=dresco
+[general]
+version=1
