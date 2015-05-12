@@ -1,545 +1,794 @@
-# EESchema Netlist Version 1.1 created  Mon 03 Dec 2012 17:06:51 GMT
-(
- ( /4FBF865E ANT_SMD_7x2 ANT1 ANTENNA
-  ( 1 N-000017 )
- )
- ( /4F9C1A75 JST_PN_2 BT1 BATTERY
-  ( 1 PWR_SW_IN )
-  ( 2 GND )
- )
- ( /4F9C1CF4 SMD0805 C1 1uF
-  ( 1 +VUSB )
-  ( 2 GND )
- )
- ( /4F9C1BDF SMD0805 C2 1uF
-  ( 1 N-000059 )
-  ( 2 GND )
- )
- ( /4F9C1C02 SMD0805 C3 1uF
-  ( 1 PWR_SW_IN )
-  ( 2 GND )
- )
- ( /4FBF8D57 SMD0805 C4 10nF
-  ( 1 BAT_ADC )
-  ( 2 GND )
- )
- ( /4FB6D1D6 SMD0805 C5 0.1uF
-  ( 1 N-000046 )
-  ( 2 GND )
- )
- ( /4FBE97BB SMD0805 C6 10uF
-  ( 1 GND )
-  ( 2 +VUSB )
- )
- ( /4FBE82BB SMD0805 C7 1uF
-  ( 1 +3V )
-  ( 2 GND )
- )
- ( /4FB6D239 SMD0805 C8 0.1uF
-  ( 1 +3V )
-  ( 2 GND )
- )
- ( /4F9C1A7A SMD0805 C9 1uF
-  ( 1 PWR_SW_OUT )
-  ( 2 GND )
- )
- ( /4FB6D1D3 SMD0805 C10 0.1uF
-  ( 1 +3V )
-  ( 2 GND )
- )
- ( /4FBE75E8 SMD0805 C11 22pF
-  ( 1 GND )
-  ( 2 N-000066 )
- )
- ( /4FB6D1B1 SMD0805 C12 0.1uF
-  ( 1 N-000060 )
-  ( 2 GND )
- )
- ( /4FBE75E7 SMD0805 C13 22pF
-  ( 1 GND )
-  ( 2 N-000065 )
- )
- ( /4FB6D1D8 SMD0805 C14 0.1uF
-  ( 1 N-000060 )
-  ( 2 GND )
- )
- ( /4F9C1A79 SMD0805 C15 1uF
-  ( 1 +3V )
-  ( 2 GND )
- )
- ( /4FCCE26C SMD-LED-0805 D1 LED
-  ( 1 N-000043 )
-  ( 2 GND )
- )
- ( /4FDB64DD SMD-LED-0805 D2 LED
-  ( 1 N-000036 )
-  ( 2 GND )
- )
- ( /4F9C1A6E HOLE_3.2MM H1 HOLE
- )
- ( /4FCE3F9E HOLE_3.2MM H2 HOLE
- )
- ( /4F9C1A6D HOLE_3.2MM H3 HOLE
- )
- ( /4FCE3FAD HOLE_3.2MM H4 HOLE
- )
- ( /4F9C1A67 AVR-ISP-6 ISP1 AVR-ISP-6
-  ( 1 MISO )
-  ( 2 +3V )
-  ( 3 SCLK )
-  ( 4 MOSI )
-  ( 5 RST )
-  ( 6 GND )
- )
- ( /4FE9FA0C PIN_ARRAY_2X1 JP1 JUMPER
-  ( 1 DEBUG )
-  ( 2 GND )
- )
- ( /4FB6D42C SMD0805 L1 INDUCTOR
-  ( 1 +3V )
-  ( 2 N-000060 )
- )
- ( /4FB0BBD2 RN-171 MOD1 RN-171
-  ( 1 GND )
-  ( 2 ? )
-  ( 3 ? )
-  ( 4 ? )
-  ( 5 WIFI_SLEEP )
-  ( 6 ? )
-  ( 7 ? )
-  ( 8 ? )
-  ( 9 WIFI_ASSOC )
-  ( 10 +3V )
-  ( 11 ? )
-  ( 12 ? )
-  ( 13 ? )
-  ( 14 GND )
-  ( 15 ? )
-  ( 16 ? )
-  ( 17 ? )
-  ( 18 ? )
-  ( 19 ? )
-  ( 20 GND )
-  ( 21 GND )
-  ( 22 GND )
-  ( 23 GND )
-  ( 24 N-000017 )
-  ( 25 GND )
-  ( 26 GND )
-  ( 27 GND )
-  ( 28 GND )
-  ( 29 N-000072 )
-  ( 30 N-000069 )
-  ( 31 ? )
-  ( 32 ? )
-  ( 33 ? )
-  ( 34 +3V )
-  ( 35 ? )
-  ( 36 ? )
-  ( 37 ? )
-  ( 38 ? )
-  ( 39 GND )
-  ( 40 WIFI_RESET )
-  ( 41 WIFI_WAKE )
-  ( 42 ? )
-  ( 43 WIFI_RTS )
-  ( 44 WIFI_CTS )
-  ( 45 WIFI_RX )
-  ( 46 WIFI_TX )
-  ( 47 GND )
-  ( 48 ? )
-  ( 49 +3V )
- )
- ( /4FCCF940 PIN_X1 P1 CONN_1
-  ( 1 WIFI_RESET )
- )
- ( /4FCCF965 PIN_X1 P2 CONN_1
-  ( 1 WIFI_WAKE )
- )
- ( /4FC7A3FD PIN_X1 P3 CONN_1
-  ( 1 SW_KG )
- )
- ( /4FC7A40A PIN_X1 P4 CONN_1
-  ( 1 SW_LB )
- )
- ( /4FC7A40D PIN_X1 P5 CONN_1
-  ( 1 SW_ST )
- )
- ( /4FCCF98F PIN_X1 P6 CONN_1
-  ( 1 WIFI_RTS )
- )
- ( /4FCCF98B PIN_X1 P7 CONN_1
-  ( 1 WIFI_CTS )
- )
- ( /4FCCF987 PIN_X1 P8 CONN_1
-  ( 1 WIFI_RX )
- )
- ( /4FCCF97C PIN_X1 P9 CONN_1
-  ( 1 WIFI_TX )
- )
- ( /4FCCF9B5 PIN_X1 P10 CONN_1
-  ( 1 WIFI_SLEEP )
- )
- ( /4FCCF9BB PIN_X1 P11 CONN_1
-  ( 1 WIFI_ASSOC )
- )
- ( /4FC7A426 PIN_X1 P12 CONN_1
-  ( 1 BAT_ADC )
- )
- ( /4F9C1A6A PIN_X1 P13 CONN_1
-  ( 1 PWR_SW_IN )
- )
- ( /4F9C1A68 PIN_X1 P14 CONN_1
-  ( 1 GND )
- )
- ( /4FC7A464 PIN_X1 P15 CONN_1
-  ( 1 LCD_ENABLE )
- )
- ( /4F9C1A69 PIN_X1 P16 CONN_1
-  ( 1 +3V )
- )
- ( /4FC7A442 PIN_X1 P17 CONN_1
-  ( 1 LCD_SUPPLY )
- )
- ( /4FCCF8DB PIN_X1 P18 CONN_1
-  ( 1 CHG )
- )
- ( /4FDB64DB PIN_X1 P19 CONN_1
-  ( 1 STATUS )
- )
- ( /50BC8C47 PIN_ARRAY_6X2 P20 CONN_12
-  ( 1 LCD_SUPPLY )
-  ( 2 I2C_DATA )
-  ( 3 I2C_CLOCK )
-  ( 4 LCD_CLOCK )
-  ( 5 ADC_SPEED )
-  ( 6 ADC_PWRDN )
-  ( 7 ADC_CLOCK )
-  ( 8 ADC_DATA )
-  ( 9 ? )
-  ( 10 PWR_SW_IN )
-  ( 11 +3V )
-  ( 12 GND )
- )
- ( /4FBF7AB0 SOT23 Q1 MOSFET_P
-  ( D LCD_SUPPLY )
-  ( G N-000018 )
-  ( S +3V )
- )
- ( /4FB136EA SMD0805 R1 R
-  ( 1 WIFI_RX )
-  ( 2 N-000072 )
- )
- ( /4FB136E9 SMD0805 R2 R
-  ( 1 N-000072 )
-  ( 2 GND )
- )
- ( /4FB136DA SMD0805 R3 R
-  ( 1 WIFI_RTS )
-  ( 2 N-000069 )
- )
- ( /4FB136DD SMD0805 R4 R
-  ( 1 N-000069 )
-  ( 2 GND )
- )
- ( /4FBF8CE3 SMD0805 R5 R
-  ( 1 PWR_SW_IN )
-  ( 2 BAT_ADC )
- )
- ( /4FBF8CEF SMD0805 R6 R
-  ( 1 BAT_ADC )
-  ( 2 GND )
- )
- ( /4FB6D295 SMD0805 R7 10K
-  ( 1 RST )
-  ( 2 +3V )
- )
- ( /4FBEC438 SMD0805 R8 100
-  ( 1 LCD_ENABLE )
-  ( 2 N-000018 )
- )
- ( /4FBE83EA SMD0805 R9 22
-  ( 1 D+ )
-  ( 2 N-000061 )
- )
- ( /4FBE83F1 SMD0805 R10 22
-  ( 1 D- )
-  ( 2 N-000063 )
- )
- ( /4FBEC3ED SMD0805 R11 100K
-  ( 1 N-000018 )
-  ( 2 +3V )
- )
- ( /4FCCE264 SMD0805 R12 1K8
-  ( 1 CHG )
-  ( 2 N-000043 )
- )
- ( /4FDB64DE SMD0805 R13 1K8
-  ( 1 STATUS )
-  ( 2 N-000036 )
- )
- ( /4FDB62EB SWITCH_SLIDE_SPDT S1 SWITCH_SPDT
-  ( 1 ? )
-  ( 2 PWR_SW_IN )
-  ( 3 PWR_SW_OUT )
- )
- ( /4FDB62FA SWITCH_SLIDE_SP3T S2 SWITCH_SP3T
-  ( 1 SW_KG )
-  ( 2 GND )
-  ( 3 SW_LB )
-  ( 4 SW_ST )
- )
- ( /4FE9F9E8 SWITCH_PUSH_6X6 S3 SWITCH_PUSH_NO
-  ( 1 RST )
-  ( 2 GND )
- )
- ( /4F9C2CDB SOT23-5 U1 MAX1555
-  ( 1 +VUSB )
-  ( 2 GND )
-  ( 3 CHG )
-  ( 4 N-000059 )
-  ( 5 PWR_SW_IN )
- )
- ( /4F9C1A72 SOT89 U2 MCP1700
-  ( GND GND )
-  ( VI PWR_SW_OUT )
-  ( VO +3V )
- )
- ( /4FCCF7C0 TQFP-44-80 U3 ATMEGA16U4/32U4
-  ( 1 DEBUG )
-  ( 2 ? )
-  ( 3 N-000063 )
-  ( 4 N-000061 )
-  ( 5 GND )
-  ( 6 +3V )
-  ( 7 +VUSB )
-  ( 8 SW_ST )
-  ( 9 SCLK )
-  ( 10 MOSI )
-  ( 11 MISO )
-  ( 12 WIFI_CTS )
-  ( 13 RST )
-  ( 14 +3V )
-  ( 15 GND )
-  ( 16 N-000065 )
-  ( 17 N-000066 )
-  ( 18 I2C_CLOCK )
-  ( 19 I2C_DATA )
-  ( 20 WIFI_TX )
-  ( 21 WIFI_RX )
-  ( 22 WIFI_RTS )
-  ( 23 GND )
-  ( 24 N-000060 )
-  ( 25 LCD_ENABLE )
-  ( 26 ADC_CLOCK )
-  ( 27 ADC_DATA )
-  ( 28 SW_LB )
-  ( 29 LCD_CLOCK )
-  ( 30 SW_KG )
-  ( 31 ADC_SPEED )
-  ( 32 ADC_PWRDN )
-  ( 33 GND )
-  ( 34 +3V )
-  ( 35 GND )
-  ( 36 WIFI_WAKE )
-  ( 37 WIFI_SLEEP )
-  ( 38 WIFI_ASSOC )
-  ( 39 WIFI_RESET )
-  ( 40 STATUS )
-  ( 41 BAT_ADC )
-  ( 42 N-000046 )
-  ( 43 GND )
-  ( 44 N-000060 )
- )
- ( /4FBE9598 USB_MINI_B_HORZ_KOBICONN USB1 USB
-  ( 1 +VUSB )
-  ( 2 D+ )
-  ( 3 D- )
-  ( 4 ? )
-  ( 5 GND )
- )
- ( /4FBE75E9 SM_XTAL_6.0x3.3 X1 CRYSTAL
-  ( 1 N-000065 )
-  ( 2 N-000066 )
- )
-)
-*
-{ Allowed footprints by component:
-$component C1
- SM*
- C?
- C1-1
-$endlist
-$component C2
- SM*
- C?
- C1-1
-$endlist
-$component C3
- SM*
- C?
- C1-1
-$endlist
-$component C4
- SM*
- C?
- C1-1
-$endlist
-$component C5
- SM*
- C?
- C1-1
-$endlist
-$component C6
- SM*
- C?
- C1-1
-$endlist
-$component C7
- SM*
- C?
- C1-1
-$endlist
-$component C8
- SM*
- C?
- C1-1
-$endlist
-$component C9
- SM*
- C?
- C1-1
-$endlist
-$component C10
- SM*
- C?
- C1-1
-$endlist
-$component C11
- SM*
- C?
- C1-1
-$endlist
-$component C12
- SM*
- C?
- C1-1
-$endlist
-$component C13
- SM*
- C?
- C1-1
-$endlist
-$component C14
- SM*
- C?
- C1-1
-$endlist
-$component C15
- SM*
- C?
- C1-1
-$endlist
-$component D1
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component D2
- LED-3MM
- LED-5MM
- LED-10MM
- LED-0603
- LED-0805
- LED-1206
- LEDV
-$endlist
-$component R1
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R2
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R3
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R4
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R5
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R6
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R7
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R8
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R9
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R10
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R11
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R12
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component R13
- R?
- SM0603
- SM0805
- R?-*
-$endlist
-$component U2
- SOT89
- SOT-23A
- TO92-INVERT
-$endlist
-$endfootprintlist
-}
+(export (version D)
+  (design
+    (source "/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/WeighFi/hardware/Main/WeighFi-Main.sch")
+    (date "Tue 12 May 2015 19:00:50 BST")
+    (tool "eeschema (2014-jan-25)-product"))
+  (components
+    (comp (ref P16)
+      (value CONN_12)
+      (libsource (lib dresco) (part CONN_12))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 50BC8C47))
+    (comp (ref JP1)
+      (value JUMPER)
+      (libsource (lib dresco) (part JUMPER))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FE9FA0C))
+    (comp (ref S3)
+      (value SWITCH_PUSH_NO)
+      (libsource (lib dresco) (part SWITCH_PUSH_NO))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FE9F9E8))
+    (comp (ref R6)
+      (value 1K8)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FDB64DE))
+    (comp (ref D1)
+      (value LED)
+      (libsource (lib dresco) (part LED))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FDB64DD))
+    (comp (ref P12)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FDB64DB))
+    (comp (ref S2)
+      (value SWITCH_SP3T)
+      (libsource (lib dresco) (part SWITCH_SP3T))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FDB62FA))
+    (comp (ref S1)
+      (value SWITCH_SPDT)
+      (libsource (lib dresco) (part SWITCH_SPDT))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FDB62EB))
+    (comp (ref H4)
+      (value HOLE)
+      (libsource (lib dresco) (part HOLE))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FCE3FAD))
+    (comp (ref H2)
+      (value HOLE)
+      (libsource (lib dresco) (part HOLE))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FCE3F9E))
+    (comp (ref P5)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FCCF97C))
+    (comp (ref P4)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FCCF965))
+    (comp (ref P3)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FCCF940))
+    (comp (ref U2)
+      (value ATMEGA16U4/32U4)
+      (libsource (lib dresco) (part ATMEGA16U4/32U4))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FCCF7C0))
+    (comp (ref P13)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FC7A464))
+    (comp (ref P14)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FC7A442))
+    (comp (ref P11)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FC7A426))
+    (comp (ref P8)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FC7A40D))
+    (comp (ref P7)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FC7A40A))
+    (comp (ref P6)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FC7A3FD))
+    (comp (ref C4)
+      (value 10nF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBF8D57))
+    (comp (ref R2)
+      (value 470K)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBF8CEF))
+    (comp (ref R1)
+      (value 670K)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBF8CE3))
+    (comp (ref Q1)
+      (value MOSFET_P)
+      (libsource (lib dresco) (part MOSFET_P))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBF7AB0))
+    (comp (ref R7)
+      (value 100)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBEC438))
+    (comp (ref R8)
+      (value 100K)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBEC3ED))
+    (comp (ref C6)
+      (value 10uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBE97BB))
+    (comp (ref USB1)
+      (value USB)
+      (libsource (lib dresco) (part USB))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBE9598))
+    (comp (ref R5)
+      (value 22)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBE83F1))
+    (comp (ref R4)
+      (value 22)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBE83EA))
+    (comp (ref C7)
+      (value 1uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBE82BB))
+    (comp (ref X1)
+      (value CRYSTAL)
+      (libsource (lib dresco) (part CRYSTAL))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBE75E9))
+    (comp (ref C10)
+      (value 22pF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBE75E8))
+    (comp (ref C12)
+      (value 22pF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FBE75E7))
+    (comp (ref L1)
+      (value INDUCTOR)
+      (libsource (lib dresco) (part INDUCTOR))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FB6D42C))
+    (comp (ref R3)
+      (value 10K)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FB6D295))
+    (comp (ref C8)
+      (value 0.1uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FB6D239))
+    (comp (ref C13)
+      (value 0.1uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FB6D1D8))
+    (comp (ref C5)
+      (value 0.1uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FB6D1D6))
+    (comp (ref C9)
+      (value 0.1uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FB6D1D3))
+    (comp (ref C11)
+      (value 0.1uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4FB6D1B1))
+    (comp (ref U1)
+      (value MCP1700)
+      (libsource (lib dresco) (part MCP1700))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A72))
+    (comp (ref C2)
+      (value 1uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A7A))
+    (comp (ref C3)
+      (value 1uF)
+      (libsource (lib dresco) (part C))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A79))
+    (comp (ref BT1)
+      (value BATTERY)
+      (libsource (lib dresco) (part BATTERY))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A75))
+    (comp (ref H1)
+      (value HOLE)
+      (libsource (lib dresco) (part HOLE))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A6E))
+    (comp (ref H3)
+      (value HOLE)
+      (libsource (lib dresco) (part HOLE))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A6D))
+    (comp (ref P1)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A6A))
+    (comp (ref P10)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A69))
+    (comp (ref P2)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A68))
+    (comp (ref ISP1)
+      (value AVR-ISP-6)
+      (footprint AVR-ISP-6)
+      (libsource (lib dresco) (part AVR-ISP-6))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 4F9C1A67))
+    (comp (ref MOD1)
+      (value ESP8266-ESP-03)
+      (libsource (lib dresco) (part ESP8266-ESP-03))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 552EE147))
+    (comp (ref P9)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 552EF81F))
+    (comp (ref R13)
+      (value 1M)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 552FE189))
+    (comp (ref P15)
+      (value CONN_1)
+      (libsource (lib dresco) (part CONN_1))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 552FECF6))
+    (comp (ref S4)
+      (value SWITCH_VIBRATION)
+      (libsource (lib dresco) (part SWITCH_VIBRATION))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 552FF525))
+    (comp (ref C1)
+      (value 330uF)
+      (libsource (lib dresco) (part CP))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 55322967))
+    (comp (ref R12)
+      (value 100)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 554FA8A3))
+    (comp (ref R11)
+      (value 100)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 554FA8F4))
+    (comp (ref R9)
+      (value 100)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 554FA8FF))
+    (comp (ref R10)
+      (value 100)
+      (libsource (lib dresco) (part R))
+      (sheetpath (names /) (tstamps /))
+      (tstamp 554FA90A)))
+  (libparts
+    (libpart (lib dresco) (part ATMEGA16U4/32U4)
+      (description "Atmel ATmega 48/88/168/328 series (TQFP32)")
+      (fields
+        (field (name Reference) U)
+        (field (name Value) ATMEGA16U4/32U4))
+      (pins
+        (pin (num 1) (name "(INT.6/AIN0)_PE6") (type BiDi))
+        (pin (num 2) (name UVcc) (type BiDi))
+        (pin (num 3) (name D-) (type BiDi))
+        (pin (num 4) (name D+) (type BiDi))
+        (pin (num 5) (name UGnd) (type power_in))
+        (pin (num 6) (name UCap) (type power_in))
+        (pin (num 7) (name VBus) (type power_in))
+        (pin (num 8) (name "(PCINT0/SS)_PB0") (type BiDi))
+        (pin (num 9) (name "(PCINT1/SCLK)_PB1") (type BiDi))
+        (pin (num 10) (name "(PCINT2/PDI/MOSI)_PB2") (type BiDi))
+        (pin (num 11) (name "(PCINT3/PDO/MISO)_PB3") (type BiDi))
+        (pin (num 12) (name "(PCINT7/OC0A/OC1C/RTS)_PB7") (type BiDi))
+        (pin (num 13) (name RESET) (type BiDi))
+        (pin (num 14) (name VCC) (type power_in))
+        (pin (num 15) (name GND) (type power_in))
+        (pin (num 16) (name XTAL2) (type BiDi))
+        (pin (num 17) (name XTAL1) (type BiDi))
+        (pin (num 18) (name "(OC0B/SCL/INT0)_PD0") (type BiDi))
+        (pin (num 19) (name "(SDA/INT1)_PD1") (type BiDi))
+        (pin (num 20) (name "(RXD1/INT2)_PD2") (type BiDi))
+        (pin (num 21) (name "(TXD1/INT3)_PD3") (type BiDi))
+        (pin (num 22) (name "(XCK1/CTS)_PD5") (type BiDi))
+        (pin (num 23) (name GND) (type power_in))
+        (pin (num 24) (name AVCC) (type BiDi))
+        (pin (num 25) (name "(PCINT20/XCK/T0)_PD4") (type BiDi))
+        (pin (num 26) (name "(T1/OC4D/ADC9)_PD6") (type BiDi))
+        (pin (num 27) (name "(T0/OC4D/ADC10)_PD7") (type BiDi))
+        (pin (num 28) (name "(PCINT4/ADC11)_PB4") (type BiDi))
+        (pin (num 29) (name "(PCINT5/OC1A/OC4B/ADC12)_PB5") (type BiDi))
+        (pin (num 30) (name "(PCINT6/OC1B/OC4B/ADC13)_PB6") (type BiDi))
+        (pin (num 31) (name "(OC3A/OC4A)_PC6") (type BiDi))
+        (pin (num 32) (name "(ICP3/CLK0/OC4A)_PC7") (type BiDi))
+        (pin (num 33) (name "(HWB)_PE2") (type power_in))
+        (pin (num 34) (name VCC) (type power_in))
+        (pin (num 35) (name GND) (type power_in))
+        (pin (num 36) (name "(TDI/ADC7)_PF7") (type BiDi))
+        (pin (num 37) (name "(TDO/ADC6)_PF6") (type BiDi))
+        (pin (num 38) (name "(TMS/ADC5)_PF5") (type BiDi))
+        (pin (num 39) (name "(TCK/ADC4)_PF4") (type BiDi))
+        (pin (num 40) (name "(ADC1)_PF1") (type BiDi))
+        (pin (num 41) (name "(ADC0)_PF0") (type BiDi))
+        (pin (num 42) (name AREF) (type input))
+        (pin (num 43) (name GND) (type power_in))
+        (pin (num 44) (name AVCC) (type BiDi))))
+    (libpart (lib dresco) (part AVR-ISP-6)
+      (fields
+        (field (name Reference) ISP)
+        (field (name Value) AVR-ISP-6)
+        (field (name Footprint) AVR-ISP-6))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))
+        (pin (num 3) (name ~) (type passive))
+        (pin (num 4) (name ~) (type passive))
+        (pin (num 5) (name ~) (type passive))
+        (pin (num 6) (name ~) (type passive))))
+    (libpart (lib dresco) (part BATTERY)
+      (fields
+        (field (name Reference) BT)
+        (field (name Value) BATTERY))
+      (pins
+        (pin (num 1) (name +) (type passive))
+        (pin (num 2) (name -) (type passive))))
+    (libpart (lib dresco) (part C)
+      (footprints
+        (fp SM*)
+        (fp C?)
+        (fp C1-1))
+      (fields
+        (field (name Reference) C)
+        (field (name Value) C))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib dresco) (part CONN_1)
+      (fields
+        (field (name Reference) P)
+        (field (name Value) CONN_1))
+      (pins
+        (pin (num 1) (name 1) (type passive))))
+    (libpart (lib dresco) (part CONN_12)
+      (description "Symbole general de connexion")
+      (fields
+        (field (name Reference) P)
+        (field (name Value) CONN_12))
+      (pins
+        (pin (num 1) (name P1) (type passive))
+        (pin (num 2) (name P2) (type passive))
+        (pin (num 3) (name P3) (type passive))
+        (pin (num 4) (name P4) (type passive))
+        (pin (num 5) (name P5) (type passive))
+        (pin (num 6) (name P6) (type passive))
+        (pin (num 7) (name P7) (type passive))
+        (pin (num 8) (name P8) (type passive))
+        (pin (num 9) (name P9) (type passive))
+        (pin (num 10) (name P10) (type passive))
+        (pin (num 11) (name P11) (type passive))
+        (pin (num 12) (name P12) (type passive))))
+    (libpart (lib dresco) (part CP)
+      (footprints
+        (fp SM*)
+        (fp C?)
+        (fp C1-1))
+      (fields
+        (field (name Reference) C)
+        (field (name Value) CP))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib dresco) (part CRYSTAL)
+      (fields
+        (field (name Reference) X)
+        (field (name Value) CRYSTAL))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))))
+    (libpart (lib dresco) (part ESP8266-ESP-03)
+      (fields
+        (field (name Reference) MOD)
+        (field (name Value) ESP8266-ESP-03))
+      (pins
+        (pin (num 1) (name GND) (type input))
+        (pin (num 3) (name TX) (type input))
+        (pin (num 4) (name RX) (type input))
+        (pin (num 5) (name GPIO16) (type input))
+        (pin (num 6) (name CH_PD) (type input))
+        (pin (num 7) (name WIFI_ANT) (type input))
+        (pin (num 8) (name VCC) (type input))
+        (pin (num 9) (name GPIO14) (type input))
+        (pin (num 10) (name GPIO12) (type input))
+        (pin (num 11) (name GPIO13) (type input))
+        (pin (num 12) (name GPIO15) (type input))
+        (pin (num 13) (name GPIO2) (type input))
+        (pin (num 14) (name GPIO0) (type input))))
+    (libpart (lib dresco) (part HOLE)
+      (fields
+        (field (name Reference) H)
+        (field (name Value) HOLE)))
+    (libpart (lib dresco) (part INDUCTOR)
+      (fields
+        (field (name Reference) L)
+        (field (name Value) INDUCTOR))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))))
+    (libpart (lib dresco) (part JUMPER)
+      (fields
+        (field (name Reference) JP)
+        (field (name Value) JUMPER))
+      (pins
+        (pin (num 1) (name 1) (type passive))
+        (pin (num 2) (name 2) (type passive))))
+    (libpart (lib dresco) (part LED)
+      (footprints
+        (fp LED-3MM)
+        (fp LED-5MM)
+        (fp LED-10MM)
+        (fp LED-0603)
+        (fp LED-0805)
+        (fp LED-1206)
+        (fp LEDV))
+      (fields
+        (field (name Reference) D)
+        (field (name Value) LED))
+      (pins
+        (pin (num 1) (name A) (type passive))
+        (pin (num 2) (name K) (type passive))))
+    (libpart (lib dresco) (part MCP1700)
+      (footprints
+        (fp SOT89)
+        (fp SOT-23A)
+        (fp TO92-INVERT))
+      (fields
+        (field (name Reference) U)
+        (field (name Value) MCP1700))
+      (pins
+        (pin (num GND) (name GND) (type power_in))
+        (pin (num VI) (name VI) (type power_in))
+        (pin (num VO) (name VO) (type power_out))))
+    (libpart (lib dresco) (part MOSFET_P)
+      (fields
+        (field (name Reference) Q)
+        (field (name Value) MOSFET_P))
+      (pins
+        (pin (num D) (name D) (type passive))
+        (pin (num G) (name G) (type input))
+        (pin (num S) (name S) (type passive))))
+    (libpart (lib dresco) (part R)
+      (footprints
+        (fp R?)
+        (fp SM0603)
+        (fp SM0805)
+        (fp R?-*))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib dresco) (part SWITCH_PUSH_NO)
+      (fields
+        (field (name Reference) S)
+        (field (name Value) SWITCH_PUSH_NO))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib dresco) (part SWITCH_SP3T)
+      (fields
+        (field (name Reference) S)
+        (field (name Value) SWITCH_SP3T))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))
+        (pin (num 3) (name ~) (type passive))
+        (pin (num 4) (name ~) (type passive))))
+    (libpart (lib dresco) (part SWITCH_SPDT)
+      (fields
+        (field (name Reference) S)
+        (field (name Value) SWITCH_SPDT))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))
+        (pin (num 3) (name ~) (type passive))))
+    (libpart (lib dresco) (part SWITCH_VIBRATION)
+      (fields
+        (field (name Reference) S)
+        (field (name Value) SWITCH_VIBRATION))
+      (pins
+        (pin (num 1) (name ~) (type input))
+        (pin (num 2) (name ~) (type input))))
+    (libpart (lib dresco) (part USB)
+      (description "USB Connector")
+      (fields
+        (field (name Reference) USB)
+        (field (name Value) USB))
+      (pins
+        (pin (num 1) (name VBUS) (type power_out))
+        (pin (num 2) (name D+) (type BiDi))
+        (pin (num 3) (name D-) (type BiDi))
+        (pin (num 4) (name ID) (type input))
+        (pin (num 5) (name GND) (type power_in)))))
+  (libraries
+    (library (logical dresco)
+      (uri "/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/Library/dresco.lib")))
+  (nets
+    (net (code 1) (name "Net-(R4-Pad2)")
+      (node (ref U2) (pin 4))
+      (node (ref R4) (pin 2)))
+    (net (code 2) (name MISO)
+      (node (ref ISP1) (pin 1))
+      (node (ref U2) (pin 11)))
+    (net (code 3) (name D+)
+      (node (ref USB1) (pin 2))
+      (node (ref R4) (pin 1)))
+    (net (code 4) (name +VUSB)
+      (node (ref USB1) (pin 1))
+      (node (ref U2) (pin 7))
+      (node (ref C6) (pin 1)))
+    (net (code 5) (name MOSI)
+      (node (ref ISP1) (pin 4))
+      (node (ref U2) (pin 10)))
+    (net (code 6) (name SCLK)
+      (node (ref ISP1) (pin 3))
+      (node (ref U2) (pin 9)))
+    (net (code 7) (name I2C_DATA)
+      (node (ref P16) (pin 2))
+      (node (ref U2) (pin 19)))
+    (net (code 8) (name PWR_SW_IN)
+      (node (ref P1) (pin 1))
+      (node (ref BT1) (pin 1))
+      (node (ref P16) (pin 10))
+      (node (ref S1) (pin 2))
+      (node (ref R1) (pin 1))
+      (node (ref C1) (pin 1)))
+    (net (code 9) (name LCD_SUPPLY)
+      (node (ref P16) (pin 1))
+      (node (ref Q1) (pin D))
+      (node (ref P14) (pin 1)))
+    (net (code 10) (name I2C_CLOCK)
+      (node (ref P16) (pin 3))
+      (node (ref U2) (pin 18)))
+    (net (code 11) (name "Net-(MOD1-Pad11)")
+      (node (ref MOD1) (pin 11)))
+    (net (code 12) (name "Net-(MOD1-Pad10)")
+      (node (ref MOD1) (pin 10)))
+    (net (code 13) (name "Net-(MOD1-Pad9)")
+      (node (ref MOD1) (pin 9)))
+    (net (code 14) (name "Net-(MOD1-Pad5)")
+      (node (ref MOD1) (pin 5)))
+    (net (code 15) (name "Net-(MOD1-Pad7)")
+      (node (ref MOD1) (pin 7)))
+    (net (code 16) (name "Net-(U2-Pad40)")
+      (node (ref U2) (pin 40)))
+    (net (code 17) (name "Net-(U2-Pad39)")
+      (node (ref U2) (pin 39)))
+    (net (code 18) (name +3V)
+      (node (ref C9) (pin 1))
+      (node (ref C3) (pin 1))
+      (node (ref L1) (pin 1))
+      (node (ref U2) (pin 6))
+      (node (ref P16) (pin 11))
+      (node (ref U1) (pin VO))
+      (node (ref ISP1) (pin 2))
+      (node (ref U2) (pin 34))
+      (node (ref Q1) (pin S))
+      (node (ref MOD1) (pin 8))
+      (node (ref C7) (pin 1))
+      (node (ref P10) (pin 1))
+      (node (ref U2) (pin 14))
+      (node (ref R8) (pin 2))
+      (node (ref C8) (pin 1))
+      (node (ref R13) (pin 2))
+      (node (ref R3) (pin 2)))
+    (net (code 19) (name PWR_SW_OUT)
+      (node (ref C2) (pin 1))
+      (node (ref U1) (pin VI))
+      (node (ref S1) (pin 3)))
+    (net (code 20) (name SW_KG)
+      (node (ref P6) (pin 1))
+      (node (ref S2) (pin 1))
+      (node (ref U2) (pin 36)))
+    (net (code 21) (name BAT_ADC)
+      (node (ref C4) (pin 1))
+      (node (ref P11) (pin 1))
+      (node (ref U2) (pin 41))
+      (node (ref R2) (pin 1))
+      (node (ref R1) (pin 2)))
+    (net (code 22) (name "Net-(D1-Pad1)")
+      (node (ref R6) (pin 2))
+      (node (ref D1) (pin 1)))
+    (net (code 23) (name SW_ST)
+      (node (ref U2) (pin 38))
+      (node (ref P8) (pin 1))
+      (node (ref S2) (pin 4)))
+    (net (code 24) (name MCU_WAKE)
+      (node (ref R13) (pin 1))
+      (node (ref P15) (pin 1))
+      (node (ref S4) (pin 2))
+      (node (ref U2) (pin 12)))
+    (net (code 25) (name GND)
+      (node (ref ISP1) (pin 6))
+      (node (ref U2) (pin 33))
+      (node (ref U2) (pin 43))
+      (node (ref USB1) (pin 5))
+      (node (ref P2) (pin 1))
+      (node (ref U2) (pin 15))
+      (node (ref C4) (pin 2))
+      (node (ref BT1) (pin 2))
+      (node (ref C7) (pin 2))
+      (node (ref MOD1) (pin 12))
+      (node (ref R2) (pin 2))
+      (node (ref C3) (pin 2))
+      (node (ref S3) (pin 2))
+      (node (ref U1) (pin GND))
+      (node (ref C2) (pin 2))
+      (node (ref P16) (pin 12))
+      (node (ref JP1) (pin 2))
+      (node (ref D1) (pin 2))
+      (node (ref C12) (pin 1))
+      (node (ref C10) (pin 1))
+      (node (ref S2) (pin 2))
+      (node (ref U2) (pin 5))
+      (node (ref C8) (pin 2))
+      (node (ref MOD1) (pin 1))
+      (node (ref C6) (pin 2))
+      (node (ref C11) (pin 2))
+      (node (ref C9) (pin 2))
+      (node (ref C5) (pin 2))
+      (node (ref C13) (pin 2))
+      (node (ref S4) (pin 1))
+      (node (ref C1) (pin 2))
+      (node (ref U2) (pin 23))
+      (node (ref U2) (pin 35)))
+    (net (code 26) (name LCD_ENABLE)
+      (node (ref U2) (pin 31))
+      (node (ref R7) (pin 1))
+      (node (ref P13) (pin 1)))
+    (net (code 27) (name WIFI_RX)
+      (node (ref R10) (pin 2))
+      (node (ref P5) (pin 1))
+      (node (ref MOD1) (pin 4)))
+    (net (code 28) (name "Net-(R11-Pad1)")
+      (node (ref U2) (pin 25))
+      (node (ref R11) (pin 1)))
+    (net (code 29) (name "Net-(R12-Pad1)")
+      (node (ref R12) (pin 1))
+      (node (ref U2) (pin 22)))
+    (net (code 30) (name ADC_DATA)
+      (node (ref P16) (pin 8))
+      (node (ref U2) (pin 26)))
+    (net (code 31) (name ADC_CLOCK)
+      (node (ref U2) (pin 27))
+      (node (ref P16) (pin 7)))
+    (net (code 32) (name WIFI_TX)
+      (node (ref P4) (pin 1))
+      (node (ref MOD1) (pin 3))
+      (node (ref R9) (pin 2)))
+    (net (code 33) (name ADC_ENABLE)
+      (node (ref U2) (pin 28))
+      (node (ref P16) (pin 6)))
+    (net (code 34) (name ADC_SPEED)
+      (node (ref P16) (pin 5))
+      (node (ref U2) (pin 29)))
+    (net (code 35) (name LCD_CLOCK)
+      (node (ref P16) (pin 4))
+      (node (ref U2) (pin 30)))
+    (net (code 36) (name STATUS)
+      (node (ref U2) (pin 8))
+      (node (ref P12) (pin 1))
+      (node (ref R6) (pin 1)))
+    (net (code 37) (name "Net-(U2-Pad32)")
+      (node (ref U2) (pin 32)))
+    (net (code 38) (name DEBUG)
+      (node (ref U2) (pin 1))
+      (node (ref JP1) (pin 1)))
+    (net (code 39) (name "Net-(R9-Pad1)")
+      (node (ref U2) (pin 20))
+      (node (ref R9) (pin 1)))
+    (net (code 40) (name WIFI_ENABLE)
+      (node (ref MOD1) (pin 6))
+      (node (ref R12) (pin 2))
+      (node (ref P3) (pin 1)))
+    (net (code 41) (name WIFI_BOOTLDR)
+      (node (ref P9) (pin 1))
+      (node (ref MOD1) (pin 14))
+      (node (ref R11) (pin 2)))
+    (net (code 42) (name "Net-(R10-Pad1)")
+      (node (ref U2) (pin 21))
+      (node (ref R10) (pin 1)))
+    (net (code 43) (name "Net-(C5-Pad1)")
+      (node (ref U2) (pin 42))
+      (node (ref C5) (pin 1)))
+    (net (code 44) (name D-)
+      (node (ref USB1) (pin 3))
+      (node (ref R5) (pin 1)))
+    (net (code 45) (name "Net-(C11-Pad1)")
+      (node (ref U2) (pin 44))
+      (node (ref L1) (pin 2))
+      (node (ref U2) (pin 24))
+      (node (ref C11) (pin 1))
+      (node (ref C13) (pin 1)))
+    (net (code 46) (name SW_LB)
+      (node (ref U2) (pin 37))
+      (node (ref S2) (pin 3))
+      (node (ref P7) (pin 1)))
+    (net (code 47) (name RST)
+      (node (ref S3) (pin 1))
+      (node (ref U2) (pin 13))
+      (node (ref ISP1) (pin 5))
+      (node (ref R3) (pin 1)))
+    (net (code 48) (name "Net-(MOD1-Pad13)")
+      (node (ref MOD1) (pin 13)))
+    (net (code 49) (name "Net-(R5-Pad2)")
+      (node (ref R5) (pin 2))
+      (node (ref U2) (pin 3)))
+    (net (code 50) (name "Net-(S1-Pad1)")
+      (node (ref S1) (pin 1)))
+    (net (code 51) (name "Net-(P16-Pad9)")
+      (node (ref P16) (pin 9)))
+    (net (code 52) (name "Net-(U2-Pad2)")
+      (node (ref U2) (pin 2)))
+    (net (code 53) (name "Net-(Q1-PadG)")
+      (node (ref R8) (pin 1))
+      (node (ref R7) (pin 2))
+      (node (ref Q1) (pin G)))
+    (net (code 54) (name "Net-(USB1-Pad4)")
+      (node (ref USB1) (pin 4)))
+    (net (code 55) (name "Net-(C12-Pad2)")
+      (node (ref U2) (pin 16))
+      (node (ref X1) (pin 1))
+      (node (ref C12) (pin 2)))
+    (net (code 56) (name "Net-(C10-Pad2)")
+      (node (ref C10) (pin 2))
+      (node (ref U2) (pin 17))
+      (node (ref X1) (pin 2)))))

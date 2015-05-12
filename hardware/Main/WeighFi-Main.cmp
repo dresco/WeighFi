@@ -1,486 +1,430 @@
-Cmp-Mod V01 Created by CvPcb (2012-01-19 BZR 3256)-stable date = Mon 03 Dec 2012 17:06:51 GMT
-
-BeginCmp
-TimeStamp = /4FBF865E;
-Reference = ANT1;
-ValeurCmp = ANTENNA;
-IdModule  = ANT_SMD_7x2;
-EndCmp
+Cmp-Mod V01 Created by CvPcb (2014-jan-25)-product date = Tue 12 May 2015 19:01:01 BST
 
 BeginCmp
 TimeStamp = /4F9C1A75;
 Reference = BT1;
 ValeurCmp = BATTERY;
-IdModule  = JST_PN_2;
+IdModule  = dresco:BATT_HOLDER_3xAAA;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F9C1CF4;
+TimeStamp = /55322967;
 Reference = C1;
-ValeurCmp = 1uF;
-IdModule  = SMD0805;
+ValeurCmp = 330uF;
+IdModule  = dresco:CAP_SMD_AEC_D;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F9C1BDF;
+TimeStamp = /4F9C1A7A;
 Reference = C2;
 ValeurCmp = 1uF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F9C1C02;
+TimeStamp = /4F9C1A79;
 Reference = C3;
 ValeurCmp = 1uF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBF8D57;
 Reference = C4;
 ValeurCmp = 10nF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FB6D1D6;
 Reference = C5;
 ValeurCmp = 0.1uF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE97BB;
 Reference = C6;
 ValeurCmp = 10uF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE82BB;
 Reference = C7;
 ValeurCmp = 1uF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FB6D239;
 Reference = C8;
 ValeurCmp = 0.1uF;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4F9C1A7A;
-Reference = C9;
-ValeurCmp = 1uF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FB6D1D3;
-Reference = C10;
+Reference = C9;
 ValeurCmp = 0.1uF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE75E8;
-Reference = C11;
+Reference = C10;
 ValeurCmp = 22pF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FB6D1B1;
-Reference = C12;
+Reference = C11;
 ValeurCmp = 0.1uF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE75E7;
-Reference = C13;
+Reference = C12;
 ValeurCmp = 22pF;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FB6D1D8;
-Reference = C14;
+Reference = C13;
 ValeurCmp = 0.1uF;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4F9C1A79;
-Reference = C15;
-ValeurCmp = 1uF;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCE26C;
-Reference = D1;
-ValeurCmp = LED;
-IdModule  = SMD-LED-0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FDB64DD;
-Reference = D2;
+Reference = D1;
 ValeurCmp = LED;
-IdModule  = SMD-LED-0805;
+IdModule  = dresco:SMD-LED-0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4F9C1A6E;
 Reference = H1;
 ValeurCmp = HOLE;
-IdModule  = HOLE_3.2MM;
+IdModule  = dresco:HOLE_3.2MM;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FCE3F9E;
 Reference = H2;
 ValeurCmp = HOLE;
-IdModule  = HOLE_3.2MM;
+IdModule  = dresco:HOLE_3.2MM;
 EndCmp
 
 BeginCmp
 TimeStamp = /4F9C1A6D;
 Reference = H3;
 ValeurCmp = HOLE;
-IdModule  = HOLE_3.2MM;
+IdModule  = dresco:HOLE_3.2MM;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FCE3FAD;
 Reference = H4;
 ValeurCmp = HOLE;
-IdModule  = HOLE_3.2MM;
+IdModule  = dresco:HOLE_3.2MM;
 EndCmp
 
 BeginCmp
 TimeStamp = /4F9C1A67;
 Reference = ISP1;
 ValeurCmp = AVR-ISP-6;
-IdModule  = AVR-ISP-6;
+IdModule  = dresco:PIN_ARRAY_3X2;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FE9FA0C;
 Reference = JP1;
 ValeurCmp = JUMPER;
-IdModule  = PIN_ARRAY_2X1;
+IdModule  = dresco:PIN_ARRAY_2X1;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FB6D42C;
 Reference = L1;
 ValeurCmp = INDUCTOR;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FB0BBD2;
+TimeStamp = /552EE147;
 Reference = MOD1;
-ValeurCmp = RN-171;
-IdModule  = RN-171;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF940;
-Reference = P1;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF965;
-Reference = P2;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FC7A3FD;
-Reference = P3;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FC7A40A;
-Reference = P4;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FC7A40D;
-Reference = P5;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF98F;
-Reference = P6;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF98B;
-Reference = P7;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF987;
-Reference = P8;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF97C;
-Reference = P9;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF9B5;
-Reference = P10;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF9BB;
-Reference = P11;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FC7A426;
-Reference = P12;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
+ValeurCmp = ESP8266-ESP-03;
+IdModule  = dresco:ESP8266-ESP-03;
 EndCmp
 
 BeginCmp
 TimeStamp = /4F9C1A6A;
-Reference = P13;
+Reference = P1;
 ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
+IdModule  = dresco:PIN_X1;
 EndCmp
 
 BeginCmp
 TimeStamp = /4F9C1A68;
-Reference = P14;
+Reference = P2;
 ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
+IdModule  = dresco:PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A464;
-Reference = P15;
+TimeStamp = /4FCCF940;
+Reference = P3;
 ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCF965;
+Reference = P4;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FCCF97C;
+Reference = P5;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A3FD;
+Reference = P6;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A40A;
+Reference = P7;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A40D;
+Reference = P8;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /552EF81F;
+Reference = P9;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
 EndCmp
 
 BeginCmp
 TimeStamp = /4F9C1A69;
-Reference = P16;
+Reference = P10;
 ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
+IdModule  = dresco:PIN_X1;
 EndCmp
 
 BeginCmp
-TimeStamp = /4FC7A442;
-Reference = P17;
+TimeStamp = /4FC7A426;
+Reference = P11;
 ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCF8DB;
-Reference = P18;
-ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
+IdModule  = dresco:PIN_X1;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FDB64DB;
-Reference = P19;
+Reference = P12;
 ValeurCmp = CONN_1;
-IdModule  = PIN_X1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A464;
+Reference = P13;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FC7A442;
+Reference = P14;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
+EndCmp
+
+BeginCmp
+TimeStamp = /552FECF6;
+Reference = P15;
+ValeurCmp = CONN_1;
+IdModule  = dresco:PIN_X1;
 EndCmp
 
 BeginCmp
 TimeStamp = /50BC8C47;
-Reference = P20;
+Reference = P16;
 ValeurCmp = CONN_12;
-IdModule  = PIN_ARRAY_6X2;
+IdModule  = dresco:PIN_ARRAY_6X2;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBF7AB0;
 Reference = Q1;
 ValeurCmp = MOSFET_P;
-IdModule  = SOT23;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FB136EA;
-Reference = R1;
-ValeurCmp = R;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FB136E9;
-Reference = R2;
-ValeurCmp = R;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FB136DA;
-Reference = R3;
-ValeurCmp = R;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FB136DD;
-Reference = R4;
-ValeurCmp = R;
-IdModule  = SMD0805;
+IdModule  = dresco:SOT23;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBF8CE3;
-Reference = R5;
-ValeurCmp = R;
-IdModule  = SMD0805;
+Reference = R1;
+ValeurCmp = 670K;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBF8CEF;
-Reference = R6;
-ValeurCmp = R;
-IdModule  = SMD0805;
+Reference = R2;
+ValeurCmp = 470K;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FB6D295;
-Reference = R7;
+Reference = R3;
 ValeurCmp = 10K;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FBEC438;
-Reference = R8;
-ValeurCmp = 100;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE83EA;
-Reference = R9;
+Reference = R4;
 ValeurCmp = 22;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE83F1;
-Reference = R10;
+Reference = R5;
 ValeurCmp = 22;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FBEC3ED;
-Reference = R11;
-ValeurCmp = 100K;
-IdModule  = SMD0805;
-EndCmp
-
-BeginCmp
-TimeStamp = /4FCCE264;
-Reference = R12;
-ValeurCmp = 1K8;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FDB64DE;
-Reference = R13;
+Reference = R6;
 ValeurCmp = 1K8;
-IdModule  = SMD0805;
+IdModule  = dresco:SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FBEC438;
+Reference = R7;
+ValeurCmp = 100;
+IdModule  = dresco:SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /4FBEC3ED;
+Reference = R8;
+ValeurCmp = 100K;
+IdModule  = dresco:SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554FA8FF;
+Reference = R9;
+ValeurCmp = 100;
+IdModule  = dresco:SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554FA90A;
+Reference = R10;
+ValeurCmp = 100;
+IdModule  = dresco:SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554FA8F4;
+Reference = R11;
+ValeurCmp = 100;
+IdModule  = dresco:SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /554FA8A3;
+Reference = R12;
+ValeurCmp = 100;
+IdModule  = dresco:SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /552FE189;
+Reference = R13;
+ValeurCmp = 1M;
+IdModule  = dresco:SMD0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FDB62EB;
 Reference = S1;
 ValeurCmp = SWITCH_SPDT;
-IdModule  = SWITCH_SLIDE_SPDT;
+IdModule  = dresco:SWITCH_SLIDE_SPDT;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FDB62FA;
 Reference = S2;
 ValeurCmp = SWITCH_SP3T;
-IdModule  = SWITCH_SLIDE_SP3T;
+IdModule  = dresco:SWITCH_SLIDE_SP3T;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FE9F9E8;
 Reference = S3;
 ValeurCmp = SWITCH_PUSH_NO;
-IdModule  = SWITCH_PUSH_6X6;
+IdModule  = dresco:SWITCH_PUSH_6X6;
 EndCmp
 
 BeginCmp
-TimeStamp = /4F9C2CDB;
-Reference = U1;
-ValeurCmp = MAX1555;
-IdModule  = SOT23-5;
+TimeStamp = /552FF525;
+Reference = S4;
+ValeurCmp = SWITCH_VIBRATION;
+IdModule  = dresco:SW-18010P;
 EndCmp
 
 BeginCmp
 TimeStamp = /4F9C1A72;
-Reference = U2;
+Reference = U1;
 ValeurCmp = MCP1700;
-IdModule  = SOT89;
+IdModule  = dresco:SOT89;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FCCF7C0;
-Reference = U3;
+Reference = U2;
 ValeurCmp = ATMEGA16U4/32U4;
-IdModule  = TQFP-44-80;
+IdModule  = dresco:TQFP-44-80;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE9598;
 Reference = USB1;
 ValeurCmp = USB;
-IdModule  = USB_MINI_B_HORZ_KOBICONN;
+IdModule  = dresco:USB_MICRO_B_VERT_MOLEX;
 EndCmp
 
 BeginCmp
 TimeStamp = /4FBE75E9;
 Reference = X1;
 ValeurCmp = CRYSTAL;
-IdModule  = SM_XTAL_6.0x3.3;
+IdModule  = dresco:SM_XTAL_6.0x3.3;
 EndCmp
 
 EndListe
