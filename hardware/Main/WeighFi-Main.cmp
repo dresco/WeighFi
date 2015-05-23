@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2014-jan-25)-product date = Tue 12 May 2015 19:01:01 BST
+Cmp-Mod V01 Created by CvPcb (2014-jan-25)-product date = Sat 23 May 2015 15:24:48 BST
 
 BeginCmp
 TimeStamp = /4F9C1A75;
@@ -96,6 +96,13 @@ TimeStamp = /4FB6D1D8;
 Reference = C13;
 ValeurCmp = 0.1uF;
 IdModule  = dresco:SMD0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /55608D98;
+Reference = C14;
+ValeurCmp = 330uF;
+IdModule  = dresco:CAP_SMD_AEC_D;
 EndCmp
 
 BeginCmp
