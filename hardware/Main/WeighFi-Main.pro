@@ -1,4 +1,4 @@
-update=Sun 10 May 2015 20:16:40 BST
+update=Sat 23 May 2015 15:50:28 BST
 last_client=pcbnew
 [eeschema]
 version=1
@@ -45,7 +45,7 @@ LastNetListRead=
 UseCmpFile=1
 PadDrill=0
 PadDrillOvalY=0
-PadSizeH=1.00076
+PadSizeH=0.44958
 PadSizeV=1.50114
 PcbTextSizeV=1.5
 PcbTextSizeH=1.5
@@ -55,7 +55,7 @@ ModuleTextSizeH=1
 ModuleTextSizeThickness=0.15
 SolderMaskClearance=0
 SolderMaskMinWidth=0
-DrawSegmentWidth=0.2
+DrawSegmentWidth=0.09999999999999999
 BoardOutlineThickness=0.09999999999999999
 ModuleOutlineThickness=0.15
 [pcbnew/libraries]
