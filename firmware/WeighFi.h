@@ -51,7 +51,7 @@ volatile uint16_t      g_ms;                                // Free running mill
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 1
 
-#define UART_BAUD_RATE 115200                               // Maybe dodgy with a 16MHz clock?
+#define UART_BAUD_RATE 9600                                // Maybe dodgy with a 16MHz clock?
 
 typedef enum {
     IDLE,

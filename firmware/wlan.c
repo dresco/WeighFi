@@ -29,6 +29,8 @@ int UART_ReceiveLine(unsigned char * buffer, unsigned int length, unsigned int t
     unsigned char bufpos = 0;
     unsigned int start = GetMilliSeconds();
 
+    memset(buffer, 0x00, length);
+
     while (GetMilliSeconds() - start < timeout)
     {
         // Get received character from ringbuffer
@@ -71,27 +73,11 @@ int UART_ReceiveLine(unsigned char * buffer, unsigned int length, unsigned int t
             if (bufpos < length)
             {
                 buffer[bufpos++] = (unsigned char)c;
-                if (bufpos == length)
-                {
-                    // null terminate the final character
-                    // in case we try to read as a string later
-                    buffer[bufpos] = 0x00;
-                }
             }
 
             // If received new line ASCII char
             if ((unsigned char)c == 0x0A)
             {
-                // write no. of chars in buffer
-                //uart_putc(bufpos);
-
-                // if buffer is not already full, add a null  terminator
-                // in case we try to read as a string later
-                if (bufpos < length)
-                {
-                    buffer[bufpos+1] = 0x00;
-                }
-
                 return(bufpos);
             }
         }
@@ -337,7 +323,7 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
                 uart_puts(wlan_tx_data);
 
                 start = GetMilliSeconds();
-                while (GetMilliSeconds() - start < 3000)
+                while (GetMilliSeconds() - start < 15000)
                 {
                     //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
 
@@ -468,7 +454,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                     uart_puts("AT+CIFSR\r\n");
 
                     // have to read multiple lines for address
-                    for (int i = 0; i < 3 ; i++)
+                    for (int i = 0; i < 4 ; i++)
                     {
                         if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                         {
@@ -480,13 +466,14 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                             // ERROR
                             // Error
                             // busy now ...
+                            // 0.0.0.0
                             // <ip addr>
                             //
-                            // Just looking for a dot in the IP address for now - but watch out for "busy now ..."
+                            // Just looking for a dot in the IP address for now - but watch out for "busy now ..." or "0.0.0.0"
 
                             if (strstr((char*)buff, "."))
                             {
-                                if (!strstr((char*)buff, "busy"))
+                                if (!strstr((char*)buff, "0.0.0.0") && !strstr((char*)buff, "busy"))
                                 {
                                     state = ONLINE;
                                     break;                      // note: breaks out of for loop only
