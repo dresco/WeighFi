@@ -1,4 +1,4 @@
-PCBNEW-BOARD Version 2 date Sat 06 Jun 2015 15:40:35 BST
+PCBNEW-BOARD Version 2 date Sat 06 Jun 2015 15:53:58 BST
 
 # Created by Pcbnew(2014-jan-25)-product
 
@@ -69,7 +69,7 @@ SolderMaskMinWidth 0
 GridOrigin 0 0
 AuxiliaryAxisOrg 0 0
 VisibleElements FFFFFBBF
-PcbPlotParams (pcbplotparams (layerselection 3178497) (usegerberextensions true) (excludeedgelayer true) (linewidth 0.150000) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 2) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk false) (outputformat 1) (mirror false) (drillshape 1) (scaleselection 1) (outputdirectory ""))
+PcbPlotParams (pcbplotparams (layerselection 317751297) (usegerberextensions true) (excludeedgelayer true) (linewidth 0.150000) (plotframeref false) (viasonmask false) (mode 1) (useauxorigin false) (hpglpennumber 1) (hpglpenspeed 20) (hpglpendiameter 15) (hpglpenoverlay 2) (psnegative false) (psa4output false) (plotreference true) (plotvalue true) (plotothertext true) (plotinvisibletext false) (padsonsilk false) (subtractmaskfromsilk true) (outputformat 1) (mirror false) (drillshape 0) (scaleselection 1) (outputdirectory ""))
 $EndSETUP
 
 $EQUIPOT
@@ -1011,14 +1011,14 @@ Ro 0 0 0
 $EndSHAPE3D
 $EndMODULE PIN_ARRAY_3X2
 $MODULE PIN_ARRAY_2X1
-Po 35 99.5 0 15 4E8059BC 555243B9 ~~
+Po 35 99.5 0 15 55730984 555243B9 ~~
 Li PIN_ARRAY_2X1
 Cd Connecteurs 2 pins
 Kw CONN DEV
 Sc 555243B9
 AR /4FE9FA0C
 Op 0 0 0
-T0 1.397 -2.032 0.762 0.762 0 0.1524 N V 21 N "JP1"
+T0 -0.9 1.8 0.762 0.762 0 0.1524 N V 21 N "JP1"
 T1 1.524 2.032 0.762 0.762 0 0.1524 N I 21 N "JUMPER"
 DS -1.27 1.27 -1.27 -1.27 0.1524 21
 DS -1.27 -1.27 3.81 -1.27 0.1524 21
@@ -1414,21 +1414,21 @@ Po 0 0
 $EndPAD
 $EndMODULE PIN_X1
 $MODULE PIN_X1
-Po 48.5 106.7 0 15 4E7A54B9 55524433 ~~
+Po 48.5 106.7 900 15 4E7A54B9 55524433 ~~
 Li PIN_X1
 Cd Connecteurs 2 pins
 Kw CONN DEV
 Sc 55524433
 AR /4FC7A426
 Op 0 0 0
-T0 0 -1.905 0.762 0.762 0 0.1524 N V 21 N "P11"
-T1 0 2.10058 0.762 0.762 0 0.1524 N I 21 N "CONN_1"
+T0 0 -1.905 0.762 0.762 900 0.1524 N V 21 N "P11"
+T1 0 2.10058 0.762 0.762 900 0.1524 N I 21 N "CONN_1"
 DS -1.27 1.27 -1.27 -1.27 0.1524 21
 DS -1.27 -1.27 1.27 -1.27 0.1524 21
 DS 1.27 -1.27 1.27 1.27 0.1524 21
 DS 1.27 1.27 -1.27 1.27 0.1524 21
 $PAD
-Sh "1" C 1.524 1.524 0 0 0
+Sh "1" C 1.524 1.524 0 0 900
 Dr 1.016 0 0
 At STD N 00E0FFFF
 Ne 7 "BAT_ADC"
@@ -1436,21 +1436,21 @@ Po 0 0
 $EndPAD
 $EndMODULE PIN_X1
 $MODULE PIN_X1
-Po 29 112.8 0 15 4E7A54B9 5552443B ~~
+Po 29 112.8 900 15 4E7A54B9 5552443B ~~
 Li PIN_X1
 Cd Connecteurs 2 pins
 Kw CONN DEV
 Sc 5552443B
 AR /4FDB64DB
 Op 0 0 0
-T0 0 -1.905 0.762 0.762 0 0.1524 N V 21 N "P12"
-T1 0 2.10058 0.762 0.762 0 0.1524 N I 21 N "CONN_1"
+T0 0 -1.905 0.762 0.762 900 0.1524 N V 21 N "P12"
+T1 0 2.10058 0.762 0.762 900 0.1524 N I 21 N "CONN_1"
 DS -1.27 1.27 -1.27 -1.27 0.1524 21
 DS -1.27 -1.27 1.27 -1.27 0.1524 21
 DS 1.27 -1.27 1.27 1.27 0.1524 21
 DS 1.27 1.27 -1.27 1.27 0.1524 21
 $PAD
-Sh "1" C 1.524 1.524 0 0 0
+Sh "1" C 1.524 1.524 0 0 900
 Dr 1.016 0 0
 At STD N 00E0FFFF
 Ne 45 "STATUS"
@@ -1502,21 +1502,21 @@ Po 0 0
 $EndPAD
 $EndMODULE PIN_X1
 $MODULE PIN_X1
-Po 83.3 100 0 15 4E7A54B9 55524453 ~~
+Po 83.3 100 900 15 4E7A54B9 55524453 ~~
 Li PIN_X1
 Cd Connecteurs 2 pins
 Kw CONN DEV
 Sc 55524453
 AR /552FECF6
 Op 0 0 0
-T0 0 -1.905 0.762 0.762 0 0.1524 N V 21 N "P15"
-T1 0 2.10058 0.762 0.762 0 0.1524 N I 21 N "CONN_1"
+T0 0 -1.905 0.762 0.762 900 0.1524 N V 21 N "P15"
+T1 0 2.10058 0.762 0.762 900 0.1524 N I 21 N "CONN_1"
 DS -1.27 1.27 -1.27 -1.27 0.1524 21
 DS -1.27 -1.27 1.27 -1.27 0.1524 21
 DS 1.27 -1.27 1.27 1.27 0.1524 21
 DS 1.27 1.27 -1.27 1.27 0.1524 21
 $PAD
-Sh "1" C 1.524 1.524 0 0 0
+Sh "1" C 1.524 1.524 0 0 900
 Dr 1.016 0 0
 At STD N 00E0FFFF
 Ne 17 "MCU_WAKE"
