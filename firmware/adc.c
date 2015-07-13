@@ -25,7 +25,7 @@ void ADCSetup(void)
 {
 
     ADMUX |= (1<<REFS0);                                    // Use AVcc with external capacitor at AREF pin
-    ADMUX  |= (1 << MUX0);                                  // Select ADC channel 1 (PF1)
+                                                            // Select ADC channel 0 (PF0)
 
     ADCSRA |= (1<<ADPS2) | (1<<ADPS1)
                          | (1<<ADPS1);                      // ADC clock prescaler = 16MHz/128 = 125kHz

@@ -48,18 +48,24 @@
 //
 // Pin assignments
 // ---------------
-// PC6 - output - LCD enable
-// PD0 -        - I2C clock
-// PD1 -        - I2C data
-// PD2 -        - UART
-// PD3 -        - UART
-// PB5 - output - External ADC speed control
-// PB4 - output - External ADC enable
-// PD6 - output - SPI serial clock
-// PD7 - input  - SPI data in (MISO)
-// PD5 - output - WLAN module enable
-// PF1 - input  - Internal ADC channel 1 - battery voltage
-// PB0 - output - Status LED
+// PB0 - output - LED - Status
+// PB4 - output - ADC - Enable
+// PB5 - output - ADC - Speed control
+// PB6 - output - LCD - Clock  (unused)
+// PB7 - input  - MCU - Wake (not yet implemented)
+//
+// PC6 - output - LCD - Enable
+//
+// PD0 -        - LCD - I2C clock
+// PD1 -        - LCD - I2C data
+// PD2 -        - UART - WLAN TX
+// PD3 -        - UART - WLAN RX
+// PD$ - output - WLAN - Bootloader (not yet implemented)
+// PD5 - output - WLAN - Enable
+// PD6 - input  - ADC - SPI data in
+// PD7 - output - ADC - SPI serial clock
+//
+// PF0 - input  - ADC - Internal channel 1 - battery voltage
 //
 
 #include "WeighFi.h"
