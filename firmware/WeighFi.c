@@ -57,7 +57,7 @@
 // PB4 - output - External ADC enable
 // PD6 - output - SPI serial clock
 // PD7 - input  - SPI data in (MISO)
-// PF0 - output - WLAN module enable
+// PD5 - output - WLAN module enable
 // PF1 - input  - Internal ADC channel 1 - battery voltage
 // PB0 - output - Status LED
 //
@@ -134,7 +134,7 @@ void PortSetup(void)
 
     DDRD |= (1 << 6);                                       // Configure PD6 as output for SPI SCK
 
-    DDRF |= (1 << 0);                                       // Configure PF0 as output to enable WLAN module
+    DDRD |= (1 << 5);                                       // Configure PD5 as output to enable WLAN module
 
     DDRB |= (1 << 0);                                       // Configure PB0 as output for status LED
 }

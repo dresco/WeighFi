@@ -220,9 +220,9 @@ int UART_ReceiveChar(unsigned char * character, unsigned int timeout)
 void WLANEnable(int enable)
 {
     if (enable)
-        PORTF |= (1 << 0);                      // Set F0 to enable WLAN module
+        PORTD |= (1 << 5);                      // Set D5 to enable WLAN module
     else
-        PORTF &= ~(1 << 0);                     // Clear F0 to disable WLAN module
+        PORTD &= ~(1 << 5);                     // Clear D5 to disable WLAN module
 }
 
 uint8_t WLANConfigure(char * ssid, char * passphrase)
