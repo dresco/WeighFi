@@ -100,16 +100,16 @@ void LCDEnable(uint8_t enable)
 {
     if (enable)
     {
-        // Clear PB0 to power up the LCD supply
-        PORTB &= ~(1 << 0);
+        // Clear PC6 to enable the LCD power supply
+        PORTC &= ~(1 << 6);
 
         // Wait 1ms before transferring data..
         _delay_ms(1);
     }
     else
     {
-        // Set PB0 to power down the LCD
-        PORTB |= (1 << 0);
+        // Set PC6 to disable the LCD power supply
+        PORTC |= (1 << 6);
     }
 }
 

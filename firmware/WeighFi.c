@@ -48,7 +48,7 @@
 //
 // Pin assignments
 // ---------------
-// PB0 - output - LCD enable
+// PC6 - output - LCD enable
 // PD0 -        - I2C clock
 // PD1 -        - I2C data
 // PD2 -        - UART
@@ -123,8 +123,8 @@ void TimerSetup(void)
 
 void PortSetup(void)
 {
-    DDRB |= (1 << 0);                                       // Configure PB0 as output for LCD power supply
-    PORTB |= (1 << 0);                                      // Set PB0 to ensure LCD is powered down
+    DDRC |= (1 << 6);                                       // Configure PC6 as output to enable the LCD power supply
+    PORTC |= (1 << 6);                                      // Set PC6 to ensure LCD is powered down
 
     DDRD |= (1 << 4);                                       // Configure PD4 as output to control the ADC speed
     PORTD |= (1 << 4);                                      // Set PD4 for 80 samples per second
