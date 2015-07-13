@@ -138,7 +138,7 @@ void PortSetup(void)
     DDRB |= (1 << 4);                                       // Configure PB4 as output to enable the ADC
     PORTB &= ~(1 << 4);                                     // Clear PB4 to ensure ADC is powered down
 
-    DDRD |= (1 << 6);                                       // Configure PD6 as output for SPI SCK
+    DDRD |= (1 << 7);                                       // Configure PD7 as output for ADC - SPI serial clock
 
     DDRD |= (1 << 5);                                       // Configure PD5 as output to enable WLAN module
 

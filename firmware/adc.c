@@ -71,8 +71,8 @@ int32_t GetExtADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
     {
         adc_value = 0x00;                                   // Zero out the previous ADC reading
 
-        while((PIND & (1<<7)))
-            ;                                               // Wait for PD7 to go low (data ready to be read)
+        while((PIND & (1<<6)))
+            ;                                               // Wait for PD6 to go low (data ready to be read)
 
         // datasheet specs 100ns minimum negative or positive pulse width,
         // asm volatile ("nop"); would give 62.5ns @ 16MHz
@@ -100,13 +100,13 @@ int32_t GetExtADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
 
         for (i=0; i<ADC_DATA_BITS; i++)
         {
-            PORTD |= (1 << 6);                              // Set PD6 - drive serial clock high
+            PORTD |= (1 << 7);                              // Set PD7 - drive serial clock high
             asm volatile ("nop");
             asm volatile ("nop");
 
-            PORTD &= ~(1 << 6);                             // Clear PD6 - drive serial clock low
+            PORTD &= ~(1 << 7);                             // Clear PD7 - drive serial clock low
 
-            if (PIND & (1 << 7))                            // Read PD7 (SPI data in)
+            if (PIND & (1 << 6))                            // Read PD6 (SPI data in)
                 bit = 1;
             else
                 bit = 0;
@@ -124,10 +124,10 @@ int32_t GetExtADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
         //
         for (i=0; i<ADC_SPARE_BITS+1; i++)
         {
-            PORTD |= (1 << 6);                              // Set PD6 - drive serial clock high
+            PORTD |= (1 << 7);                              // Set PD7 - drive serial clock high
             asm volatile ("nop");
             asm volatile ("nop");
-            PORTD &= ~(1 << 6);                             // Clear PD6 - drive serial clock low
+            PORTD &= ~(1 << 7);                             // Clear PD7 - drive serial clock low
             asm volatile ("nop");
             asm volatile ("nop");
         }
