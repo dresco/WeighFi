@@ -64,7 +64,7 @@ int32_t GetExtADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
         PORTD &= ~(1 << 4);                                 // Clear PD4 for 10 samples per second
 
 
-    PORTD |= (1 << 5);                                      // Set PD5 to power up ADC
+    PORTB |= (1 << 4);                                      // Set PB4 to power up ADC
 
     adc_total = 0;
     for (samples=0; samples < NumSamples; samples++)
@@ -141,7 +141,7 @@ int32_t GetExtADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
         adc_total+= adc_value;
     }
 
-    PORTD &= ~(1 << 5);                                     // Clear PD5 to power down ADC
+    PORTB &= ~(1 << 4);                                     // Clear PB4 to power down ADC
 
     adc_final = adc_total / NumSamples;                     // average the ADC readings
     return(adc_final);

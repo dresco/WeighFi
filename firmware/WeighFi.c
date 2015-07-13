@@ -54,7 +54,7 @@
 // PD2 -        - UART
 // PD3 -        - UART
 // PD4 - output - External ADC speed control
-// PD5 - output - External ADC power control
+// PB4 - output - External ADC enable
 // PD6 - output - SPI serial clock
 // PD7 - input  - SPI data in (MISO)
 // PF0 - output - WLAN module enable
@@ -129,8 +129,8 @@ void PortSetup(void)
     DDRD |= (1 << 4);                                       // Configure PD4 as output to control the ADC speed
     PORTD |= (1 << 4);                                      // Set PD4 for 80 samples per second
 
-    DDRD |= (1 << 5);                                       // Configure PD5 as output to enable the ADC
-    PORTD &= ~(1 << 5);                                     // Clear PD5 to ensure ADC is powered down
+    DDRB |= (1 << 4);                                       // Configure PB4 as output to enable the ADC
+    PORTB &= ~(1 << 4);                                     // Clear PB4 to ensure ADC is powered down
 
     DDRD |= (1 << 6);                                       // Configure PD6 as output for SPI SCK
 
