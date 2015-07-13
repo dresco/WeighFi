@@ -59,9 +59,9 @@ int32_t GetExtADCValue(uint8_t ADCHighSpeed, uint8_t NumSamples)
     int samples, i, bit;
 
     if (ADCHighSpeed)
-        PORTD |= (1 << 4);                                  // Set PD4 for 80 samples per second
+        PORTB |= (1 << 5);                                  // Set PB5 for 80 samples per second
     else
-        PORTD &= ~(1 << 4);                                 // Clear PD4 for 10 samples per second
+        PORTB &= ~(1 << 5);                                 // Clear PB5 for 10 samples per second
 
 
     PORTB |= (1 << 4);                                      // Set PB4 to power up ADC

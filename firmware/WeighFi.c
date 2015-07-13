@@ -53,7 +53,7 @@
 // PD1 -        - I2C data
 // PD2 -        - UART
 // PD3 -        - UART
-// PD4 - output - External ADC speed control
+// PB5 - output - External ADC speed control
 // PB4 - output - External ADC enable
 // PD6 - output - SPI serial clock
 // PD7 - input  - SPI data in (MISO)
@@ -126,8 +126,8 @@ void PortSetup(void)
     DDRC |= (1 << 6);                                       // Configure PC6 as output to enable the LCD power supply
     PORTC |= (1 << 6);                                      // Set PC6 to ensure LCD is powered down
 
-    DDRD |= (1 << 4);                                       // Configure PD4 as output to control the ADC speed
-    PORTD |= (1 << 4);                                      // Set PD4 for 80 samples per second
+    DDRB |= (1 << 5);                                       // Configure PB5 as output to control the ADC speed
+    PORTB |= (1 << 5);                                      // Set PB5 for 80 samples per second
 
     DDRB |= (1 << 4);                                       // Configure PB4 as output to enable the ADC
     PORTB &= ~(1 << 4);                                     // Clear PB4 to ensure ADC is powered down
