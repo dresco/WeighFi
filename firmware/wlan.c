@@ -248,7 +248,7 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -274,7 +274,7 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -304,7 +304,7 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -325,7 +325,7 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 15000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -338,7 +338,7 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -350,7 +350,7 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
                 break;
 
             case ERROR:
-                //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
                 state = DONE;
                 break;
 
@@ -398,7 +398,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -424,7 +424,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -459,7 +459,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                         if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                         {
 
-                            //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                            //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                             // Things we might get back..
                             //
@@ -506,7 +506,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -555,7 +555,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -571,7 +571,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                                 start = GetMilliSeconds();
                                 while (GetMilliSeconds() - start < 3000)
                                 {
-                                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                                     {
@@ -609,7 +609,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 start = GetMilliSeconds();
                 while (GetMilliSeconds() - start < 3000)
                 {
-                    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
@@ -635,7 +635,7 @@ uint8_t WLANTransmit(int32_t Weight, uint16_t Battery, char * SiteKey, char * De
                 break;
 
             case ERROR:
-                //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+                //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
                 state = DONE;
                 break;
 

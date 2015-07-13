@@ -59,7 +59,7 @@
 // PD7 - input  - SPI data in (MISO)
 // PF0 - output - WLAN module enable
 // PF1 - input  - Internal ADC channel 1 - battery voltage
-// PF7 - output - debug LED
+// PB0 - output - Status LED
 //
 
 #include "WeighFi.h"
@@ -105,7 +105,7 @@ ISR (WDT_vect)
 ISR(TIMER1_COMPA_vect)
 {
     g_ms++;
-    //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 }
 
 unsigned int GetMilliSeconds(void)
@@ -136,7 +136,7 @@ void PortSetup(void)
 
     DDRF |= (1 << 0);                                       // Configure PF0 as output to enable WLAN module
 
-    DDRF |= (1 << 7);                                       // Configure PF7 as output for debug LED
+    DDRB |= (1 << 0);                                       // Configure PB0 as output for status LED
 }
 
 void SetupHardware(void)
@@ -458,7 +458,7 @@ int main(void)
 
     while (1)
     {
-        //PORTF ^= (1 << 7);                      // Toggle the debug LED on port F7
+        //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 
         //
         // Note that the weighing and displaying process is synchronous (and slow).
