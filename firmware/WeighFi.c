@@ -48,24 +48,27 @@
 //
 // Pin assignments
 // ---------------
-// PB0 - output - LED - Status
-// PB4 - output - ADC - Enable
-// PB5 - output - ADC - Speed control
-// PB6 - output - LCD - Clock  (unused)
-// PB7 - input  - MCU - Wake (not yet implemented)
+// PB0 - output - LED    - Status
+// PB4 - output - ADC    - Enable
+// PB5 - output - ADC    - Speed control
+// PB6 - output - LCD    - Clock override (unused)
+// PB7 - input  - MCU    - Wake (not yet implemented)
 //
-// PC6 - output - LCD - Enable
+// PC6 - output - LCD    - Enable
 //
-// PD0 -        - LCD - I2C clock
-// PD1 -        - LCD - I2C data
-// PD2 -        - UART - WLAN TX
-// PD3 -        - UART - WLAN RX
-// PD$ - output - WLAN - Bootloader (not yet implemented)
-// PD5 - output - WLAN - Enable
-// PD6 - input  - ADC - SPI data in
-// PD7 - output - ADC - SPI serial clock
+// PD0 -        - LCD    - I2C clock
+// PD1 -        - LCD    - I2C data
+// PD2 -        - UART   - WLAN TX
+// PD3 -        - UART   - WLAN RX
+// PD$ - output - WLAN   - Bootloader control (not yet implemented)
+// PD5 - output - WLAN   - Enable
+// PD6 - input  - ADC    - SPI data in
+// PD7 - output - ADC    - SPI serial clock
 //
-// PF0 - input  - ADC - Internal channel 1 - battery voltage
+// PF0 - input  - ADC    - Internal channel 0 - battery voltage
+// PF5 - input  - SWITCH - Stones (not yet implemented)
+// PF6 - input  - SWITCH - Pounds (not yet implemented)
+// PF7 - input  - SWITCH - Kilos  (not yet implemented)
 //
 
 #include "WeighFi.h"
@@ -129,20 +132,20 @@ void TimerSetup(void)
 
 void PortSetup(void)
 {
-    DDRC |= (1 << 6);                                       // Configure PC6 as output to enable the LCD power supply
-    PORTC |= (1 << 6);                                      // Set PC6 to ensure LCD is powered down
-
-    DDRB |= (1 << 5);                                       // Configure PB5 as output to control the ADC speed
-    PORTB |= (1 << 5);                                      // Set PB5 for 80 samples per second
+    DDRB |= (1 << 0);                                       // Configure PB0 as output for status LED
 
     DDRB |= (1 << 4);                                       // Configure PB4 as output to enable the ADC
     PORTB &= ~(1 << 4);                                     // Clear PB4 to ensure ADC is powered down
 
-    DDRD |= (1 << 7);                                       // Configure PD7 as output for ADC - SPI serial clock
+    DDRB |= (1 << 5);                                       // Configure PB5 as output to control the ADC speed
+    PORTB |= (1 << 5);                                      // Set PB5 for 80 samples per second
+
+    DDRC |= (1 << 6);                                       // Configure PC6 as output to enable the LCD power supply
+    PORTC |= (1 << 6);                                      // Set PC6 to ensure LCD is powered down
 
     DDRD |= (1 << 5);                                       // Configure PD5 as output to enable WLAN module
 
-    DDRB |= (1 << 0);                                       // Configure PB0 as output for status LED
+    DDRD |= (1 << 7);                                       // Configure PD7 as output for ADC - SPI serial clock
 }
 
 void SetupHardware(void)
