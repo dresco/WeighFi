@@ -7,7 +7,11 @@ Firmware:
 
 Hardware:
 
- - Main board
+ - Main board (v1.00)
+   - silkscreen labels for switches
+   - extend USB connector pads (updated in library)
+   - D- & D+ brought out to wrong pads on USB connector :(
+   - bring P4 out to test point (jtag pin)
 
  - Display board (v1.00)
    - ground plane copper pour
