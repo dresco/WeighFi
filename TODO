@@ -10,7 +10,7 @@ Hardware:
  - Main board (v1.00)
    - silkscreen labels for switches
    - extend USB connector pads (updated in library)
-   - D- & D+ brought out to wrong pads on USB connector :(
+   - D- & D+ brought out to wrong pads on USB connector (updated in library)
    - bring P4 out to test point (jtag pin)
    - bring UVcc out to solder jumper & VBus if possible
    - move to 10way IDC cable - drop pins 4 (LCD_CLOCK) and 9 (unused)

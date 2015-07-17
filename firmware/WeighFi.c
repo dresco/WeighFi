@@ -111,6 +111,16 @@ ISR (WDT_vect)
 {
 }
 
+ISR(PCINT0_vect)
+{
+    // Pin change interrupt for vibration switch
+    // Note: main loop currently assumes only woken @ 1Hz by watchdog timer,
+    //       will need to start checking wake source..
+
+    vibes++;
+    //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
+}
+
 ISR(TIMER1_COMPA_vect)
 {
     g_ms++;
@@ -120,6 +130,12 @@ ISR(TIMER1_COMPA_vect)
 unsigned int GetMilliSeconds(void)
 {
     return g_ms;
+}
+
+void PinChangeIntSetup(void)
+{
+    PCMSK0 |= (1<<PCINT7);                                  // Enable pin change interrupt on PB7
+    PCICR |= (1<<PCIE0);                                    // Enable pin change interrupt 0
 }
 
 void TimerSetup(void)

@@ -47,6 +47,7 @@
 #include "Descriptors.h"
 
 volatile uint16_t      g_ms;                                // Free running millisecond counter
+volatile uint16_t      vibes;                               // Incremented by vibration switch interupt
 
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 1
