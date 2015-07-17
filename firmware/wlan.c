@@ -220,9 +220,17 @@ int UART_ReceiveChar(unsigned char * character, unsigned int timeout)
 void WLANEnable(int enable)
 {
     if (enable)
+    {
+        //PORTD |= (1 << 4);                    // Set D4 to enable normal mode (bootloader disabled)
         PORTD |= (1 << 5);                      // Set D5 to enable WLAN module
+    }
     else
+    {
         PORTD &= ~(1 << 5);                     // Clear D5 to disable WLAN module
+        //PORTD &= ~(1 << 4);                   // Clear D4 to enable bootloader
+                                                // todo: see whether there is any additional current draw
+                                                //       with bootloader pin held high while module disabled
+    }
 }
 
 uint8_t WLANConfigure(char * ssid, char * passphrase)
@@ -308,7 +316,11 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
-                        break;
+                        if (strstr((char*)buff, "OK") || strstr((char*)buff, "no change"))
+                        {
+                            state = OKAY;
+                            break;
+                        }
                     }
                 }
 
@@ -329,7 +341,11 @@ uint8_t WLANConfigure(char * ssid, char * passphrase)
 
                     if (UART_ReceiveLine(buff, NETWORK_BUFLEN, 100))
                     {
-                        break;
+                        if (strstr((char*)buff, "OK") || strstr((char*)buff, "FAIL"))
+                        {
+                            state = OKAY;
+                            break;
+                        }
                     }
                 }
 

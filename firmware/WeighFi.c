@@ -157,6 +157,9 @@ void PortSetup(void)
     DDRC |= (1 << 6);                                       // Configure PC6 as output to enable the LCD power supply
     PORTC |= (1 << 6);                                      // Set PC6 to ensure LCD is powered down
 
+    DDRD |= (1 << 4);                                       // Configure PD4 as output to control WLAN module bootloader
+    PORTD |= (1 << 4);                                      // Set D4 to enable normal operation (bootloader disabled)
+
     DDRD |= (1 << 5);                                       // Configure PD5 as output to enable WLAN module
 
     DDRD |= (1 << 7);                                       // Configure PD7 as output for ADC - SPI serial clock
