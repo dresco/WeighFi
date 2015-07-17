@@ -132,8 +132,8 @@ unsigned int GetMilliSeconds(void)
 
 void PinChangeIntSetup(void)
 {
-    PCMSK0 |= (1<<PCINT7);                                  // Enable pin change interrupt on PB7
     PCICR |= (1<<PCIE0);                                    // Enable pin change interrupt 0
+    PCMSK0 |= (1<<PCINT7);                                  // Enable pin change interrupt on PB7
 }
 
 void TimerSetup(void)
@@ -176,6 +176,7 @@ void SetupHardware(void)
     USB_Init();
 
     PortSetup();
+    PinChangeIntSetup();
     TimerSetup();
     ADCSetup();
 
