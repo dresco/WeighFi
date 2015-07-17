@@ -29,6 +29,7 @@ const char TerminalHelpPrompt[]    = "Usage:\r\n"
                                      "t             - test network configuration\r\n"
                                      "\r\n"
                                      "v             - display firmware version\r\n"
+                                     "z             - display vibration sensor count\r\n"
                                      "s             - display ADC reading for scales\r\n"
                                      "b             - display ADC reading for battery\r\n"
                                      "a             - display all configuration options\r\n"
@@ -156,6 +157,15 @@ void TerminalCheckInput(EEPROMData_t * EEPROMData)
                     if (strlen((char *)buffer) == CMD_ONLY)
                     {
                         fprintf(&USBSerialStream, "Version %d.%d\r\n", VERSION_MAJOR, VERSION_MINOR);
+                    }
+                    else
+                        fprintf(&USBSerialStream, "%s", TerminalHelpPrompt);
+                    break;
+
+                case 'z':
+                    if (strlen((char *)buffer) == CMD_ONLY)
+                    {
+                        fprintf(&USBSerialStream, "Vibration (wake) sensor event count %u\r\n", vibes);
                     }
                     else
                         fprintf(&USBSerialStream, "%s", TerminalHelpPrompt);
