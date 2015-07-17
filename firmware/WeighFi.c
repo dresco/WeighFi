@@ -52,7 +52,7 @@
 // PB4 - output - ADC    - Enable
 // PB5 - output - ADC    - Speed control
 // PB6 - output - LCD    - Clock override (unused)
-// PB7 - input  - MCU    - Wake (not yet implemented)
+// PB7 - input  - MCU    - Wake
 //
 // PC6 - output - LCD    - Enable
 //
@@ -109,14 +109,12 @@ FILE USBSerialStream;
 
 ISR (WDT_vect)
 {
+    woken_by_timer = true;
 }
 
 ISR(PCINT0_vect)
 {
     // Pin change interrupt for vibration switch
-    // Note: main loop currently assumes only woken @ 1Hz by watchdog timer,
-    //       will need to start checking wake source..
-
     vibes++;
     //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
 }
@@ -491,38 +489,42 @@ int main(void)
         // implementation is polling, so we can't block in the main program loop.
         // todo: move LUFA processing to timer interrupts?
         //
-        if (USB_DeviceState == DEVICE_STATE_Unattached)
+        if (woken_by_timer == true)             // Don't get ADC results if just woken by a vibration sensor interrupt
         {
-            // Not connected to USB host (normal state of operation), so see
-            // whether we are being woken up for a measurement
+            woken_by_timer = false;
 
-            // Perform a quick ADC reading for comparison
-            ADCResult = GetExtADCValue(ADC_SPEED_HIGH, 1);
-
-            // If we have previously been weighing, don't start again until weight removed from scales.
-            // Using the 'initial' zero value in case the 'accurate' zero was set incorrectly due to
-            // already weighted scales (which would make it difficult to change back to idle state).
-            if ((SystemState == WEIGHING) && (abs(ADCResult - ADCLastResult) < ADC_WAKE_THRESHOLD))
+            if (USB_DeviceState == DEVICE_STATE_Unattached)
             {
-                ADCLastResult = ADCResult;
-                SystemState = IDLE;
+                // Not connected to USB host (normal state of operation), so see
+                // whether we are being woken up for a measurement
+
+                // Perform a quick ADC reading for comparison
+                ADCResult = GetExtADCValue(ADC_SPEED_HIGH, 1);
+
+                // If we have previously been weighing, don't start again until weight removed from scales.
+                // Using the 'initial' zero value in case the 'accurate' zero was set incorrectly due to
+                // already weighted scales (which would make it difficult to change back to idle state).
+                if ((SystemState == WEIGHING) && (abs(ADCResult - ADCLastResult) < ADC_WAKE_THRESHOLD))
+                {
+                    ADCLastResult = ADCResult;
+                    SystemState = IDLE;
+                }
+
+                if ((abs(ADCResult - ADCLastResult) > ADC_WAKE_THRESHOLD) && (SystemState == IDLE))
+                {
+                    // Seems that we've been prodded to wake us
+                    SystemState = WEIGHING;
+
+                    Weight = WeighAndDisplay(&EEPROMData);
+                }
+
+                // Save current reading for next comparison
+                // ADCLastResult = ADCResult;
+
+                // Only set a new zero reading if close enough to previous zero reading, else might be weighted already
+                if (abs(ADCResult - ADCLastResult) < ADC_WAKE_THRESHOLD)
+                    ADCLastResult = ADCResult;
             }
-
-            if ((abs(ADCResult - ADCLastResult) > ADC_WAKE_THRESHOLD) && (SystemState == IDLE))
-            {
-                // Seems that we've been prodded to wake us
-                SystemState = WEIGHING;
-
-                Weight = WeighAndDisplay(&EEPROMData);
-            }
-
-            // Save current reading for next comparison
-            // ADCLastResult = ADCResult;
-
-            // Only set a new zero reading if close enough to previous zero reading, else might be weighted already
-            if (abs(ADCResult - ADCLastResult) < ADC_WAKE_THRESHOLD)
-                ADCLastResult = ADCResult;
-
         }
 
         if (USB_DeviceState == DEVICE_STATE_Configured)
@@ -533,7 +535,7 @@ int main(void)
         CDC_Device_USBTask(&VirtualSerial_CDC_Interface);
         USB_USBTask();
 
-        // Sleep if not USB connected, woken each second by watchdog interrupt
+        // Sleep if not USB connected, woken each second by watchdog interrupt, or sooner by vibration sensor
         if (USB_DeviceState == DEVICE_STATE_Unattached)
             sleep_mode();
     }
