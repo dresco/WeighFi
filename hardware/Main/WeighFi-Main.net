@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "/home/jone/Data/VMware/SharedFolders/Electronics/KiCad Projects/WeighFi/hardware/Main/WeighFi-Main.sch")
-    (date "Fri 17 Jul 2015 11:04:34 BST")
+    (date "Fri 17 Jul 2015 20:37:02 BST")
     (tool "eeschema (2014-jan-25)-product"))
   (components
     (comp (ref P16)
@@ -110,12 +110,12 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 4FBF8D57))
     (comp (ref R2)
-      (value 470K)
+      (value 680K)
       (libsource (lib dresco) (part R))
       (sheetpath (names /) (tstamps /))
       (tstamp 4FBF8CEF))
     (comp (ref R1)
-      (value 670K)
+      (value 470K)
       (libsource (lib dresco) (part R))
       (sheetpath (names /) (tstamps /))
       (tstamp 4FBF8CE3))

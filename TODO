@@ -10,9 +10,11 @@ Hardware:
  - Main board (v1.00)
    - silkscreen labels for switches
    - extend USB connector pads (updated in library)
-   - D- & D+ brought out to wrong pads on USB connector (updated in library)
+   - D- & D+ brought out to wrong pads on USB connector (updated in library & schematic)
+   - battery voltage divider resisters swapped (updated in schematic)
    - bring P4 out to test point (jtag pin)
    - bring UVcc out to solder jumper & VBus if possible
+   - move +BATT after main power switch (used for ADCs)
    - move to 10way IDC cable - drop pins 4 (LCD_CLOCK) and 9 (unused)
 
  - Display board (v1.00)
