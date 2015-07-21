@@ -23,6 +23,7 @@
 #define LUFA_H
 
 // LUFA LED support macros
+// Note: only LEDS_LED1 is defined / present on our board
 #define LEDMASK_USB_NOTREADY     LEDS_LED1                  // Interface not ready
 #define LEDMASK_USB_ENUMERATING (LEDS_LED2 | LEDS_LED3)     // Interface is enumerating
 #define LEDMASK_USB_READY       (LEDS_LED2 | LEDS_LED4)     // Interface is ready

@@ -60,19 +60,10 @@
 	/* Public Interface - May be used in end-application: */
 		/* Macros: */
 			/** LED mask for the first LED on the board. */
-			#define LEDS_LED1        // TODO: Add mask for first board LED here
-
-			/** LED mask for the second LED on the board. */
-			#define LEDS_LED2        // TODO: Add mask for second board LED here
-
-			/** LED mask for the third LED on the board. */
-			#define LEDS_LED3        // TODO: Add mask for third board LED here
-
-			/** LED mask for the fourth LED on the board. */
-			#define LEDS_LED4        // TODO: Add mask for fourth board LED here
+			#define LEDS_LED1        (1 << 0)
 
 			/** LED mask for all the LEDs on the board. */
-			#define LEDS_ALL_LEDS    (LEDS_LED1 | LEDS_LED2 | LEDS_LED3 | LEDS_LED4)
+			#define LEDS_ALL_LEDS    LEDS_LED1
 
 			/** LED mask for none of the board LEDs. */
 			#define LEDS_NO_LEDS     0
@@ -81,43 +72,45 @@
 		#if !defined(__DOXYGEN__)
 			static inline void LEDs_Init(void)
 			{
-				// TODO: Add code to initialize LED port pins as outputs here
+                DDRB  |=  LEDS_ALL_LEDS;
+                PORTB &= ~LEDS_ALL_LEDS;
 			}
 
 			static inline void LEDs_Disable(void)
 			{
-				// TODO: Clear the LED port pins as high impedance inputs here
+                DDRB  &= ~LEDS_ALL_LEDS;
+                PORTB &= ~LEDS_ALL_LEDS;
 			}
 
 			static inline void LEDs_TurnOnLEDs(const uint8_t LEDMask)
 			{
-				// TODO: Add code to turn on LEDs given in the LEDMask mask here, leave others as-is
+                PORTB |= LEDMask;
 			}
 
 			static inline void LEDs_TurnOffLEDs(const uint8_t LEDMask)
 			{
-				// TODO: Add code to turn off LEDs given in the LEDMask mask here, leave others as-is
+                PORTB &= ~LEDMask;
 			}
 
 			static inline void LEDs_SetAllLEDs(const uint8_t LEDMask)
 			{
-				// TODO: Add code to turn on only LEDs given in the LEDMask mask here, all others off
+                PORTB  = ((PORTB & ~LEDS_ALL_LEDS) | LEDMask);
 			}
 
 			static inline void LEDs_ChangeLEDs(const uint8_t LEDMask, const uint8_t ActiveMask)
 			{
-				// TODO: Add code to set the Leds in the given LEDMask to the status given in ActiveMask here
+                PORTB  = ((PORTB & ~LEDMask) | ActiveMask);
 			}
 
 			static inline void LEDs_ToggleLEDs(const uint8_t LEDMask)
 			{
-				// TODO: Add code to toggle the Leds in the given LEDMask, ignoring all others
+                PINB   = LEDMask;
 			}
 
 			static inline uint8_t LEDs_GetLEDs(void) ATTR_WARN_UNUSED_RESULT;
 			static inline uint8_t LEDs_GetLEDs(void)
 			{
-				// TODO: Add code to return the current LEDs status' here which can be masked against LED_LED* macros
+                return (PORTB & LEDS_ALL_LEDS);
 			}
 		#endif
 

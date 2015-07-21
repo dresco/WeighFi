@@ -16,6 +16,7 @@ Hardware:
    - bring UVcc out to solder jumper & VBus if possible
    - move +BATT after main power switch (used for ADCs)
    - move to 10way IDC cable - drop pins 4 (LCD_CLOCK) and 9 (unused)
+   - add a solder jumper to HWB (disable reset to bootloader if desired)
 
  - Display board (v1.00)
    - ground plane copper pour

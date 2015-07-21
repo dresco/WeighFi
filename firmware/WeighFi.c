@@ -147,6 +147,7 @@ void TimerSetup(void)
 void PortSetup(void)
 {
     DDRB |= (1 << 0);                                       // Configure PB0 as output for status LED
+                                                            // Note: is also configured by LUFA LED setup
 
     DDRB |= (1 << 4);                                       // Configure PB4 as output to enable the ADC
     PORTB &= ~(1 << 4);                                     // Clear PB4 to ensure ADC is powered down
