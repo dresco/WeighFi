@@ -34,7 +34,7 @@
 									<listOptionValue builtIn="false" value="USE_LUFA_CONFIG_HEADER"/>
 									<listOptionValue builtIn="false" value="ARCH=AVR8"/>
 									<listOptionValue builtIn="false" value="F_USB=8000000"/>
-									<listOptionValue builtIn="false" value="BOARD=BOARD_ADAFRUITU4"/>
+									<listOptionValue builtIn="false" value="BOARD=BOARD_USER"/>
 								</option>
 								<option id="de.innot.avreclipse.compiler.option.incpath.1830531043" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}&quot;"/>
@@ -102,7 +102,7 @@
 									<listOptionValue builtIn="false" value="USE_LUFA_CONFIG_HEADER"/>
 									<listOptionValue builtIn="false" value="ARCH=AVR8"/>
 									<listOptionValue builtIn="false" value="F_USB=8000000"/>
-									<listOptionValue builtIn="false" value="BOARD=BOARD_ADAFRUITU4"/>
+									<listOptionValue builtIn="false" value="BOARD=BOARD_USER"/>
 								</option>
 								<option id="de.innot.avreclipse.compiler.option.incpath.732804126" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}&quot;"/>
