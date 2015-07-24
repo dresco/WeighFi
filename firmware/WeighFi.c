@@ -109,7 +109,7 @@ FILE USBSerialStream;
 
 ISR (WDT_vect)
 {
-    woken_by_timer = true;
+    vibes = 0;
 }
 
 ISR(PCINT0_vect)
@@ -446,14 +446,7 @@ int freeRam()
 
 int main(void)
 {
-    SystemState_t SystemState = IDLE;
     EEPROMData_t  EEPROMData = {0};
-
-    //int32_t ADCZeroReading;
-    int32_t Weight;
-    int32_t ADCResult = 0;
-    int32_t ADCInitialResult;
-    int32_t ADCLastResult;
 
     SetupHardware();
 
@@ -481,9 +474,6 @@ int main(void)
     //DisplayData.Flags = LCD_FLAG_BLANK;
     //LCDUpdate(&DisplayData);
 
-    // Get a one off reading to populate the variables before fist use..
-    ADCInitialResult = ADCLastResult = GetExtADCValue(ADC_SPEED_HIGH, 1);
-
     while (1)
     {
         //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
@@ -494,42 +484,11 @@ int main(void)
         // implementation is polling, so we can't block in the main program loop.
         // todo: move LUFA processing to timer interrupts?
         //
-        if (woken_by_timer == true)             // Don't get ADC results if just woken by a vibration sensor interrupt
+
+        if ((vibes > VIBRATION_THRESHOLD) && (USB_DeviceState == DEVICE_STATE_Unattached))
         {
-            woken_by_timer = false;
-
-            if (USB_DeviceState == DEVICE_STATE_Unattached)
-            {
-                // Not connected to USB host (normal state of operation), so see
-                // whether we are being woken up for a measurement
-
-                // Perform a quick ADC reading for comparison
-                ADCResult = GetExtADCValue(ADC_SPEED_HIGH, 1);
-
-                // If we have previously been weighing, don't start again until weight removed from scales.
-                // Using the 'initial' zero value in case the 'accurate' zero was set incorrectly due to
-                // already weighted scales (which would make it difficult to change back to idle state).
-                if ((SystemState == WEIGHING) && (abs(ADCResult - ADCLastResult) < ADC_WAKE_THRESHOLD))
-                {
-                    ADCLastResult = ADCResult;
-                    SystemState = IDLE;
-                }
-
-                if ((abs(ADCResult - ADCLastResult) > ADC_WAKE_THRESHOLD) && (SystemState == IDLE))
-                {
-                    // Seems that we've been prodded to wake us
-                    SystemState = WEIGHING;
-
-                    Weight = WeighAndDisplay(&EEPROMData);
-                }
-
-                // Save current reading for next comparison
-                // ADCLastResult = ADCResult;
-
-                // Only set a new zero reading if close enough to previous zero reading, else might be weighted already
-                if (abs(ADCResult - ADCLastResult) < ADC_WAKE_THRESHOLD)
-                    ADCLastResult = ADCResult;
-            }
+            // Woken by a knock to the vibration sensor, and not USB attached
+            WeighAndDisplay(&EEPROMData);
         }
 
         if (USB_DeviceState == DEVICE_STATE_Configured)

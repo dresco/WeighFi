@@ -47,19 +47,14 @@
 #include "Descriptors.h"
 
 volatile uint16_t      g_ms;                                // Free running millisecond counter
-volatile uint16_t      vibes;                               // Incremented by vibration switch interrupt
-volatile bool          woken_by_timer;                      // Set by watchdog interrupt wakeup source
+volatile uint8_t       vibes;                               // Incremented by vibration switch interrupt
+
+#define VIBRATION_THRESHOLD 5
 
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 1
 
 #define UART_BAUD_RATE 9600                                // Maybe dodgy with a 16MHz clock?
-
-typedef enum {
-    IDLE,
-    WEIGHING,
-    CHARGING,
-} SystemState_t;
 
 typedef enum {
     KILOS,
