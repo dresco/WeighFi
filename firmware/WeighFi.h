@@ -49,7 +49,7 @@
 volatile uint16_t      g_ms;                                // Free running millisecond counter
 volatile uint8_t       vibes;                               // Incremented by vibration switch interrupt
 
-#define VIBRATION_THRESHOLD 5
+#define VIBRATION_THRESHOLD 1
 
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 1

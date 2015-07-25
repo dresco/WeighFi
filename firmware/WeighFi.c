@@ -186,7 +186,7 @@ void SetupHardware(void)
 
     //LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
 
-    WD_SET(WD_IRQ,WDTO_1S);                     // Setup Watchdog interrupt for 1 second interval
+    WD_SET(WD_IRQ,WDTO_2S);                     // Setup Watchdog interrupt for 2 second interval
 
     GlobalInterruptEnable();
 
@@ -485,8 +485,11 @@ int main(void)
         // todo: move LUFA processing to timer interrupts?
         //
 
-        if ((vibes > VIBRATION_THRESHOLD) && (USB_DeviceState == DEVICE_STATE_Unattached))
+        if ((vibes >= VIBRATION_THRESHOLD) && (USB_DeviceState == DEVICE_STATE_Unattached))
         {
+            //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
+            vibes = 0;
+
             // Woken by a knock to the vibration sensor, and not USB attached
             WeighAndDisplay(&EEPROMData);
         }
