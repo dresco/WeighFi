@@ -504,6 +504,10 @@ int main(void)
 
         // Sleep if not USB connected, woken each second by watchdog interrupt, or sooner by vibration sensor
         if (USB_DeviceState == DEVICE_STATE_Unattached)
+        {
+            USB_Disable();
             sleep_mode();
+            USB_Init();
+        }
     }
 }
