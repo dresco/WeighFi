@@ -272,6 +272,39 @@ void PrepareDisplayData(int32_t Weight, DisplayUnits_t DisplayUnits, DisplayData
     }
 }
 
+DisplayUnits_t GetDisplayUnits(void)
+{
+    DisplayUnits_t DisplayUnits = KILOS;                    // Default to kilos
+
+    // Enable pullups for switch
+    PORTF |= (1<<5);                                        // enable the pull-up on PF5 - stones
+    PORTF |= (1<<6);                                        // enable the pull-up on PF6 - pounds
+    PORTF |= (1<<7);                                        // enable the pull-up on PF7 - kilos
+
+    if (!(PINF & (1<<5)))
+    {
+        // If pulled low, switch is in this position..
+        DisplayUnits = STONES;
+    }
+    else if (!(PINF & (1<<6)))
+    {
+        // If pulled low, switch is in this position..
+        DisplayUnits = POUNDS;
+    }
+    else if (!(PINF & (1<<7)))
+    {
+        // If pulled low, switch is in this position..
+        DisplayUnits = KILOS;
+    }
+
+    // Disable pullups for switch
+    PORTF &= ~(1<<5);                                       // disable the pull-up on PF5 - stones
+    PORTF &= ~(1<<6);                                       // disable the pull-up on PF6 - pounds
+    PORTF &= ~(1<<7);                                       // disable the pull-up on PF7 - kilos
+
+    return (DisplayUnits);
+}
+
 int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
 {
     DisplayUnits_t DisplayUnits = KILOS;
@@ -283,6 +316,9 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     int32_t ADCZeroReading;
     int32_t ADCLastResult = 0;
     uint8_t WLANResult = 0;
+
+    // Get the requested display units
+    DisplayUnits = GetDisplayUnits();
 
     // Power up the LCD
     LCDEnable(1);
