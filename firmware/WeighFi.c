@@ -356,13 +356,9 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
     {
         ADCResult = GetExtADCValue(ADC_SPEED_LOW, 3);
 
-        // Calculate the weight in grams
-        // todo: increase calibration range for finer tuning of weight;
-        //       from uint8_t to uint16_t
-        //       counts per 5KG instead of counts per 1KG
-        //
+        // Calculate the weight in grams, calibration value is ADC counts per 5KG
         ADCDelta = ADCResult - ADCZeroReading;
-        Weight = DivideAndRoundToClosest((ADCDelta * 1000), EEPROMData->SRAM_Calibration);
+        Weight = DivideAndRoundToClosest((ADCDelta * 5000), EEPROMData->SRAM_Calibration);
 
         // Filter out any negative values
         if (Weight < 0)

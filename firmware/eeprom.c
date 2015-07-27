@@ -24,7 +24,7 @@
 // Let GCC allocate the EEPROM offsets for us..
 uint8_t  EEMEM EEPROM_VersionMajor  = 1;
 uint8_t  EEMEM EEPROM_VersionMinor  = 0;
-uint16_t EEMEM EEPROM_Calibration   = 140;
+uint16_t EEMEM EEPROM_Calibration   = 700;
 uint8_t  EEMEM EEPROM_SiteID[36]    = "1000";
 uint8_t  EEMEM EEPROM_SiteKey[36]   = "12345678";
 uint8_t  EEMEM EEPROM_DeviceID[36]  = "1010";
