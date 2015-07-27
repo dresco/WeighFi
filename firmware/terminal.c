@@ -212,7 +212,7 @@ void TerminalCheckInput(EEPROMData_t * EEPROMData)
                         if (count == 2)
                         {
                             // todo: atoi is a bit crap, perhaps use strtol instead..
-                            uint8_t val = atoi((char *)arg);
+                            uint16_t val = atoi((char *)arg);
 
                             if (val)
                                 EEPROMData->SRAM_Calibration = val;
