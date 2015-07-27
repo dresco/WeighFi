@@ -24,15 +24,15 @@
 
 typedef struct EEPROMData
 {
-    uint8_t SRAM_VersionMajor;
-    uint8_t SRAM_VersionMinor;
-    uint8_t SRAM_Calibration;
-    uint8_t SRAM_SiteID[36];
-    uint8_t SRAM_SiteKey[36];
-    uint8_t SRAM_DeviceID[36];
-    uint8_t SRAM_Reserved[36];
-    uint8_t SRAM_WiFi_SSID[32];
-    uint8_t SRAM_WiFi_PASS[64];
+    uint8_t  SRAM_VersionMajor;
+    uint8_t  SRAM_VersionMinor;
+    uint16_t SRAM_Calibration;
+    uint8_t  SRAM_SiteID[36];
+    uint8_t  SRAM_SiteKey[36];
+    uint8_t  SRAM_DeviceID[36];
+    uint8_t  SRAM_Reserved[36];
+    uint8_t  SRAM_WiFi_SSID[32];
+    uint8_t  SRAM_WiFi_PASS[64];
 } EEPROMData_t;
 
 // function prototypes

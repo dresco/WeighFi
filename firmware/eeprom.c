@@ -22,22 +22,22 @@
 #include "WeighFi.h"
 
 // Let GCC allocate the EEPROM offsets for us..
-uint8_t EEMEM EEPROM_VersionMajor  = 1;
-uint8_t EEMEM EEPROM_VersionMinor  = 0;
-uint8_t EEMEM EEPROM_Calibration   = 140;
-uint8_t EEMEM EEPROM_SiteID[36]    = "1000";
-uint8_t EEMEM EEPROM_SiteKey[36]   = "12345678";
-uint8_t EEMEM EEPROM_DeviceID[36]  = "1010";
-uint8_t EEMEM EEPROM_Reserved[36];
-uint8_t EEMEM EEPROM_WiFi_SSID[32] = "SSID";
-uint8_t EEMEM EEPROM_WiFi_PASS[64] = "PASSWORD";
+uint8_t  EEMEM EEPROM_VersionMajor  = 1;
+uint8_t  EEMEM EEPROM_VersionMinor  = 0;
+uint16_t EEMEM EEPROM_Calibration   = 140;
+uint8_t  EEMEM EEPROM_SiteID[36]    = "1000";
+uint8_t  EEMEM EEPROM_SiteKey[36]   = "12345678";
+uint8_t  EEMEM EEPROM_DeviceID[36]  = "1010";
+uint8_t  EEMEM EEPROM_Reserved[36];
+uint8_t  EEMEM EEPROM_WiFi_SSID[32] = "SSID";
+uint8_t  EEMEM EEPROM_WiFi_PASS[64] = "PASSWORD";
 
 void FetchEEPROMData(EEPROMData_t *EEPROMData)
 {
     EEPROMData->SRAM_VersionMajor = eeprom_read_byte(&EEPROM_VersionMajor);
     EEPROMData->SRAM_VersionMinor = eeprom_read_byte(&EEPROM_VersionMinor);
 
-    EEPROMData->SRAM_Calibration = eeprom_read_byte(&EEPROM_Calibration);
+    EEPROMData->SRAM_Calibration = eeprom_read_word(&EEPROM_Calibration);
 
     eeprom_read_block((void*)EEPROMData->SRAM_SiteID, (const void *)EEPROM_SiteID, 36);
     eeprom_read_block((void*)EEPROMData->SRAM_SiteKey, (const void *)EEPROM_SiteKey, 36);
@@ -53,7 +53,7 @@ void UpdateEEPROMData(EEPROMData_t *EEPROMData)
     eeprom_update_byte(&EEPROM_VersionMajor, EEPROMData->SRAM_VersionMajor);
     eeprom_update_byte(&EEPROM_VersionMinor, EEPROMData->SRAM_VersionMinor);
 
-    eeprom_update_byte(&EEPROM_Calibration, EEPROMData->SRAM_Calibration);
+    eeprom_update_word(&EEPROM_Calibration, EEPROMData->SRAM_Calibration);
 
     eeprom_update_block((const void *)EEPROMData->SRAM_SiteID, (void *)EEPROM_SiteID, 36);
     eeprom_update_block((const void *)EEPROMData->SRAM_SiteKey, (void *)EEPROM_SiteKey, 36);
