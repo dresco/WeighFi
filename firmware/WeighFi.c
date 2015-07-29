@@ -375,7 +375,7 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
         ADCLastResult = ADCResult;
     }
 
-    // Weight has settled, blink the display and pause for 5 seconds
+    // Weight has settled, blink the display
     PrepareDisplayData(Weight, DisplayUnits, &DisplayData);
     DisplayData.Flags |= LCD_FLAG_BLINK;
     LCDUpdate(&DisplayData);
@@ -395,15 +395,13 @@ int32_t WeighAndDisplay(EEPROMData_t * EEPROMData)
 
     // Upload weight data to network, ignore reading if less than 1 KG
     if (Weight > 1000)
+    {
         WLANResult = WLANTransmit(Weight, Battery, (char *)EEPROMData->SRAM_SiteKey, (char *)EEPROMData->SRAM_DeviceID);
 
-    // Ensure display blinks for at least 5 seconds
-    while (GetMilliSeconds() - start < 5000)
-        ;
+        // Ensure display blinks for at least 5 seconds
+        while (GetMilliSeconds() - start < 5000)
+            ;
 
-    // Update display to indicate a successful (or otherwise) upload
-    if (Weight)
-    {
         if (!WLANResult)
         {
             // Successful upload
