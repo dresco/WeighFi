@@ -515,7 +515,7 @@ int main(void)
         // todo: move LUFA processing to timer interrupts?
         //
 
-        if ((vibes >= VIBRATION_THRESHOLD) && (USB_DeviceState == DEVICE_STATE_Unattached))
+        if ((vibes >= EEPROMData.SRAM_Sensitivity) && (USB_DeviceState == DEVICE_STATE_Unattached))
         {
             //PORTB ^= (1 << 0);                      // Toggle the status LED on port B0
             vibes = 0;

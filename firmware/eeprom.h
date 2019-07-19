@@ -26,6 +26,7 @@ typedef struct EEPROMData
 {
     uint8_t  SRAM_VersionMajor;
     uint8_t  SRAM_VersionMinor;
+    uint8_t  SRAM_Sensitivity;
     uint16_t SRAM_Calibration;          // ADC counts per 5000 grams
     uint8_t  SRAM_SiteID[36];
     uint8_t  SRAM_SiteKey[36];

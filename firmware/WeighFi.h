@@ -49,10 +49,8 @@
 volatile uint16_t      g_ms;                                // Free running millisecond counter
 volatile uint8_t       vibes;                               // Incremented by vibration switch interrupt
 
-#define VIBRATION_THRESHOLD 80
-
 #define VERSION_MAJOR 0
-#define VERSION_MINOR 2
+#define VERSION_MINOR 3
 
 #define UART_BAUD_RATE 9600                                // Maybe dodgy with a 16MHz clock?
 

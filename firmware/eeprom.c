@@ -24,6 +24,7 @@
 // Let GCC allocate the EEPROM offsets for us..
 uint8_t  EEMEM EEPROM_VersionMajor  = 1;
 uint8_t  EEMEM EEPROM_VersionMinor  = 0;
+uint8_t  EEMEM EEPROM_Sensitivity   = 100;
 uint16_t EEMEM EEPROM_Calibration   = 700;
 uint8_t  EEMEM EEPROM_SiteID[36]    = "1000";
 uint8_t  EEMEM EEPROM_SiteKey[36]   = "12345678";
@@ -36,6 +37,7 @@ void FetchEEPROMData(EEPROMData_t *EEPROMData)
 {
     EEPROMData->SRAM_VersionMajor = eeprom_read_byte(&EEPROM_VersionMajor);
     EEPROMData->SRAM_VersionMinor = eeprom_read_byte(&EEPROM_VersionMinor);
+    EEPROMData->SRAM_Sensitivity = eeprom_read_byte(&EEPROM_Sensitivity);
 
     EEPROMData->SRAM_Calibration = eeprom_read_word(&EEPROM_Calibration);
 
@@ -52,6 +54,7 @@ void UpdateEEPROMData(EEPROMData_t *EEPROMData)
 {
     eeprom_update_byte(&EEPROM_VersionMajor, EEPROMData->SRAM_VersionMajor);
     eeprom_update_byte(&EEPROM_VersionMinor, EEPROMData->SRAM_VersionMinor);
+    eeprom_update_byte(&EEPROM_Sensitivity, EEPROMData->SRAM_Sensitivity);
 
     eeprom_update_word(&EEPROM_Calibration, EEPROMData->SRAM_Calibration);
 

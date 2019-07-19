@@ -30,10 +30,11 @@ const char TerminalHelpPrompt[]    = "Usage:\r\n"
                                      "\r\n"
                                      "v             - display firmware version\r\n"
                                      "z             - display vibration sensor count\r\n"
-                                     "s             - display ADC reading for scales\r\n"
+                                     "l             - display ADC reading for load (wheatstone bridge)\r\n"
                                      "b             - display ADC reading for battery\r\n"
                                      "a             - display all configuration options\r\n"
                                      "\r\n"
+                                     "s [value]     - display or update vibration sensor sensitivity\r\n"
                                      "c [value]     - display or update scale calibration value\r\n"
                                      "i [value]     - display or update site id\r\n"
                                      "k [value]     - display or update site key\r\n"
@@ -41,7 +42,7 @@ const char TerminalHelpPrompt[]    = "Usage:\r\n"
                                      "n [value]     - display or update wifi network name\r\n"
                                      "p [value]     - display or update wifi passphrase\r\n"
                                      "\r\n"
-                                     "w [value]     - write new settings to non-volatile storage\r\n";
+                                     "w             - write new settings to non-volatile storage\r\n";
 
 uint8_t TerminalReceiveChar(unsigned int timeout)
 {
@@ -132,6 +133,7 @@ void TerminalCheckInput(EEPROMData_t * EEPROMData)
                     {
                         fprintf(&USBSerialStream, "Version Major: %d\n\r", EEPROMData->SRAM_VersionMajor);
                         fprintf(&USBSerialStream, "Version Minor: %d\n\r", EEPROMData->SRAM_VersionMinor);
+                        fprintf(&USBSerialStream, "Sensitivity  : %d\n\r", EEPROMData->SRAM_Sensitivity);
                         fprintf(&USBSerialStream, "Calibration  : %d\n\r", EEPROMData->SRAM_Calibration);
                         fprintf(&USBSerialStream, "Site ID      : %s\n\r", EEPROMData->SRAM_SiteID);
                         fprintf(&USBSerialStream, "Site Key     : %s\n\r", EEPROMData->SRAM_SiteKey);
@@ -171,11 +173,11 @@ void TerminalCheckInput(EEPROMData_t * EEPROMData)
                         fprintf(&USBSerialStream, "%s", TerminalHelpPrompt);
                     break;
 
-                case 's':
+                case 'l':
                     if (strlen((char *)buffer) == CMD_ONLY)
                     {
-                        int32_t Scales = GetExtADCValue(ADC_SPEED_LOW, 3);
-                        fprintf(&USBSerialStream, "Scales ADC raw value: %li\r\n", Scales);
+                        int32_t Load = GetExtADCValue(ADC_SPEED_LOW, 3);
+                        fprintf(&USBSerialStream, "Load ADC raw value: %li\r\n", Load);
                     }
                     else
                         fprintf(&USBSerialStream, "%s", TerminalHelpPrompt);
@@ -195,6 +197,35 @@ void TerminalCheckInput(EEPROMData_t * EEPROMData)
                     }
                     else
                         fprintf(&USBSerialStream, "%s", TerminalHelpPrompt);
+                    break;
+
+                case 's':
+                    if (strlen((char *)buffer) == CMD_ONLY)
+                    {
+                        // no new value provided, display current parameter
+                        fprintf(&USBSerialStream, "Sensitivity  : %d\n\r", EEPROMData->SRAM_Sensitivity);
+                    }
+                    else
+                    {
+                        // parse new value out of command and update SRAM configuration data
+                        uint8_t count = sscanf((char *)buffer, "%c %s", &cmd, arg);
+
+                        // got some values
+                        if (count == 2)
+                        {
+                            // todo: atoi is a bit crap, perhaps use strtol instead..
+                            uint8_t val = atoi((char *)arg);
+
+                            if (val)
+                                EEPROMData->SRAM_Sensitivity = val;
+
+                        }
+                        else
+                        {
+                            fprintf(&USBSerialStream, "%s", TerminalHelpPrompt);
+                        }
+
+                    }
                     break;
 
                 case 'c':
